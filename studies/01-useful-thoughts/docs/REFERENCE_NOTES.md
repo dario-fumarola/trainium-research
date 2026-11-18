@@ -1,0 +1,355 @@
+# Reference notes and verification dates
+
+## Prior reviewed scientific basis (carried forward, not rerun here)
+
+RLP motivates a mature Qwen3-1.7B base and thought-policy learning from future-text
+predictive reward. Our G=4/L=1024/context=512/single-update configuration is a
+combined engineering choice. It is not the complete published recipe, a tested
+reproduction, or a guaranteed positive result. Common-baseline cancellation is
+an algebraic property of the chosen LOO advantages; it does not fix a moving
+reader or make variable-length normalization unbiased.
+
+Quiet-STaR already uses a multi-token non-myopic prediction objective; extending
+beyond the immediate next token is not novelty by itself. BoLT's teacher warm start,
+TPT's thought-augmented data, and mature reasoning checkpoints in other work all
+mean that different sources of initial competence must be separated experimentally.
+Fast Quiet-STaR is relevant to later compression/internalization, not proof that
+an extremely short initial thought budget will bootstrap this model.
+
+Safety reflection and deliberative safety methods are already active research
+areas. Keep their objectives distinct from predicting generic text or producing
+plausible social commentary. The roadmap identifies narrower causal questions.
+The primary citations and versioned paper links are in SOURCES.md.
+
+## Warm-start interpretation — checked 2026-10-18
+
+[BoLT v2](https://arxiv.org/html/2503.18866v2) trains both the prefix-conditioned
+joint model and a future-conditioned posterior, with different formatting. Our
+writer/reader/source loss does not reproduce that posterior training. Its appendix
+also reports degrading few-shot GSM8K across some bootstrap iterations; likelihood
+and downstream improvement need separate measurement. Its 480M unique-token,
+8B training-token study is much larger than our initial interface warm start.
+
+[TPT](https://arxiv.org/html/2509.20186v1) concatenates each original document
+followed by its generated thinking trajectory. Our T arm interleaves a note at an
+anchor and repeats the prefix tail. Keep calling it augmented causal CE rather
+than a TPT reproduction; a negative small warm start cannot refute the paper.
+
+## Packaging-time official documentation checks — 2026-10-16
+
+- Codex reads project AGENTS.md instructions. The root file here is kept short;
+  the launch script passes the separate opening task without changing permissions.
+  https://developers.openai.com/codex/guides/agents-md
+  https://developers.openai.com/codex/cli
+- AWS documents trn2 logical-core configuration and runtime visibility controls.
+  Device isolation must still be verified on the actual process layout.
+  https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.1/about-neuron/arch/neuron-features/logical-neuroncore-config.html
+  https://awsdocs-neuron.readthedocs-hosted.com/en/latest/neuron-runtime/guides/configuration-guide.html
+- The XLA ZeRO-1 tutorial says its optimizer step handles distributed reduction;
+  adding xm.optimizer_step or manual reduction is not appropriate for that path.
+  The page also warns of a future XLA-training support transition. Preserve the
+  working installed stack; do not infer that a newly installed release is compatible.
+  https://awsdocs-neuron.readthedocs-hosted.com/en/v2.30.0/frameworks/torch/torch-neuronx/tutorials/training/zero1_gpt2.html
+- Hugging Face documents commit-specific snapshot downloads and streaming datasets.
+  The bundled helpers use explicit bounded network actions; live download APIs
+  were not executed during packaging and still need instance-side checks.
+  https://huggingface.co/docs/huggingface_hub/guides/download
+  https://huggingface.co/docs/datasets/stream
+
+These checks support interface choices, not hardware performance or scientific
+claims. Pin resolved asset revisions and inspect installed library APIs at use.
+
+## 2026-10-18: check the bootstrap mechanisms against the original papers
+
+Quiet-STaR trains the prediction/mixing path with a likelihood loss alongside
+rationale REINFORCE. Its published algorithm also drops negative rationale
+advantages, and its learned boundary embeddings are part of the adaptation.
+These are material differences from the stopped writer-only signed-advantage
+recipe, not evidence that another unqualified RL run will work.
+[Quiet-STaR, sections4.3–4.4](https://arxiv.org/html/2403.09629v2).
+
+BoLT trains both a latent-conditioned joint model and a future-aware posterior
+through two sequence orderings, after supervised initialization. Its later
+candidate weights use the joint probability divided by the posterior proposal
+probability, rather than continuation likelihood alone.
+[BoLT, sections3.2 and4.1, Algorithm1](https://arxiv.org/html/2503.18866v1).
+Our inference: a note selected only for predicting an observed future need not
+be recoverable by a prefix-only writer. If returning to general text, distinguish
+posterior usefulness from prior/deployed utility; do not describe the previous
+positive-reader filter as the BoLT weighting rule.
+
+STaR's arithmetic study distinguishes ordinary fine-tuning, rationale
+bootstrapping and answer-conditioned rationalization, including digit-length
+generalization. It does not establish that arbitrary future-aware annotations
+will be useful under a prefix-only policy.
+[STaR, sections4.1–4.3](https://arxiv.org/html/2203.14465v2).
+For our current experiment, exact prefix-computable partial states eliminate
+that information mismatch, while separately held structure/range/composition
+panels test transfer. Correct teacher reading, actual student benefit and a gain
+over ordinary compact CoT remain three different claims.
+
+## Capacity and objective corrections — checked 2026-10-18
+
+[RLP v2, sections2.4 and10](https://arxiv.org/html/2510.01265v2) explicitly uses
+thought-policy updates without ordinary NTP, sibling-relative advantages and a
+sample-length-normalized clipped surrogate. Its main model is Qwen3-1.7B-Base;
+reported gains therefore do not establish7B as a prerequisite. Its introduction
+mentions interleaved likelihood training, in tension with those explicit method
+statements. Treat the equations and experimental settings as the recipe, and do
+not present our stopped small study as a clean replication or rejection.
+Its EMA ablation cannot be explained by varying only the shared scalar baseline
+in the written sibling-centered update: that term cancels. This discrepancy
+needs implementation detail; it does not justify adding an EMA as a remedy.
+
+[RPT, section3.3](https://arxiv.org/html/2506.08007v1) starts from an already
+reasoning-distilled14B model and filters low-entropy positions with a separate
+small proxy. It is not evidence that the same bootstrap works on an unadapted
+small base. [Quiet-STaR's appendixA](https://arxiv.org/html/2403.09629v2) uses
+Mistral7B, learned boundaries and a learned mixing network; its capacity and
+initialization differ together from our old experiment.
+
+Our algebra/engineering implications: subtracting an empty-format or EMA constant
+still cancels inside per-context LOO advantages; a real no-note choice or another
+update rule is required to change that behavior. Saved behavior log-probabilities
+remove recomputation of the old-policy denominator, but training still needs
+differentiable new-policy log-probabilities. A zero thought-mixing weight also
+zeros content-dependent reward until the prediction/mixing path learns to use it.
+These observations guide the next design; they are not new training results.
+
+## Training value and deployed thought value — checked 2026-10-19
+
+BoLT models a latent marginal at prediction time. Its Appendix B.1 reports an
+improving bound even while conditional reconstruction worsens slightly: better
+prior/posterior agreement contributes to the gain.
+[BoLT v2, sections 3.3 and B.1](https://arxiv.org/html/2503.18866v2).
+For prefix X, continuation Y and thought Z, the conditional variational identity is
+
+$$
+\log p(Y\mid X)\ge
+\mathbb E_{q(Z\mid X,Y)}[\log p(Y\mid X,Z)]
+-D_{KL}(q(Z\mid X,Y)\Vert p(Z\mid X)).
+$$
+
+Our inference: maximizing hindsight utility alone omits prior compatibility.
+Conversely, copying each hindsight thought exactly is not necessary for a useful
+latent marginal. Single-greedy-note utility and thought-augmented training value
+are separate endpoints. The current partial-state experiment isolates the former;
+it does not settle every latent-training hypothesis.
+
+TPT trains on document followed by generated thinking using ordinary causal CE.
+Its training benefit should not be gated by our inserted-note inference test.
+[TPT section 2](https://arxiv.org/html/2509.20186v1).
+Keep both hypotheses explicit without changing the current fixed comparison.
+
+## Scale and document reasoning — rechecked 2026-10-19
+
+TPT's mid-training comparison uses 100 billion tokens followed by 350,000-example SFT.
+Its smaller 1.5B thought-generator ablation outperforms its 7B generator.
+Neither result makes 7B a prerequisite for our experiment. Our roughly 4.8 million
+supervised-token treatment tests a small, verified arithmetic augmentation;
+it cannot reproduce or refute that larger training recipe.
+[TPT sections3.3 and5](https://arxiv.org/html/2509.20186v1).
+
+MuSiQue explicitly studies shortcuts through question-only, context-only and
+single-paragraph controls. Its gold decomposition is training supervision, not
+input available to a deployed generator. Our inference: a future document
+reasoning study should test whether connected evidence is actually used, rather
+than treating fluent fact extraction or benchmark accuracy alone as proof.
+The current corpus inventory releases no learning or evaluation job.
+[MuSiQue sections4 and7.2](https://arxiv.org/html/2108.00573v3).
+
+## Trained extra-compute controls — rechecked 2026-10-19
+
+The pause-token paper omits loss on supplied pause tokens. Its strongest gains
+use delays during both pretraining and finetuning; adding them only at finetuning
+has mixed effects, and removing delays at inference can break performance.
+Our inference: untrained filler is insufficient for the stronger content-versus-
+computation claim, and plain-path retention needs measurement. A later comparison
+must match our causal attention: the paper uses bidirectional prefix attention
+in downstream tasks. No pause arm is added to the current fixed study.
+[Pause tokens, sections3–5](https://arxiv.org/html/2310.02226v3).
+
+## Original question identities — checked 2026-10-19
+
+[MuSiQue section5, S5](https://arxiv.org/html/2108.00573v3#S5) separates original
+single-hop questions, answers and associated paragraphs to reduce memorization.
+Our raw TRAIN component_question_texts sometimes contain a generic relation
+program such as a location relation. Those strings are not original question
+identities. V21 uses dataset plus original hop ID from decomposed_instances,
+alongside supporting passage/page exclusions. Historical V16/V20 counts remain
+as originally computed. Our held split permits repeated answers and distractors;
+it is a TRAIN-derived development study, not the official benchmark split.
+
+## QA-v21 interpretation — checked 2026-10-19
+
+MuSiQue's step-execution model substitutes intermediate answers while executing
+the decomposition. V21 instead supervised a single textual trace containing
+literal `#n` placeholders. Explicit binding is a possible new treatment, not a
+retroactive explanation established by our results. The paper's split excludes
+shared original questions, answers and paragraphs; our within-TRAIN resplit
+allows repeated answers and adds page/visible-context exclusions. These are
+different protocols, not a replication of its official split.
+[MuSiQue sections5 and7.2](https://arxiv.org/html/2108.00573v3).
+
+TPT concatenates a raw document and generated thinking for ordinary next-token
+training. Its reported mid-training uses100B tokens followed by350k-example SFT.
+Our2,048-question post-answer supervision is a much smaller,different experiment;
+its failed accuracy gate does not refute TPT.
+[TPT sections2 and3.3](https://arxiv.org/html/2509.20186v1).
+# Grounded generation references — October 19 follow-up
+
+[Chain-of-Note, final EMNLP version](https://arxiv.org/html/2311.09210v2)
+trains LLaMA-2 7B on 10,000 GPT-4-generated NQ reading-note examples, including
+relevant, indirect and unhelpful documents. Its hybrid condition mixes direct and
+note-conditioned training. This is relevant supervision design, not evidence that
+our literal MuSiQue decompositions should work. Teacher quality, model scale and
+retrieval setting differ. We have not acquired those labels or called a teacher.
+Recheck of sections2.3.3/3.5: the hybrid uses a 50/50 direct/note mixture and
+answers directly at inference. Table2 reports a modest average full-set EM gain
+of1.97 points; larger noise-robustness gains concern a different setting. The
+hybrid's separate latency result does not establish our training-benefit claim.
+Keep training-only transfer distinct from explicitly generating notes.
+
+[Attribute First, then Generate](https://arxiv.org/html/2403.17104v3)
+selects source spans before planning and generation, with exact-copy constraints
+in its fine-tuned components. It distinguishes attributable source content from
+post-hoc paragraph citations. Its multi-component pipeline has latency and error
+propagation costs; attribution gains do not automatically imply better short-answer
+accuracy. The useful design principle here is to test evidence selection separately
+from unsupported factual claims, while keeping a competitive direct control.
+Recheck of tables1/2: the fine-tuned variants have lower task-quality metrics
+than the end-to-end Primera baseline, despite their attribution benefits;
+the stronger LFQA gains occur in the prompted Gemini variants. Exact copying
+prevents fabricated quotations but does not certify that a selected span supports
+the requested relation. These results motivate measurement, not an assumption
+that selection-first training must beat direct answers.
+
+
+## October19: context use and dataset construction
+
+[Lost in the Middle](https://arxiv.org/html/2307.03172v3) tests evidence position
+by reordering documents. Position affects the evaluated models; duplicating the
+query before and after context helps synthetic key lookup much more than real
+multi-document QA. This suggests checking routing/position separately from
+computational depth. It does not establish a positional failure in our Qwen run,
+and it does not justify changing the V25 prompt during the coefficient ablation.
+
+[MuSiQue](https://arxiv.org/html/2108.00573v3), sections S5/S6 and8.2, documents
+its overlap exclusions and hard distractor construction from other valid support
+paragraphs. Easier distractor sources substantially raise shortcut performance.
+Its models also benefit from annotated decompositions while remaining below
+human performance. We should preserve the distinction between answer-location
+hints, evidence selection and valid composition. Changing to an easier dataset
+could raise scores without establishing the intended mechanism; annotation
+errors in our local sample remain a separate, exploratory finding.
+
+
+## Thinking Mid-training — primary-source check, October 19
+
+The [v3 technical report, chapter2](https://arxiv.org/html/2601.21343v3#S2)
+uses teacher-inserted thoughts for SFT, then policy-generated thoughts and suffixes
+with an external judge; teacher-provided insertion positions remain in its RL
+setup. It evaluates checkpoints both before and after downstream RL post-training.
+Its Qwen3-8B ablation reports that SFT mid-training reduces performance before RL
+recovers some of the loss. These are author-reported findings, not our replication.
+The original v1 lacks this chapter; cite v3 rather than the older version.
+
+Implication for our design: teacher withdrawal, selection of insertion positions,
+written-trace removal and identical post-training are distinct interventions.
+Reported post-training gains do not by themselves establish direct-answer
+internalization or discovery of when to think without guidance. More capacity
+alone is not a demonstrated repair for our current task.
+
+
+## Trained pause control — primary-source check, October 19
+
+[Think before you speak, v2](https://arxiv.org/html/2310.02226v2#S3)
+trains a dedicated pause embedding and masks loss on predicting the inserted
+pauses. Its strongest reported benefits require pause exposure during both
+pretraining and downstream training. Adding filler punctuation only at inference
+is a weaker comparison; dropping pauses after pause-pretraining gives limited
+transfer in their reported tasks. These are author results, not measurements here.
+
+For a future control, train the delayed pathway rather than merely inserting
+unfamiliar padding at evaluation. Fixed known pause inputs can be processed in a
+causal prefill; generated reasoning requires sequential token decisions. Equal
+numbers of extra positions therefore do not imply equal latency or equivalent
+computational graphs. Report source exposure, actual work and latency separately.
+A learned pause channel could contain useful hidden computation despite constant
+visible token identities. It is a substantive competitor, not meaningless text.
+This note changes no active V26 source, endpoint or release.
+
+
+## Direct-answer distillation is prior work — October 19
+
+[Distilling System2 into System1, v3](https://arxiv.org/html/2407.06023v3#S3)
+uses the same underlying model to generate higher-compute answers, filters them
+by consistency, discards intermediate traces, then fine-tunes direct answers.
+It reports successful transfer for several procedures and poor GSM8K transfer;
+its GSM8K pseudo-labels are only56.81% correct. That negative is not proof that
+verified arithmetic supervision cannot be internalized.
+
+Our contribution therefore cannot merely be removing written reasoning after
+training. The useful questions are the conditions for transferable computation,
+minimum verified guidance and pretraining-age dependence, with clean supervision
+and a strong answer-only control. Comparing annotation supervision with matched
+format loss is one prerequisite, not evidence that a latent algorithm was learned.
+This reading releases no new task or distillation run.
+
+
+## Verified computation and internalization — checked October20
+
+[Show Your Work, sections3/5.2 and AppendixB](https://arxiv.org/html/2112.00114)
+already compares supervised scratchpads with direct execution. Its addition study
+uses100k training examples; its low-data real-program experiment finds direct
+execution better than tracing, while executable data augmentation improves tracing.
+AppendixB reports no significant direct-addition benefit from scratchpad training
+followed by direct training. These are author findings, not our replication.
+
+Implication: verified traces, held-out execution and a data-size intervention are
+useful controls, not novelty by themselves. Internalization is an empirical
+question; successful explicit arithmetic does not guarantee it. A later matched
+post-training comparison must preserve the direct baseline and distinguish
+additional verified labels from computation learned beyond those labels.
+This reading changes no V26 source, endpoint or release.
+
+
+## Serial computation and length generalization — V28 preparation
+
+[Li et al., 2024](https://arxiv.org/html/2402.12875v2) already compare direct,
+partial-hint and generated-CoT learning on permutation composition and other
+serial tasks. Their experiments train small random-initialized transformers on
+fresh online batches for up to1million steps. V28 is a bounded mature-model
+reference with in-context fresh maps, not a novel demonstration of CoT expressivity
+or a reproduction of that scale. Its lengths1–10,16states and simple-path rule
+cannot establish an asymptotic complexity separation; a strong direct model may win.
+
+[Zhang et al., 2025](https://arxiv.org/html/2502.20129v2), sections5.2–5.3, distinguish
+state-tracking success from robustness to the most recent erroneous state and
+from length extrapolation. Their tested Transformer+CoT degrades sharply beyond
+trained lengths despite strong in-range tracking. This supports keeping V28's
+new-map, held-composition and longer-length panels separate. It does not predict
+our Qwen outcome or prove that architectural changes are required here.
+
+## Internalization alternatives — checked October21
+
+[Stepwise Internalization](https://arxiv.org/html/2405.14838v1) removes leading
+CoT tokens gradually, with removal smoothing and optimizer-state resets. Its
+reported data scale is808k multiplication examples or378k augmented GSM8K
+examples. These task results do not establish ordinary LM retention. Our mixed
+full/direct views did not test that curriculum.
+
+[Coconut, section4 and Table1](https://arxiv.org/html/2412.06769v2) feeds hidden
+states back as embeddings and uses a staged curriculum. Its GPT-2 ProsQA table
+has iCoT98.2 versus Coconut97.0; GSM8K favors full CoT42.9 versus Coconut34.1.
+It therefore does not justify assuming a new continuous-state runtime beats the
+simpler curriculum. Selection uses validation performance after extended training.
+
+[ICoT-KD](https://arxiv.org/html/2311.01460v1) separately learns teacher-state
+reading and emulation before coupling them. That is an explicit transfer
+objective, rather than hoping joint trace/answer supervision internalizes itself.
+
+Our inference: curriculum and distillation are plausible mechanisms worth
+understanding, not novel ideas or permission for another training campaign. First
+investigate the raw baseline; any later curriculum must retain a true raw endpoint,
+match additional exposures/resets, and preserve ordinary LM evaluation.

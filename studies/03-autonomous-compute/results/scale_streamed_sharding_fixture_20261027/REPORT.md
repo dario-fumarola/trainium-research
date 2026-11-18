@@ -1,0 +1,5 @@
+Both Native phases pass on all 64 logical cores / 16 chips. Direct CPU-to-local loading preserves the tied input/output alias and the repeated shared core. The complete-matrix owner workspace streams one matrix at a time on nonowners. Independent CPU gradients, parameter updates and named moments satisfy every 2% criterion; fresh-process replay weights and moments are exactly equal.
+
+Three small-array initial updates and one replay update are qualification only, zero research examples and zero scientific updates. The first worker takes 28.973 seconds and replay 24.126 seconds. Launch, shutdown and all reservation costs remain in the separate ledger. No large-model throughput or relative speedup follows from those fixture timings. The fixture finishes before the original 03:29:59 UTC numerical cutoff, without renewing that clock.
+
+Full CPU suite: 406 passed, two skipped. The two large random qualification initializers remain private and ineligible for science. Next is actual 956M model precision/gradients, state recovery and 100 warm updates with complete projected artifact reserves. There is no held-out prediction result or admitted scientific fit.

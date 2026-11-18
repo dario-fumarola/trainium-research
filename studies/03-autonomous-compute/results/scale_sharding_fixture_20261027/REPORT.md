@@ -1,0 +1,9 @@
+The all-chip small-array fixture and separate-process replay both pass. Both phases use 64 logical cores across all 16 chips, with three initial updates and one replay update. Research examples and scientific updates remain zero.
+
+Across the three first-phase updates, independent CPU comparisons have largest named relative gradient error 0.0001303%, parameter-update error 0.0288740%, and moment error 0.0014737%, within the unchanged 2% criteria. Replayed weights and optimizer moments are bitwise equal to the prior process's third update. Tied input/output aliases and the twice-used shared core remain intact. Both supervisors close successfully with no OOM or fatal compiler result. The runtime's existing threaded asynchronous I/O fallback remains visible; drivers were not changed.
+
+The first phase takes 58.659 seconds inside the worker; replay takes 28.522 seconds. These are small software-fixture times, not large-model throughput. Native costs include launch and shutdown in the separate execution ledger. The original 30-minute fixture clock and the overall 24-instance-hour scale cap remain fixed.
+
+Next is actual-shape model construction, real packed-data precision/gradient and recovery qualification, and 100 warm updates before choosing any scientific token budget. No prediction gain, scaling result or large scientific fit follows from this fixture. All private states remain ineligible for scientific initialization.
+
+The first CPU attempt caught snapshot aliasing in its own before-update diagnostic for replicated parameters; cloning corrects the measurement. No optimizer math changed. The optional vendor import dependency issue was handled without installing packages, using the recorded dependency-free SimpleFSDP pattern with its BSD license. Full CPU suite: 405 passed, two skipped.

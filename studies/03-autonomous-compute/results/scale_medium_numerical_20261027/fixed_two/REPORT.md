@@ -1,0 +1,3 @@
+Complete medium fixed-two numerical qualification passes. The actual375.94M path completes101 initial updates plus one fresh-process replay on all16 chips. The100 warm intervals total237.100460 seconds. Independent full512 gradients differ by0.099983% overall /0.100621% largest family, NLL by-0.000003943. The first update/moments pass and named replay updates/moments are exactly equal. All weights remain qualification only, ineligible for science. No held-out quality result exists.
+
+The conventional374.89M challenger remains a separate numerical/throughput gate before any scientific budget, LR selection or comparison. The initial24-hour cap remains unchanged.

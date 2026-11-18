@@ -1,0 +1,204 @@
+{
+  "input_sha256": {
+    "results/parcae_low_depth_pilot_20261024/tuning-v2/scores-progress.json": "a8997481d56a117d251b732d7fcc4f45b9651a787c97e2e376f8bdd7b689f13c",
+    "results/parcae_low_depth_pilot_20261024/main-recovery-v2/scores-progress.json": "1ce3102d97ac891513775ecb56229c69bc7fb4f60acb22c8debb131ad7334dc7"
+  },
+  "source_sha256": "fd147884ce28bd3e9c59a988832d8f09a50fbbe9c5ec6c0a605103642c151978",
+  "rows": [
+    {
+      "phase": "tuning",
+      "arm": "ordinary",
+      "peak_lr": 0.002,
+      "nll": 3.1023393574432623,
+      "checkpoint_sha256": "87c38fa0c12d544139939ac5b1eefdc160f7e28c412fc49e14cf1e19fdc682e7"
+    },
+    {
+      "phase": "tuning",
+      "arm": "fixed1",
+      "peak_lr": 0.002,
+      "nll": 3.256648538939459,
+      "checkpoint_sha256": "ffbb9ae1342a699a736627e81180487cacb7133fed428f7a554b443d31e7cd71"
+    },
+    {
+      "phase": "tuning",
+      "arm": "ordinary",
+      "peak_lr": 0.004,
+      "nll": 2.994107538282446,
+      "checkpoint_sha256": "290bd3a6c2138b84e7239be67a2bd28ae2946777db2b38b9b1c8a1d04232472b"
+    },
+    {
+      "phase": "tuning",
+      "arm": "poisson2",
+      "peak_lr": 0.002,
+      "nll": 3.297223673569044,
+      "checkpoint_sha256": "5e20cdf0b973c86e8ead87649e4e4185cc820fd6fa4253d8341e5bfec30afe01"
+    },
+    {
+      "phase": "tuning",
+      "arm": "fixed1",
+      "peak_lr": 0.004,
+      "nll": 3.08285427759535,
+      "checkpoint_sha256": "10b50092c5522d424b2f1a592b8b503276ae6b7a4d3085620887d0633f043150"
+    },
+    {
+      "phase": "tuning",
+      "arm": "poisson2",
+      "peak_lr": 0.004,
+      "nll": 3.105909930017905,
+      "checkpoint_sha256": "88f22b238c185a80ab76526f4a1b62bbc73a777968593df9b1f4862857b5880b"
+    },
+    {
+      "phase": "tuning",
+      "arm": "ordinary",
+      "peak_lr": 0.008,
+      "nll": 2.9263895357856913,
+      "checkpoint_sha256": "5023418737745d4c3c442347b645946552783d83ed27ff20253c7486ba2896b7"
+    },
+    {
+      "phase": "tuning",
+      "arm": "fixed1",
+      "peak_lr": 0.008,
+      "nll": 2.9937129090291252,
+      "checkpoint_sha256": "5b479f86281d0f10fd3b49592dcd8eefee01ebb74159f02057b0e42eb1deeb2b"
+    },
+    {
+      "phase": "tuning",
+      "arm": "poisson2",
+      "peak_lr": 0.008,
+      "nll": 3.013838775316372,
+      "checkpoint_sha256": "a2fd01954bf8d5c93e085ea10ebd8ffe19214ee0c664d6522c7e8f23bf1d0c99"
+    },
+    {
+      "phase": "tuning",
+      "arm": "ordinary",
+      "peak_lr": 0.016,
+      "nll": 2.8849848205694513,
+      "checkpoint_sha256": "bee54fef0ad8f570a353982aded83828ec864ade6d8b9a5344cddc351dd41089"
+    },
+    {
+      "phase": "tuning",
+      "arm": "fixed1",
+      "peak_lr": 0.016,
+      "nll": 2.950985659858141,
+      "checkpoint_sha256": "3e25b95c026a4db6aef0010dcf02db9cdb3ccf4af2e4889cffd1fa1e655b601e"
+    },
+    {
+      "phase": "tuning",
+      "arm": "poisson2",
+      "peak_lr": 0.016,
+      "nll": 2.957178757594784,
+      "checkpoint_sha256": "db91f41c49e3929360bfdb8751ee96fb56c2e88319acb165ab16702cd4db46f7"
+    },
+    {
+      "phase": "main",
+      "arm": "fixed1",
+      "readout": "stable1B",
+      "depth": 1,
+      "targets": 1004887590,
+      "training_matmuls": 519151642518159360,
+      "nll": 2.7737573687549957,
+      "checkpoint_sha256": "1b475f70ed6b7f57eda7e5aa02645a53eec39ad15d300a2b6f096e8ecee0b34e"
+    },
+    {
+      "phase": "main",
+      "arm": "fixed1",
+      "readout": "stable301M",
+      "depth": 1,
+      "targets": 301465908,
+      "training_matmuls": 155745492755447808,
+      "nll": 3.032445081960364,
+      "checkpoint_sha256": "3c3900922026134c6e5dbc7e502c7ac4705e3c753a57c1aacdec6cdad96b52d7"
+    },
+    {
+      "phase": "main",
+      "arm": "poisson2",
+      "readout": "stable301M",
+      "depth": 2,
+      "targets": 301465908,
+      "training_matmuls": 168002149238734848,
+      "nll": 3.045218383769073,
+      "checkpoint_sha256": "cf1386fa24a67141d6fc2936c6bfd715907befd772b0dde0e4e87014ecee86f7"
+    },
+    {
+      "phase": "main",
+      "arm": "poisson2",
+      "readout": "stable1B",
+      "depth": 2,
+      "targets": 1004887590,
+      "training_matmuls": 560011939781345280,
+      "nll": 2.78052227043653,
+      "checkpoint_sha256": "28f6173e3c92f71533604e5f9b9cbeca751ecf22c6123806429cbac30fdbfa40"
+    },
+    {
+      "phase": "main",
+      "arm": "ordinary",
+      "readout": "stable301M",
+      "depth": 1,
+      "targets": 301465908,
+      "training_matmuls": 153608042151051264,
+      "nll": 2.9791388836411716,
+      "checkpoint_sha256": "cf43f8266e2b5f2839708886972b6fe19db7395f3a029cdb2d1b2fda91faeacb"
+    },
+    {
+      "phase": "main",
+      "arm": "ordinary",
+      "readout": "stable1B",
+      "depth": 1,
+      "targets": 1004887590,
+      "training_matmuls": 512026807170170880,
+      "nll": 2.769278247634121,
+      "checkpoint_sha256": "7c32397cfe42af5068b1c2b6bb362f36ab276514b53784095ffb295d164eb338"
+    },
+    {
+      "phase": "main",
+      "arm": "fixed1",
+      "readout": "matched",
+      "depth": 1,
+      "targets": 3596617691,
+      "training_matmuls": 1858130253846245376,
+      "nll": 2.4488180330940796,
+      "checkpoint_sha256": "dcff9c59f5fb7959c7e3c3b20477ebe3a4a22050b162cd751daa4d6349f1c977"
+    },
+    {
+      "phase": "main",
+      "arm": "poisson2",
+      "readout": "matched",
+      "depth": 2,
+      "targets": 3333894483,
+      "training_matmuls": 1858054877398471680,
+      "nll": 2.450674036993094,
+      "checkpoint_sha256": "4a6afc73002b6e82bdb72b886653b5dc078a7ca09342ebda8d9b207dc3b6be36"
+    },
+    {
+      "phase": "main",
+      "arm": "fixed1",
+      "readout": "equal",
+      "depth": 1,
+      "targets": 1004887590,
+      "training_matmuls": 519151642518159360,
+      "nll": 2.617205884641864,
+      "checkpoint_sha256": "e9d8ae4d318644310ad27ba4498fff8b5b5c06ea1b2bbdde6078cc44238fd38a"
+    },
+    {
+      "phase": "main",
+      "arm": "poisson2",
+      "readout": "equal",
+      "depth": 2,
+      "targets": 1004887590,
+      "training_matmuls": 560011939781345280,
+      "nll": 2.6163352094769534,
+      "checkpoint_sha256": "8cf3f94c8e067f36250e28980378c7f17f90a7f95b42672f984e8c186ba1ce81"
+    },
+    {
+      "phase": "main",
+      "arm": "ordinary",
+      "readout": "matched",
+      "depth": 1,
+      "targets": 3646337133,
+      "training_matmuls": 1857963940393010688,
+      "nll": 2.4545446404817173,
+      "checkpoint_sha256": "1e557f4201764e047df693f3de22ef9328f54ebfb71184c3b632e24de9288161"
+    }
+  ],
+  "scope": "Completed independent consumed-TUNE/DEV readouts only. No interpolation across cooldowns, unobserved results, training-seed significance or fresh confirmation."
+}

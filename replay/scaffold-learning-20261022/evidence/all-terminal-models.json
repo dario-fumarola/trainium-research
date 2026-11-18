@@ -1,0 +1,76 @@
+{
+  "all_six_fixed_before_confirmation": true,
+  "models": {
+    "scaffold_format-seed11": {
+      "arm": "scaffold_format",
+      "checkpoint": "/dev/shm/scaffold-learning-overnight-v1/science/scaffold_format-seed11/step-0000128/model.pt",
+      "checkpoint_sha256": "f5d8fabbc6fbe6bf60997f02c764bef9fdf2698cc40033518629d970f767132a",
+      "full_checkpoint": "/dev/shm/scaffold-learning-overnight-v1/science/scaffold_format-seed11/step-0000128",
+      "full_manifest_sha256": "caac2b04900c9b73ea23265bbac9d58e7263dda2a4d7482a1d0b2fb0acbbc298",
+      "protocol_sha256": "01517f1f6de8b5901ea36ea598b431f5f10e71f850f4684dbe6776270457ff9a",
+      "seed": 11,
+      "step": 128
+    },
+    "scaffold_format-seed12": {
+      "arm": "scaffold_format",
+      "checkpoint": "/dev/shm/scaffold-learning-overnight-v1/science/scaffold_format-seed12/step-0000128/model.pt",
+      "checkpoint_sha256": "5e06647199b446de7d759aeb65d9c385f55f9fc7399536527203e95d92b0bb9c",
+      "full_checkpoint": "/dev/shm/scaffold-learning-overnight-v1/science/scaffold_format-seed12/step-0000128",
+      "full_manifest_sha256": "03ed8e85edd55d21ceaf68fefed8569a49ae0c91bf6e2b1e12188fb0204d3b47",
+      "protocol_sha256": "77cb46c8a5c7ebd253dfcdd308664181d85ad6204462a4108268ac1855271fce",
+      "seed": 12,
+      "step": 128
+    },
+    "scaffold_raw-seed11": {
+      "arm": "scaffold_raw",
+      "checkpoint": "/dev/shm/scaffold-learning-overnight-v1/science/scaffold_raw-seed11/step-0000128/model.pt",
+      "checkpoint_sha256": "7fec4bd800b51dc536a8ddeefeef6c063bad7444df085c86c1291192cc2dc4f2",
+      "full_checkpoint": "/dev/shm/scaffold-learning-overnight-v1/science/scaffold_raw-seed11/step-0000128",
+      "full_manifest_sha256": "ab345e29406e8350b757b8c6469e9c448b4b75c45ed8ef8f0ded89c99c3f5356",
+      "protocol_sha256": "db95de78f6a76c27205932b0b07d69e149f20309c2f9ae0ad493568db3c40c07",
+      "seed": 11,
+      "step": 128
+    },
+    "scaffold_raw-seed12": {
+      "arm": "scaffold_raw",
+      "checkpoint": "/dev/shm/scaffold-learning-overnight-v1/science/scaffold_raw-seed12/step-0000128/model.pt",
+      "checkpoint_sha256": "f5581dc23ccbc557e8293a5e621faf63cac2d8131cdd1471bde23f5d198b2840",
+      "full_checkpoint": "/dev/shm/scaffold-learning-overnight-v1/science/scaffold_raw-seed12/step-0000128",
+      "full_manifest_sha256": "c7e9da777da14d3253cb84134acd85f7f72534d0efa12e6c792d3be935a04f8e",
+      "protocol_sha256": "c58e8845f0ff19e96b46350564c134d0fa7cb14f9e096aedb5fc16635f186278",
+      "seed": 12,
+      "step": 128
+    },
+    "scaffold_trace-seed11": {
+      "arm": "scaffold_trace",
+      "checkpoint": "/dev/shm/scaffold-learning-overnight-v1/science/scaffold_trace-seed11/step-0000128/model.pt",
+      "checkpoint_sha256": "09bbb0c22394d839cf453f14966c26a508be11c5dfc76f7b30b7943a594690df",
+      "full_checkpoint": "/dev/shm/scaffold-learning-overnight-v1/science/scaffold_trace-seed11/step-0000128",
+      "full_manifest_sha256": "a99fde4ef7e9020bb0dd834cae3e93654276f14c55111aae0d09a7f97b9a6e17",
+      "protocol_sha256": "e11567471834bbc4b64c5094ebf57c4035d976d7ae987322473729d465ffcafc",
+      "seed": 11,
+      "step": 128
+    },
+    "scaffold_trace-seed12": {
+      "arm": "scaffold_trace",
+      "checkpoint": "/dev/shm/scaffold-learning-overnight-v1/science/scaffold_trace-seed12/step-0000128/model.pt",
+      "checkpoint_sha256": "d59b6c2eb05f23dc629dea197ec2bc2e16b61a25aa050c592b122550bc5eaedc",
+      "full_checkpoint": "/dev/shm/scaffold-learning-overnight-v1/science/scaffold_trace-seed12/step-0000128",
+      "full_manifest_sha256": "e65d97af80728aae6ef4a22cda4acffb17d48bf927c0be6dd0673318db0d5820",
+      "protocol_sha256": "d80e5ad4a099020110063f4f093474acc9a41d5a7ba6e71220bfe86ede3e5b19",
+      "seed": 12,
+      "step": 128
+    },
+    "uniform_reference": {
+      "checkpoint": "/home/ubuntu/dario/local/nvme-cpt/uniform-lm-baseline-v1/warmup_cosine-lr1e-05.pt",
+      "checkpoint_sha256": "e2d9afb7dc32142b6edd5950c0ecbc6bc906a2fc178ccb788e4ac6b0d2a13b75",
+      "full_checkpoint": "/dev/shm/uniform-lm-v1/science/warmup_cosine-lr1e-05/step-0000128",
+      "full_manifest_sha256": "edc996a21080ac0c0775597236992330962e0b5641db756172d5953e3d0edefd",
+      "lr": 1e-05,
+      "protocol_sha256": "22965f73033a11412a7274c711d830b50a4b4e9c57cc8da17e5d1b61bb273d16",
+      "schedule": "warmup_cosine",
+      "step": 128
+    }
+  },
+  "utc": "2026-10-22T08:47:17+00:00"
+}

@@ -1,0 +1,7 @@
+{
+  "status": "COMPLETE_BYTE_EXACT_CHECKPOINT_ZERO_STORAGE",
+  "files_checked": 86,
+  "reclaimed_bytes": 19326754816,
+  "every_completed_file_byte_exact": true,
+  "assigned_chips": 0
+}

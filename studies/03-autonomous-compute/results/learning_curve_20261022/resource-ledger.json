@@ -1,0 +1,1237 @@
+{
+  "campaign": "natural-curve-v1",
+  "start_utc": "2026-10-22T20:01:43+00:00",
+  "last_worker_or_collection_utc": "2026-10-22T23:42:54.466272+00:00",
+  "runs": [
+    {
+      "run": "learning-pad1536-qualification-001",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 155.21031093597412,
+        "assigned_chip_hours": 0.689823604159885,
+        "whole_instance_opportunity_chip_hours": 0.689823604159885,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 142588125184,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 156.16009861801285
+      },
+      "monitor": {
+        "samples": 78,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 833777319936,
+        "minimum_filesystem_free_bytes": 38163353600,
+        "sampled_container_peak_bytes": 142588125184
+      }
+    },
+    {
+      "run": "natural-curve-v1-early-s23-u1152",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 394.70903611183167,
+        "assigned_chip_hours": 1.7542623827192518,
+        "whole_instance_opportunity_chip_hours": 1.7542623827192518,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 165581926400,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 396.424957389012
+      },
+      "monitor": {
+        "samples": 198,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 815919706112,
+        "minimum_filesystem_free_bytes": 38613647360,
+        "sampled_container_peak_bytes": 165581926400
+      }
+    },
+    {
+      "run": "natural-curve-v1-early-s23-u1152-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 62.03524899482727,
+        "assigned_chip_hours": 0.017232013609674243,
+        "whole_instance_opportunity_chip_hours": 0.2757122177547879,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 31771148288,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 64.04005900199991
+      },
+      "monitor": {
+        "samples": 32,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 952631930880,
+        "minimum_filesystem_free_bytes": 38617350144,
+        "sampled_container_peak_bytes": 31771148288
+      }
+    },
+    {
+      "run": "natural-curve-v1-early-s23-u384",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 248.27645874023438,
+        "assigned_chip_hours": 1.103450927734375,
+        "whole_instance_opportunity_chip_hours": 1.103450927734375,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 152824983552,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 250.27151601703372
+      },
+      "monitor": {
+        "samples": 125,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 829076443136,
+        "minimum_filesystem_free_bytes": 38626664448,
+        "sampled_container_peak_bytes": 152824983552
+      }
+    },
+    {
+      "run": "natural-curve-v1-early-s23-u384-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 62.27809715270996,
+        "assigned_chip_hours": 0.017299471431308323,
+        "whole_instance_opportunity_chip_hours": 0.27679154290093316,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 20213346304,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 64.0386351729976
+      },
+      "monitor": {
+        "samples": 32,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 962046504960,
+        "minimum_filesystem_free_bytes": 38630576128,
+        "sampled_container_peak_bytes": 20213346304
+      }
+    },
+    {
+      "run": "natural-curve-v1-early-s23-u3840",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 1099.6518471240997,
+        "assigned_chip_hours": 4.887341542773776,
+        "whole_instance_opportunity_chip_hours": 4.887341542773776,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 181685276672,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 1101.1780915509444
+      },
+      "monitor": {
+        "samples": 550,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 801529675776,
+        "minimum_filesystem_free_bytes": 38608605184,
+        "sampled_container_peak_bytes": 181685276672
+      }
+    },
+    {
+      "run": "natural-curve-v1-early-s23-u3840-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 62.54688787460327,
+        "assigned_chip_hours": 0.01737413552072313,
+        "whole_instance_opportunity_chip_hours": 0.2779861683315701,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 47238819840,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 64.03899250400718
+      },
+      "monitor": {
+        "samples": 32,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 937522921472,
+        "minimum_filesystem_free_bytes": 38608433152,
+        "sampled_container_peak_bytes": 47238819840
+      }
+    },
+    {
+      "run": "natural-curve-v1-early-s47-u1152",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 394.46812319755554,
+        "assigned_chip_hours": 1.7531916586558025,
+        "whole_instance_opportunity_chip_hours": 1.7531916586558025,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 169507852288,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 396.43144704203587
+      },
+      "monitor": {
+        "samples": 198,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 813068091392,
+        "minimum_filesystem_free_bytes": 38614085632,
+        "sampled_container_peak_bytes": 169507852288
+      }
+    },
+    {
+      "run": "natural-curve-v1-early-s47-u1152-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 62.128671646118164,
+        "assigned_chip_hours": 0.017257964346143934,
+        "whole_instance_opportunity_chip_hours": 0.27612742953830294,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 35630370816,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 64.0397126149619
+      },
+      "monitor": {
+        "samples": 32,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 948945620992,
+        "minimum_filesystem_free_bytes": 38613958656,
+        "sampled_container_peak_bytes": 35630370816
+      }
+    },
+    {
+      "run": "natural-curve-v1-early-s47-u384",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 249.66599941253662,
+        "assigned_chip_hours": 1.1096266640557184,
+        "whole_instance_opportunity_chip_hours": 1.1096266640557184,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 160990064640,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 250.26085144805256
+      },
+      "monitor": {
+        "samples": 125,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 823538802688,
+        "minimum_filesystem_free_bytes": 38627508224,
+        "sampled_container_peak_bytes": 160990064640
+      }
+    },
+    {
+      "run": "natural-curve-v1-early-s47-u384-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 62.81482267379761,
+        "assigned_chip_hours": 0.01744856185383267,
+        "whole_instance_opportunity_chip_hours": 0.2791769896613227,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 24118820864,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 64.0414687480079
+      },
+      "monitor": {
+        "samples": 32,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 955376082944,
+        "minimum_filesystem_free_bytes": 38627274752,
+        "sampled_container_peak_bytes": 24118820864
+      }
+    },
+    {
+      "run": "natural-curve-v1-early-s47-u3840",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 1097.5970458984375,
+        "assigned_chip_hours": 4.878209092881945,
+        "whole_instance_opportunity_chip_hours": 4.878209092881945,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 186789875712,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 1099.1438734909752
+      },
+      "monitor": {
+        "samples": 549,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 797466701824,
+        "minimum_filesystem_free_bytes": 38605811712,
+        "sampled_container_peak_bytes": 186789875712
+      }
+    },
+    {
+      "run": "natural-curve-v1-early-s47-u3840-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 62.67915987968445,
+        "assigned_chip_hours": 0.01741087774435679,
+        "whole_instance_opportunity_chip_hours": 0.27857404390970864,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 51029614592,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 64.03964114002883
+      },
+      "monitor": {
+        "samples": 32,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 933059907584,
+        "minimum_filesystem_free_bytes": 38605737984,
+        "sampled_container_peak_bytes": 51029614592
+      }
+    },
+    {
+      "run": "natural-curve-v1-early-s71-u1152",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 393.2532181739807,
+        "assigned_chip_hours": 1.7477920807732477,
+        "whole_instance_opportunity_chip_hours": 1.7477920807732477,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 172532473856,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 394.4295759379165
+      },
+      "monitor": {
+        "samples": 197,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 808753725440,
+        "minimum_filesystem_free_bytes": 38611841024,
+        "sampled_container_peak_bytes": 172532473856
+      }
+    },
+    {
+      "run": "natural-curve-v1-early-s71-u1152-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 61.86989188194275,
+        "assigned_chip_hours": 0.01718608107831743,
+        "whole_instance_opportunity_chip_hours": 0.2749772972530789,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 39485902848,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 62.04068129800726
+      },
+      "monitor": {
+        "samples": 31,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 945854312448,
+        "minimum_filesystem_free_bytes": 38611623936,
+        "sampled_container_peak_bytes": 39485902848
+      }
+    },
+    {
+      "run": "natural-curve-v1-early-s71-u384",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 245.4179699420929,
+        "assigned_chip_hours": 1.0907465330759685,
+        "whole_instance_opportunity_chip_hours": 1.0907465330759685,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 160308023296,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 246.26574403699487
+      },
+      "monitor": {
+        "samples": 123,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 821345505280,
+        "minimum_filesystem_free_bytes": 38616817664,
+        "sampled_container_peak_bytes": 160308023296
+      }
+    },
+    {
+      "run": "natural-curve-v1-early-s71-u384-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 62.976325273513794,
+        "assigned_chip_hours": 0.017493423687087166,
+        "whole_instance_opportunity_chip_hours": 0.27989477899339466,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 27991412736,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 64.04186544101685
+      },
+      "monitor": {
+        "samples": 32,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 952676503552,
+        "minimum_filesystem_free_bytes": 38616473600,
+        "sampled_container_peak_bytes": 27991412736
+      }
+    },
+    {
+      "run": "natural-curve-v1-early-s71-u3840",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 1104.6057968139648,
+        "assigned_chip_hours": 4.909359096950955,
+        "whole_instance_opportunity_chip_hours": 4.909359096950955,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 197535723520,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 1105.1513738039648
+      },
+      "monitor": {
+        "samples": 552,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 787755905024,
+        "minimum_filesystem_free_bytes": 38604025856,
+        "sampled_container_peak_bytes": 197535723520
+      }
+    },
+    {
+      "run": "natural-curve-v1-early-s71-u3840-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 63.20533013343811,
+        "assigned_chip_hours": 0.017557036148177253,
+        "whole_instance_opportunity_chip_hours": 0.28091257837083605,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 54950141952,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 64.04150713200215
+      },
+      "monitor": {
+        "samples": 32,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 928330342400,
+        "minimum_filesystem_free_bytes": 38607437824,
+        "sampled_container_peak_bytes": 54950141952
+      }
+    },
+    {
+      "run": "natural-curve-v1-lr-early-0",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 248.49288654327393,
+        "assigned_chip_hours": 1.1044128290812174,
+        "whole_instance_opportunity_chip_hours": 1.1044128290812174,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 145102725120,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 250.27648648503236
+      },
+      "monitor": {
+        "samples": 125,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 836426330112,
+        "minimum_filesystem_free_bytes": 38631452672,
+        "sampled_container_peak_bytes": 145102725120
+      }
+    },
+    {
+      "run": "natural-curve-v1-lr-early-0-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 50.44279932975769,
+        "assigned_chip_hours": 0.01401188870271047,
+        "whole_instance_opportunity_chip_hours": 0.22419021924336752,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 12498333696,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 52.03714620997198
+      },
+      "monitor": {
+        "samples": 26,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 971388043264,
+        "minimum_filesystem_free_bytes": 38630187008,
+        "sampled_container_peak_bytes": 12498333696
+      }
+    },
+    {
+      "run": "natural-curve-v1-lr-early-1",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 247.375892162323,
+        "assigned_chip_hours": 1.0994484096103245,
+        "whole_instance_opportunity_chip_hours": 1.0994484096103245,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 146150117376,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 248.28573694103397
+      },
+      "monitor": {
+        "samples": 124,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 834946387968,
+        "minimum_filesystem_free_bytes": 38619709440,
+        "sampled_container_peak_bytes": 146150117376
+      }
+    },
+    {
+      "run": "natural-curve-v1-lr-early-1-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 50.281904220581055,
+        "assigned_chip_hours": 0.013967195616828071,
+        "whole_instance_opportunity_chip_hours": 0.22347512986924914,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 14441353216,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 52.037809944013134
+      },
+      "monitor": {
+        "samples": 26,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 966966685696,
+        "minimum_filesystem_free_bytes": 38628487168,
+        "sampled_container_peak_bytes": 14441353216
+      }
+    },
+    {
+      "run": "natural-curve-v1-lr-early-2",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 248.69102597236633,
+        "assigned_chip_hours": 1.1052934487660726,
+        "whole_instance_opportunity_chip_hours": 1.1052934487660726,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 150959878144,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 250.28068516391795
+      },
+      "monitor": {
+        "samples": 125,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 832923148288,
+        "minimum_filesystem_free_bytes": 38627815424,
+        "sampled_container_peak_bytes": 150959878144
+      }
+    },
+    {
+      "run": "natural-curve-v1-lr-early-2-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 49.95980191230774,
+        "assigned_chip_hours": 0.013877722753418817,
+        "whole_instance_opportunity_chip_hours": 0.22204356405470108,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 16396079104,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 52.04099016508553
+      },
+      "monitor": {
+        "samples": 26,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 966606405632,
+        "minimum_filesystem_free_bytes": 38627737600,
+        "sampled_container_peak_bytes": 16396079104
+      }
+    },
+    {
+      "run": "natural-curve-v1-lr-ordinary-0",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 213.89661121368408,
+        "assigned_chip_hours": 0.9506516053941515,
+        "whole_instance_opportunity_chip_hours": 0.9506516053941515,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 147466039296,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 214.24634197796695
+      },
+      "monitor": {
+        "samples": 107,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 838831915008,
+        "minimum_filesystem_free_bytes": 38641233920,
+        "sampled_container_peak_bytes": 147466039296
+      }
+    },
+    {
+      "run": "natural-curve-v1-lr-ordinary-0-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 55.58980464935303,
+        "assigned_chip_hours": 0.015441612402598063,
+        "whole_instance_opportunity_chip_hours": 0.247065798441569,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 7233523712,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 56.041224287007935
+      },
+      "monitor": {
+        "samples": 28,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 974216589312,
+        "minimum_filesystem_free_bytes": 38640803840,
+        "sampled_container_peak_bytes": 7233523712
+      }
+    },
+    {
+      "run": "natural-curve-v1-lr-ordinary-1",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 215.80116939544678,
+        "assigned_chip_hours": 0.9591163084242079,
+        "whole_instance_opportunity_chip_hours": 0.9591163084242079,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 150323146752,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 216.2255366559839
+      },
+      "monitor": {
+        "samples": 108,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 837837201408,
+        "minimum_filesystem_free_bytes": 38631743488,
+        "sampled_container_peak_bytes": 150323146752
+      }
+    },
+    {
+      "run": "natural-curve-v1-lr-ordinary-1-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 54.78513264656067,
+        "assigned_chip_hours": 0.015218092401822408,
+        "whole_instance_opportunity_chip_hours": 0.24348947842915852,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 9106739200,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 56.03916389902588
+      },
+      "monitor": {
+        "samples": 28,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 971348717568,
+        "minimum_filesystem_free_bytes": 38637846528,
+        "sampled_container_peak_bytes": 9106739200
+      }
+    },
+    {
+      "run": "natural-curve-v1-lr-ordinary-2",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 217.46701383590698,
+        "assigned_chip_hours": 0.9665200614929199,
+        "whole_instance_opportunity_chip_hours": 0.9665200614929199,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 144289931264,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 218.244163580006
+      },
+      "monitor": {
+        "samples": 109,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 836018438144,
+        "minimum_filesystem_free_bytes": 38634385408,
+        "sampled_container_peak_bytes": 144289931264
+      }
+    },
+    {
+      "run": "natural-curve-v1-lr-ordinary-2-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 54.418808698654175,
+        "assigned_chip_hours": 0.01511633574962616,
+        "whole_instance_opportunity_chip_hours": 0.24186137199401855,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 11045269504,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 56.038670305977575
+      },
+      "monitor": {
+        "samples": 28,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 971799646208,
+        "minimum_filesystem_free_bytes": 38633951232,
+        "sampled_container_peak_bytes": 11045269504
+      }
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s23-u1152",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 337.6753671169281,
+        "assigned_chip_hours": 1.5007794094085694,
+        "whole_instance_opportunity_chip_hours": 1.5007794094085694,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 169058885632,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 338.3774821390398
+      },
+      "monitor": {
+        "samples": 169,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 813061652480,
+        "minimum_filesystem_free_bytes": 38614380544,
+        "sampled_container_peak_bytes": 169058885632
+      }
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s23-u1152-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 64.47639417648315,
+        "assigned_chip_hours": 0.01791010949346754,
+        "whole_instance_opportunity_chip_hours": 0.28656175189548067,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 30345142272,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 66.04054330696817
+      },
+      "monitor": {
+        "samples": 33,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 953545773056,
+        "minimum_filesystem_free_bytes": 38614093824,
+        "sampled_container_peak_bytes": 30345142272
+      }
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s23-u384",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 213.2124798297882,
+        "assigned_chip_hours": 0.9476110214657254,
+        "whole_instance_opportunity_chip_hours": 0.9476110214657254,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 149471760384,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 214.23811117291916
+      },
+      "monitor": {
+        "samples": 107,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 830133436416,
+        "minimum_filesystem_free_bytes": 38627184640,
+        "sampled_container_peak_bytes": 149471760384
+      }
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s23-u384-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 62.9649453163147,
+        "assigned_chip_hours": 0.017490262587865193,
+        "whole_instance_opportunity_chip_hours": 0.2798442014058431,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 18819796992,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 64.04229180398397
+      },
+      "monitor": {
+        "samples": 32,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 963194253312,
+        "minimum_filesystem_free_bytes": 38627098624,
+        "sampled_container_peak_bytes": 18819796992
+      }
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s23-u3840",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 940.1624991893768,
+        "assigned_chip_hours": 4.17849999639723,
+        "whole_instance_opportunity_chip_hours": 4.17849999639723,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 176681410560,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 941.0088441179832
+      },
+      "monitor": {
+        "samples": 470,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 803232133120,
+        "minimum_filesystem_free_bytes": 38609244160,
+        "sampled_container_peak_bytes": 176681410560
+      }
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s23-u3840-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 63.77980422973633,
+        "assigned_chip_hours": 0.01771661228603787,
+        "whole_instance_opportunity_chip_hours": 0.2834657965766059,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 43801309184,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 64.03859905898571
+      },
+      "monitor": {
+        "samples": 32,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 942059376640,
+        "minimum_filesystem_free_bytes": 38611558400,
+        "sampled_container_peak_bytes": 43801309184
+      }
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s47-u1152",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 337.40068769454956,
+        "assigned_chip_hours": 1.4995586119757758,
+        "whole_instance_opportunity_chip_hours": 1.4995586119757758,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 166872682496,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 338.368691594922
+      },
+      "monitor": {
+        "samples": 169,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 814804856832,
+        "minimum_filesystem_free_bytes": 38615080960,
+        "sampled_container_peak_bytes": 166872682496
+      }
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s47-u1152-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 63.9267315864563,
+        "assigned_chip_hours": 0.017757425440682307,
+        "whole_instance_opportunity_chip_hours": 0.2841188070509169,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 34166591488,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 66.03864625003189
+      },
+      "monitor": {
+        "samples": 33,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 950929674240,
+        "minimum_filesystem_free_bytes": 38614949888,
+        "sampled_container_peak_bytes": 34166591488
+      }
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s47-u384",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 216.51518201828003,
+        "assigned_chip_hours": 0.9622896978590223,
+        "whole_instance_opportunity_chip_hours": 0.9622896978590223,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 160994340864,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 218.24424208991695
+      },
+      "monitor": {
+        "samples": 109,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 826984939520,
+        "minimum_filesystem_free_bytes": 38628507648,
+        "sampled_container_peak_bytes": 160994340864
+      }
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s47-u384-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 63.24291372299194,
+        "assigned_chip_hours": 0.01756747603416443,
+        "whole_instance_opportunity_chip_hours": 0.2810796165466309,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 22613479424,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 64.03825099591631
+      },
+      "monitor": {
+        "samples": 32,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 959235670016,
+        "minimum_filesystem_free_bytes": 38628343808,
+        "sampled_container_peak_bytes": 22613479424
+      }
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s47-u3840",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 937.5928354263306,
+        "assigned_chip_hours": 4.167079268561469,
+        "whole_instance_opportunity_chip_hours": 4.167079268561469,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 189757607936,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 939.0049323829589
+      },
+      "monitor": {
+        "samples": 469,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 798508621824,
+        "minimum_filesystem_free_bytes": 38606675968,
+        "sampled_container_peak_bytes": 189757607936
+      }
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s47-u3840-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 62.50503420829773,
+        "assigned_chip_hours": 0.017362509502304925,
+        "whole_instance_opportunity_chip_hours": 0.2778001520368788,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 49528152064,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 64.04174538108055
+      },
+      "monitor": {
+        "samples": 32,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 935165411328,
+        "minimum_filesystem_free_bytes": 38606606336,
+        "sampled_container_peak_bytes": 49528152064
+      }
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s71-u1152",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 341.5542166233063,
+        "assigned_chip_hours": 1.5180187405480279,
+        "whole_instance_opportunity_chip_hours": 1.5180187405480279,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 172391493632,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 342.3910678810207
+      },
+      "monitor": {
+        "samples": 171,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 811000176640,
+        "minimum_filesystem_free_bytes": 38612807680,
+        "sampled_container_peak_bytes": 172391493632
+      }
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s71-u1152-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 63.57138729095459,
+        "assigned_chip_hours": 0.01765871869193183,
+        "whole_instance_opportunity_chip_hours": 0.2825394990709093,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 38053773312,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 64.04345016903244
+      },
+      "monitor": {
+        "samples": 32,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 946909913088,
+        "minimum_filesystem_free_bytes": 38612721664,
+        "sampled_container_peak_bytes": 38053773312
+      }
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s71-u384",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 215.02827715873718,
+        "assigned_chip_hours": 0.9556812318166097,
+        "whole_instance_opportunity_chip_hours": 0.9556812318166097,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 157802590208,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 216.2430255629588
+      },
+      "monitor": {
+        "samples": 108,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 823367536640,
+        "minimum_filesystem_free_bytes": 38626156544,
+        "sampled_container_peak_bytes": 157802590208
+      }
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s71-u384-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 63.28012752532959,
+        "assigned_chip_hours": 0.01757781320148044,
+        "whole_instance_opportunity_chip_hours": 0.28124501122368706,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 26592436224,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 64.03718638594728
+      },
+      "monitor": {
+        "samples": 32,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 956229545984,
+        "minimum_filesystem_free_bytes": 38625992704,
+        "sampled_container_peak_bytes": 26592436224
+      }
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s71-u3840",
+      "status": "PASS_PACKED_TRAINING_PHASE",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 942.9254066944122,
+        "assigned_chip_hours": 4.190779585308499,
+        "whole_instance_opportunity_chip_hours": 4.190779585308499,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 189087326208,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 945.014480846934
+      },
+      "monitor": {
+        "samples": 472,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 797364183040,
+        "minimum_filesystem_free_bytes": 38604599296,
+        "sampled_container_peak_bytes": 189087326208
+      }
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s71-u3840-dev",
+      "status": "PASS_CHECKPOINT_DEV_EVALUATION",
+      "closure": {
+        "exit_code": 0,
+        "wall_seconds": 64.29882740974426,
+        "assigned_chip_hours": 0.017860785391595628,
+        "whole_instance_opportunity_chip_hours": 0.28577256626553005,
+        "report_exists": true
+      },
+      "supervisor": {
+        "worker_exit_code": 0,
+        "supervisor_failure": null,
+        "sampled_container_peak_bytes": 53475282944,
+        "container_oom_kill_delta": 0,
+        "elapsed_seconds": 66.03600925393403
+      },
+      "monitor": {
+        "samples": 33,
+        "interval_seconds": 2,
+        "minimum_host_available_bytes": 931846397952,
+        "minimum_filesystem_free_bytes": 38604521472,
+        "sampled_container_peak_bytes": 53475282944
+      }
+    }
+  ],
+  "assigned_chip_hours_including_failures": 50.4323379355669,
+  "inclusive_node_hours": 3.6865184089872574,
+  "inclusive_opportunity_chip_hours": 58.98429454379612,
+  "data_preparation_wall_seconds": 296.979536911007,
+  "scope": "This learning-curve campaign and its padding qualification only; corpus preparation overlaps this node window and is not added twice. Preserved earlier campaigns are separate. No new instance."
+}

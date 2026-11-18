@@ -1,0 +1,102 @@
+{
+  "status": "RUNNING",
+  "attempts": [
+    {
+      "identity": "mature-fp32-v1-ordinary-s103-u8448",
+      "exit_code": 0,
+      "wall_seconds": 1331.1990835666656,
+      "assigned_chip_hours": 2.9582201857037016,
+      "whole_instance_opportunity_chip_hours": 5.916440371407403,
+      "report_exists": true
+    },
+    {
+      "identity": "mature-fp32-v1-fixed-s103-u8448",
+      "exit_code": 0,
+      "wall_seconds": 1405.0719521045685,
+      "assigned_chip_hours": 3.12238211578793,
+      "whole_instance_opportunity_chip_hours": 6.24476423157586,
+      "report_exists": true
+    },
+    {
+      "identity": "mature-fp32-v1-ordinary-s103-u8448-dev-r1",
+      "exit_code": 0,
+      "wall_seconds": 76.10015940666199,
+      "assigned_chip_hours": 0.16911146534813776,
+      "whole_instance_opportunity_chip_hours": 0.3382229306962755,
+      "report_exists": true
+    },
+    {
+      "identity": "mature-fp32-v1-fixed-s103-u8448-dev-r2",
+      "exit_code": 0,
+      "wall_seconds": 86.65878200531006,
+      "assigned_chip_hours": 0.19257507112291125,
+      "whole_instance_opportunity_chip_hours": 0.3851501422458225,
+      "report_exists": true
+    },
+    {
+      "identity": "mature-fp32-v1-ordinary-s103-u10368",
+      "exit_code": 0,
+      "wall_seconds": 3084.8801023960114,
+      "assigned_chip_hours": 6.855289116435581,
+      "whole_instance_opportunity_chip_hours": 13.710578232871162,
+      "report_exists": true
+    },
+    {
+      "identity": "mature-fp32-v1-ordinary-s103-u10368-dev-r1",
+      "exit_code": 0,
+      "wall_seconds": 80.8360846042633,
+      "assigned_chip_hours": 0.17963574356502957,
+      "whole_instance_opportunity_chip_hours": 0.35927148713005913,
+      "report_exists": true
+    },
+    {
+      "identity": "mature-fp32-v1-fixed-s103-u10368",
+      "exit_code": 0,
+      "wall_seconds": 3315.3065354824066,
+      "assigned_chip_hours": 7.36734785662757,
+      "whole_instance_opportunity_chip_hours": 14.73469571325514,
+      "report_exists": true
+    },
+    {
+      "identity": "mature-fp32-v1-fixed-s103-u10368-dev-r2",
+      "exit_code": 0,
+      "wall_seconds": 84.6364815235138,
+      "assigned_chip_hours": 0.18808107005225289,
+      "whole_instance_opportunity_chip_hours": 0.37616214010450577,
+      "report_exists": true
+    },
+    {
+      "identity": "mature-fp32-v1-ordinary-s103-u11520",
+      "exit_code": 0,
+      "wall_seconds": 1919.316757440567,
+      "assigned_chip_hours": 4.265148349867927,
+      "whole_instance_opportunity_chip_hours": 8.530296699735853,
+      "report_exists": true
+    },
+    {
+      "identity": "mature-fp32-v1-ordinary-s103-u11520-dev-r1",
+      "exit_code": 0,
+      "wall_seconds": 75.14542627334595,
+      "assigned_chip_hours": 0.16698983616299098,
+      "whole_instance_opportunity_chip_hours": 0.33397967232598197,
+      "report_exists": true
+    },
+    {
+      "identity": "mature-fp32-v1-fixed-s103-u11520",
+      "exit_code": 0,
+      "wall_seconds": 2036.8314266204834,
+      "assigned_chip_hours": 4.52629205915663,
+      "whole_instance_opportunity_chip_hours": 9.05258411831326,
+      "report_exists": true
+    },
+    {
+      "identity": "mature-fp32-v1-fixed-s103-u11520-dev-r2",
+      "exit_code": 0,
+      "wall_seconds": 82.67616367340088,
+      "assigned_chip_hours": 0.18372480816311307,
+      "whole_instance_opportunity_chip_hours": 0.36744961632622614,
+      "report_exists": true
+    }
+  ],
+  "scope": "Overlapping native assignments; CPU audit and preparation have separate intervals. Qualification is excluded from scientific exposure."
+}

@@ -1,0 +1,225 @@
+{
+  "status": "PASS_COMPLETE_PROTOCOL_AUDIT",
+  "complete": true,
+  "tuning_trials": 6,
+  "curve_records": 18,
+  "test_file_unchanged": true,
+  "data_and_protocol_hashes_match": true,
+  "matched_initializations_and_data": true,
+  "frozen_lrs_match_tuning_minima": true,
+  "identical_training_model_loss_and_evaluation_code": {
+    "scripts/train_distributed.py": "52da73496ff903dd345205bac4f8265817afe96199d8c8dd4a64aa9a448e9917",
+    "scripts/evaluate_checkpoint.py": "69e4b95bd9d505819ab4658ff63fe550a79f71d79b3c1f4618b31265c8e833b2",
+    "compute_trainium/training.py": "9559c09ff08c9dcdf05485c435539c2a1914c6c5b3852fa75565e0687a9aadbd",
+    "compute_trainium/titan.py": "9b1cab2cb54c47a75b79cbb3392952c7b44fcd0e88af719e0ca5eb6d50214714",
+    "compute_trainium/model.py": "4a2edc5034ccff94ac1817f5b8529f031f4b6ef63cf1da4bc8e1f2e09cc53eb0",
+    "compute_trainium/metrics.py": "0296fee74cd632e0dfc04d8ee129a7235f984691eb3f211c968d681e6af38275",
+    "compute_trainium/data.py": "15c768b03eafe6e61cc4ee78a0de583d7e94a42ebdc74eef65a17e1eee9efd20"
+  },
+  "retained_stable_checkpoint_verification": [
+    {
+      "arm": "ordinary",
+      "file_sha256": "521aa4823971066b7bdae1cf89ccc087c19f84a11d74b577d7bb2a3333b1a4d9",
+      "unchanged_after_final_endpoint": true
+    },
+    {
+      "arm": "early",
+      "file_sha256": "668c34e52ada29596d1d17366ad3886e74659201ddd96b2c4b1c72b9b992b56a",
+      "unchanged_after_final_endpoint": true
+    }
+  ],
+  "checks": [
+    {
+      "run": "natural-curve-v1-lr-ordinary-0",
+      "cohort": "tune",
+      "real_targets": 100488104,
+      "absolute_cpu_native_probe_nll_difference": 4.38690185546875e-05,
+      "full_gradient_relative_l2": 0.0023095987690048194,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.0007433891296386719
+    },
+    {
+      "run": "natural-curve-v1-lr-ordinary-1",
+      "cohort": "tune",
+      "real_targets": 100488104,
+      "absolute_cpu_native_probe_nll_difference": 4.38690185546875e-05,
+      "full_gradient_relative_l2": 0.0023095987690048194,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.00036716461181640625
+    },
+    {
+      "run": "natural-curve-v1-lr-ordinary-2",
+      "cohort": "tune",
+      "real_targets": 100488104,
+      "absolute_cpu_native_probe_nll_difference": 4.76837158203125e-05,
+      "full_gradient_relative_l2": 0.0023150550930713127,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.0009107589721679688
+    },
+    {
+      "run": "natural-curve-v1-lr-early-0",
+      "cohort": "tune",
+      "real_targets": 100488104,
+      "absolute_cpu_native_probe_nll_difference": 0.0001583099365234375,
+      "full_gradient_relative_l2": 0.002338815951755723,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.00021791458129882812
+    },
+    {
+      "run": "natural-curve-v1-lr-early-1",
+      "cohort": "tune",
+      "real_targets": 100488104,
+      "absolute_cpu_native_probe_nll_difference": 0.00016117095947265625,
+      "full_gradient_relative_l2": 0.002336628117093287,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.0003337860107421875
+    },
+    {
+      "run": "natural-curve-v1-lr-early-2",
+      "cohort": "tune",
+      "real_targets": 100488104,
+      "absolute_cpu_native_probe_nll_difference": 0.00016117095947265625,
+      "full_gradient_relative_l2": 0.002336628117093287,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.0004668235778808594
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s23-u384",
+      "cohort": "curve",
+      "real_targets": 100488104,
+      "absolute_cpu_native_probe_nll_difference": 0.00032138824462890625,
+      "full_gradient_relative_l2": 0.0022321410250815727,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.000880437445557547
+    },
+    {
+      "run": "natural-curve-v1-early-s23-u384",
+      "cohort": "curve",
+      "real_targets": 100488104,
+      "absolute_cpu_native_probe_nll_difference": 0.00022602081298828125,
+      "full_gradient_relative_l2": 0.0022744771132565947,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.00040236416594030544
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s47-u384",
+      "cohort": "curve",
+      "real_targets": 100488104,
+      "absolute_cpu_native_probe_nll_difference": 2.384185791015625e-05,
+      "full_gradient_relative_l2": 0.002393404697738089,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.0013138508547472227
+    },
+    {
+      "run": "natural-curve-v1-early-s47-u384",
+      "cohort": "curve",
+      "real_targets": 100488104,
+      "absolute_cpu_native_probe_nll_difference": 2.86102294921875e-06,
+      "full_gradient_relative_l2": 0.00241613544648188,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.0004223547746082801
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s71-u384",
+      "cohort": "curve",
+      "real_targets": 100488104,
+      "absolute_cpu_native_probe_nll_difference": 2.86102294921875e-06,
+      "full_gradient_relative_l2": 0.002365672860051686,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.00018927278419056393
+    },
+    {
+      "run": "natural-curve-v1-early-s71-u384",
+      "cohort": "curve",
+      "real_targets": 100488104,
+      "absolute_cpu_native_probe_nll_difference": 0.0001373291015625,
+      "full_gradient_relative_l2": 0.0023891574483133793,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.00046063466354517857
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s23-u1152",
+      "cohort": "curve",
+      "real_targets": 301465908,
+      "absolute_cpu_native_probe_nll_difference": 0.0001455545425415039,
+      "full_gradient_relative_l2": 0.006789899770292606,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.0006092882322517035
+    },
+    {
+      "run": "natural-curve-v1-early-s23-u1152",
+      "cohort": "curve",
+      "real_targets": 301465908,
+      "absolute_cpu_native_probe_nll_difference": 0.0002434253692626953,
+      "full_gradient_relative_l2": 0.0050729095442390085,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 9.336039579688205e-05
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s47-u1152",
+      "cohort": "curve",
+      "real_targets": 301465908,
+      "absolute_cpu_native_probe_nll_difference": 0.0003145933151245117,
+      "full_gradient_relative_l2": 0.008488882104615987,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.0008670394844294549
+    },
+    {
+      "run": "natural-curve-v1-early-s47-u1152",
+      "cohort": "curve",
+      "real_targets": 301465908,
+      "absolute_cpu_native_probe_nll_difference": 0.0002942085266113281,
+      "full_gradient_relative_l2": 0.004666801918648423,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.0002660452281140202
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s71-u1152",
+      "cohort": "curve",
+      "real_targets": 301465908,
+      "absolute_cpu_native_probe_nll_difference": 0.00023174285888671875,
+      "full_gradient_relative_l2": 0.006817365758448244,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.00026753389046163534
+    },
+    {
+      "run": "natural-curve-v1-early-s71-u1152",
+      "cohort": "curve",
+      "real_targets": 301465908,
+      "absolute_cpu_native_probe_nll_difference": 8.678436279296875e-05,
+      "full_gradient_relative_l2": 0.004418416405087157,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.0007220012385671382
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s23-u3840",
+      "cohort": "curve",
+      "real_targets": 1004887590,
+      "absolute_cpu_native_probe_nll_difference": 0.0003859996795654297,
+      "full_gradient_relative_l2": 0.011964102272863849,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.00018076614220374765
+    },
+    {
+      "run": "natural-curve-v1-early-s23-u3840",
+      "cohort": "curve",
+      "real_targets": 1004887590,
+      "absolute_cpu_native_probe_nll_difference": 0.00040721893310546875,
+      "full_gradient_relative_l2": 0.012894300885573797,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.0004136354665722486
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s47-u3840",
+      "cohort": "curve",
+      "real_targets": 1004887590,
+      "absolute_cpu_native_probe_nll_difference": 0.0001888275146484375,
+      "full_gradient_relative_l2": 0.011684206231343613,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 7.42204513284328e-05
+    },
+    {
+      "run": "natural-curve-v1-early-s47-u3840",
+      "cohort": "curve",
+      "real_targets": 1004887590,
+      "absolute_cpu_native_probe_nll_difference": 0.00019216537475585938,
+      "full_gradient_relative_l2": 0.012387065837004416,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.0015930813779401198
+    },
+    {
+      "run": "natural-curve-v1-ordinary-s71-u3840",
+      "cohort": "curve",
+      "real_targets": 1004887590,
+      "absolute_cpu_native_probe_nll_difference": 8.559226989746094e-05,
+      "full_gradient_relative_l2": 0.011422257403568671,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.0003887535387634422
+    },
+    {
+      "run": "natural-curve-v1-early-s71-u3840",
+      "cohort": "curve",
+      "real_targets": 1004887590,
+      "absolute_cpu_native_probe_nll_difference": 0.00046539306640625,
+      "full_gradient_relative_l2": 0.012583417080267383,
+      "absolute_evaluation_cpu_native_probe_nll_difference": 0.0009433865962544807
+    }
+  ]
+}

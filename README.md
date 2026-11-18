@@ -4,7 +4,7 @@ October 16–30, 2026 · Research handoff
 
 We tested whether a language model can use extra steps before predicting the next token. Those steps took three forms: writing a calculation the model could read, processing blank positions, or generating an internal state that later positions could reuse.
 
-**Writing out a calculation helped on targeted problems. Ordinary next-token training was the strongest comparison on broad text.** In the clearest from-scratch experiment, a model with internal states beat an ordinary model when both saw one billion targets. The internal states cost about 3.78× as much training matrix work per target. Given the same work, the ordinary model could train on more text and won on both broad prediction and arithmetic answer loss. [Original comparison and uncertainty](https://github.com/dario-fumarola/autonomous-compute-trainium/blob/15d52172a8773c905d9951641ea9c0cbc3451fd5/results/latent_exposure_20261030/work-recovery-v1/REPORT.md)
+**Writing out a calculation helped on targeted problems. Ordinary next-token training was the strongest comparison on broad text.** In the clearest from-scratch experiment, a model with internal states beat an ordinary model when both saw one billion targets. The internal states cost about 3.78× as much training matrix work per target. Given the same work, the ordinary model could train on more text and won on both broad prediction and arithmetic answer loss. [Original comparison and uncertainty](studies/03-autonomous-compute/results/latent_exposure_20261030/work-recovery-v1/REPORT.md)
 
 | Development model | Training targets | Broad text loss ↓ | Arithmetic answer loss ↓ | Correct answer prefixes |
 |---|---:|---:|---:|---:|
@@ -24,9 +24,9 @@ Loss is negative log likelihood (NLL), measured in nats. Lower values mean the m
 | [3. Repeated layers and learned workspaces](docs/experiments.md#repeated-layers-and-learned-workspaces) | Extra passes could help a trained model use depth. Stronger ordinary controls erased the proposed efficiency advantage. A pretrained writer also lost to ordinary continuation. |
 | [4. Persistent internal states](docs/experiments.md#persistent-internal-states) | The states carried predictive information. Their benefit depended on seed, exposure and the compute budget. The last recorded four-fit experiment has no published quality outcome in these snapshots. |
 
-## Try it
+## Explore the code and results
 
-A standard clone includes the aggregate scores and a small working implementation of the latent model. Recalculate the headline differences with Python 3 and no dependencies:
+A plain clone contains the three study directories, including training code, original tests, configurations, scientific reports and run records. Start with the [experiment guide](docs/experiments.md) for the sequence of decisions or the [code guide](docs/code.md) to follow a batch through the implementation.
 
 ```sh
 git clone https://github.com/dario-fumarola/trainium-research.git
@@ -34,4 +34,4 @@ cd trainium-research
 python3 results.py
 ```
 
-For the complete training, evaluation and test code from all three projects, run `git submodule update --init` in the clone. Each source resolves to the exact revision used here. The [code guide](docs/code.md) maps research questions to implementations, CPU tests, model downloads and hardware requirements. The [source inventory](docs/sources.md) identifies the history and evidence behind the handoff.
+For a deeper check, the repository includes original per-token scores and all twelve training histories for the ordinary baseline, computation auxiliary and source-mixture experiments. Reconstruct their comparisons and decisions with Python 3 and NumPy using `bash scripts/replay_scores.sh`. On a machine with uv, `bash scripts/check_cpu.sh` runs the focused model and objective tests. [Replay files](replay/) · [Source revisions](docs/sources.md)

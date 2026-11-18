@@ -1,0 +1,210 @@
+{
+  "status": "CPU_ONLY_DRAFT_NO_MODEL_RUN_OR_LEARNING_RELEASE",
+  "question": "Can a small causal reading gate exploit one self-generated calculation on fresh full continuations without losing the unchanged raw reference?",
+  "identity": "A proposed new mechanism; V30 stays failed and its reward branch stays closed. Not a fixed-mixture sweep or a new pretraining claim.",
+  "prediction": {
+    "reference": "Actual unchanged B0, frozen, original native prefix plus previous continuation tokens only. No Calculation wrapper in this branch.",
+    "assisted": "Chronological first V29 computation checkpoint, frozen. One greedy prefix-only calculation per document, cap128 including sampled stop. Preserve all attempts and partial notes.",
+    "equation": "p_final,t=(1-g_t)*p_B0,t+g_t*p_assisted,t. Normalize both over the original full model output width, including its original padded rows. Apply no new reader vocabulary mask; writer support masks remain a separate frozen policy.",
+    "gate": "One logistic linear head with a fixed zero region: s_t=sigmoid(b+w^T f_t), g_t=max(0,(s_t-tau)/(1-tau)), tau=.01. Same rule in learning and prediction; no straight-through estimator or threshold search. No backbone, writer, reader or tokenizer updates.",
+    "features": {
+      "hidden_states": "Detached, final-normalized B0 and assisted hidden states at context_length+t-1 for zero-based target t. That row predicts target[t]; target[t] itself and later tokens cannot affect the row. The common source history is the prefix and preceding continuation; only the assisted branch also sees the note.",
+      "metadata": [
+        "entropy of each current predictive distribution",
+        "generated-note action count divided by128",
+        "natural-stop versus cap flag",
+        "position within the16-token continuation"
+      ],
+      "dimensions": 4101,
+      "forbidden": [
+        "current or later target tokens",
+        "gold-token log probabilities as features",
+        "annotated numeral masks",
+        "oracle correctness labels",
+        "future-aware best-of-G selection"
+      ],
+      "normalization": "RMS-normalize each detached hidden vector separately using only that vector and epsilon1e-6. Divide entropies by log(full_model_output_width); action count and position are divided by128 and16. No DEV-fitted statistics."
+    },
+    "off_switch": "CPU implementation returns original raw prediction object for disabled/all-closed paths and exact raw row values in mixed batches. It can skip assisted work when called disabled with no assisted input. Actual released-model/native/pipeline qualification remains outstanding.",
+    "important_limit": "The specified raw branches are exact identities; active positive-gate prediction can still harm. No universal active retention bound is claimed. Choosing zero after a note has been computed does not recover its generation cost.",
+    "protocol": {
+      "all_documents": "Exactly512 original native prefix tokens and the next16 original tokens, on both calculation and ordinary panels. Do not retokenize source splices or crop the raw reference.",
+      "writer_input": "The same prefix plus the native encoding of newline Calculation colon newline, for EVERY document. No source-kind indicator, curator expression, target or correctness input. One deterministic greedy note, existing stop/support policy, cap128 including stop.",
+      "assisted_context": "Reuse train.real_trace_contexts.reader_context: prefix + supplied opening + intact generated native content (excluding only its sampled stop) + the same full Answer newline closure. Score original target16 at natural causal positions.",
+      "invalid_notes": "Keep all notes, including empty, unsupported, wrong and capped notes. Unsupported arithmetic is not an execution error or reason to fall back. A cap retains the entire partial note and receives the same forced closure; log that intervention.",
+      "ordinary_protocol": "Run that SAME writer and reader protocol on ordinary prefixes, without requiring a computable expression or silently substituting an empty note. The active ordinary suffix16 endpoint therefore measures the actual proposed system.",
+      "reference_context": "For target index t, prefix+target[:t] only; the off switch returns the existing B0 predictive object directly and skips writer and assisted reader.",
+      "errors": "Any model/feature/scoring execution error makes completeness fail; never silently discard the source or count a convenient fallback as a successful ordinary attempt."
+    }
+  },
+  "learning_signal": {
+    "phase": "Only supervised gate learning after feature/source qualification; not currently released.",
+    "initialization": "tau=.01, w=0, b=log(.0199/.9801), so s=.0199 and initial g=.01, strictly inside the learning region. Initial probability-mixture regret is at most -log(.99) per token. No such universal bound holds after learning.",
+    "objective": "Mean full16 negative log likelihood per document. The current gold token enters ONLY the loss through detached B0/assisted target log-probabilities; never gate.forward(features).",
+    "gradient": "For s>tau, dg/db=s*(1-s)/(1-tau) and dL/db=-(dg/db)*(p_assisted(y)-p_B0(y))/p_final(y); for s<=tau the specified derivative is0. Current target probabilities enter only this loss. A frozen writer needs no policy reward to train the head.",
+    "training_distribution": "Actual greedy notes from the fixed writer, including wrong/unsupported/capped notes. No hindsight acceptance filter, supplied-perfect-only reader distribution or best-of-G note selection.",
+    "why_no_zero_signal_bootstrap_claim": "The writer/reader already exist and remain frozen. This tests learning how to use their outputs,not autonomous discovery. Writer RL remains outside scope.",
+    "proposed_head_recipe": {
+      "status": "Concrete fixed proposal. Only tiny synthetic CPU optimization fixtures have run; no actual cached-model experiment head or optimizer has been fitted.",
+      "optimizer": "AdamW on head weights/bias only, FP64 CPU loss and parameters, lr0.01, betas(0.9,0.999), epsilon1e-8, weight_decay0.0001 on weights and0 on bias, global gradient clip1.",
+      "exposures": "10 complete passes over5120 TRAIN documents, batch64 documents,800 updates, constant LR. Shuffle full documents with two fixed optimization-order seeds2026102131/2026102132. No repeated token treated as an independent item.",
+      "loss": "Average16 token CEs within each document, then average documents. For s>tau use logaddexp(log(1-g)+lp_B0,log(g)+lp_assisted), evaluating log(1-g) with logsigmoid(-u)-log(1-tau) and log(g) with stable log-difference arithmetic. For s<=tau return lp_B0 directly with zero head gradient. Avoid log(0), saturated-probability arithmetic and invalid inactive-branch gradients. B0/assisted distributions and features are detached.",
+      "checkpoint": "Terminal800 heads are primary. Save training losses/head states; no DEV-based early stopping, coefficient search or alternate head architecture.",
+      "frozen_cost": "Repeated head passes reuse frozen feature caches, not new backbone/writer passes. Report their extra supervision and work separately."
+    },
+    "zero_region_risk": "The head receives no local gradient on a closed token and may stall at raw prediction. Positive interior initialization starts learning; it does not guarantee continued learning. Do not silently change the threshold or add exploration to rescue a failed run.",
+    "instrumentation": {
+      "each_training_update": "Log document CE, fraction with exactly zero gate, positive-gate quantiles, preclip CE-gradient norm, optimizer-step norm and nonfinite counts. Keep data-gradient effects distinguishable from weight decay and optimizer momentum.",
+      "fixed_TRAIN_probe": "Every80 updates and at terminal, evaluate the same first256 TRAIN documents in a prespecified hash order from cached features only. Report closures by source stratum and continuation position; strata are reporting labels, never gate inputs.",
+      "opportunity_diagnostic": "On that fixed probe, report closed gates where the assisted gold-token probability exceeds B0 and where it does not. These target-dependent labels diagnose training only and never enter gate.forward.",
+      "interpretation": "Many closed gates plus negligible data gradients may expose parameterization/optimization stalling. Do not infer that the frozen predictors lack complementary information, or change threshold/initialization/schedule within the run. A failed run remains failed."
+    }
+  },
+  "controls": [
+    "Unchanged B0 raw; primary absolute predictive reference.",
+    "A single global probability-mixture coefficient minimized on TRAIN only, including both endpoints. Solve its one-dimensional convex likelihood objective; do not select from a DEV grid. No causal features or gate degrees of freedom.",
+    "A matched causal head combining B0 with the SAME T checkpoint in raw mode, with no Calculation wrapper or generated note. Same head size, optimizer, source documents, order and exposures; replace note count/cap metadata with zero. This tests ordinary ensembling.",
+    "On a fresh, preselected subset, empty, intact unrelated and deterministic corrupted-note interventions. Recompute causal assisted features for the deployed intervention. Optionally holding original gate weights per position fixed is a separately labelled mediation diagnostic, never a new deployed gate.",
+    "These controls do not match all extra autoregressive processing. Beating them supports this predictive recipe, not a universal advantage of semantic traces over every extra-compute alternative.",
+    "Competitive conventional CoT and exact arithmetic interpreter remain necessary before a practical efficiency claim. Such a claim is outside this gate-only proposal.",
+    "Secondary: sixteen TRAIN-optimal probability-mixture weights, one per known continuation position, without hidden/context inputs. This controls a simple number-first/prose-later schedule. Primary eight conjunctive requirements/power remain unchanged; a context-adaptation interpretation also needs an advantage over this control."
+  ],
+  "fresh_data_before_learning": {
+    "minimum_TRAIN_documents": 5120,
+    "TRAIN_composition": "2560 computable arithmetic anchors and2560 ordinary FineMath prefixes. All prefixes512 tokens; one anchor per unique source page; no repetition to meet the quota. This is a deliberately enriched laboratory, not the natural frequency of arithmetic in text.",
+    "fresh_DEV_calculation_documents": 4096,
+    "fresh_DEV_ordinary_documents": 4096,
+    "separation": "Unique source pages/content/documents; exact ordered-expression separation for arithmetic. Exclude all prior retained training/evaluation/proposal documents. No official TEST or pretraining-novelty claim.",
+    "causal_contract": "Each model sees prefix and already-observed continuation only. Before the gate head is learned, feature extraction must pass a current/future-token perturbation test and independent prefix-only forwards.",
+    "feature_cache": "Inputs/causal features and supervised targets are separate typed artifacts. No gold LP or label is stored inside the gate-input array.",
+    "readiness": "Fixed source feasibility CLOSED_NO_GO:6095<6672calculations after complete fixed12-shard scan; independently recounted. No complete source cohorts/native qualification, model features or experiment-head fitting.",
+    "power": "Fixed4096 calculation+4096 ordinary DEV documents from the prospective feasibility plan, before new source outcomes. Normal planning alternative gives joint lower.917 at SD4/base gain.5/control gains.25/ordinary gain0; smaller effects/heavier tails remain sensitivity limits. No outcome-dependent expansion.",
+    "sample_size_addendum": {
+      "status": "FIXED_BEFORE_NEW_SOURCE_OUTCOMES_OR_MODEL_CALLS",
+      "plan": "validation/causal_reader_feasibility_plan_20261021.json",
+      "plan_sha256": "fd6c1115cf7daa07af72b34f3386ce1dc32216b9ceb4431a9331ac36da3f1106",
+      "reason": "The provisional1024 is inadequate under SD4 and control gain.25. N4096 per panel has normal-approximation joint passage lower bound.917 under the stated planning alternative, not a guarantee for unknown/heavy-tailed effects.",
+      "counts": {
+        "TRAIN": 5120,
+        "DEV_calculation": 4096,
+        "DEV_ordinary": 4096,
+        "qualification": 32
+      },
+      "no_outcome_adaptation": "No later expansion, weakened exclusion or smaller cohort after outcomes."
+    }
+  },
+  "prospective_result_needed": {
+    "primary": "On fresh calculation DEV, actual learned-gate/greedy-note full16 gain over B0 has mean>=.25nats and positive paired95 lower bound.",
+    "content_and_selection": "Gain over both the TRAIN-fitted global mixture and non-thought ensemble must have positive paired95 lower bounds. Otherwise no content-specific selective-use claim.",
+    "ordinary_guard": "On fresh ordinary DEV, the ACTIVE same protocol has final16 per-token NLL regression versus B0 with upper95<=.03. Off-mode identity alone cannot satisfy this guard.",
+    "head_optimization_orders": 2,
+    "seed_limit": "Two gate optimization orders with one frozen backbone do not establish training-model robustness.",
+    "terminal_primary": "Freeze optimizer/update count and use terminal heads. No dev checkpoint/prompt/cap selection or threshold revision.",
+    "all_attempts": "Retain all source documents, generated actions, errors/caps/unsupported counts and all absolute scores. Base failures invalidate completeness; no silent omission.",
+    "costs": "Count writer actions, reader forwards, head work, source exposure and supervised tokens separately. Teacher-forced scoring latency is not an autoregressive serving benchmark. Full free-running generation/latency needs its own qualification before any deployment-efficiency claim.",
+    "failure": "If the gate collapses to raw, fails the fresh full16/control/ordinary tests, or only matches an ensemble,close that proposal without writer RL or scale escalation.",
+    "pass": "A supervised selective-reading mechanism only. It releases neither RL nor CPT. Any subsequent writer optimization needs a separate fixed-reader reward/variation study under the NEW interface.",
+    "uncertainty": "Paired bootstrap over unique source documents, resampling related variants as one family if introduced. Proposed5000 draws, seed2026102133; report each optimization order separately. All primary/guard contrasts are conjunctive; no selective use of whichever order passes.",
+    "retention_scope": "This is the final16-token FineMath prediction window, not full-window or broad-language retention. Report token/component and tail costs without replacing the declared full16 primary.",
+    "content_claim": "Superiority over the raw ensemble and constant blend alone is not proof of faithful semantic reasoning. Empty/donor/corrupt interventions are supporting diagnostics, and all altered-context distributions must be reported.",
+    "corpus_reporting": {
+      "units": "Report both stratum gains as nats per16. Ordinary NLL cost c per token corresponds to continuation gain -16*c.",
+      "formula": "Delta(q)=q*Delta_calculation+(1-q)*Delta_ordinary, for a fixed prevalence q of calculation-boundary windows under a specified source-window sampling policy.",
+      "threshold_counterexample": "Hypothetical gains +.25 calculation and -.48 ordinary satisfy the numerical point/tolerance boundary yet break even only at q=.48/(.25+.48)=.657534. This is algebra, not a measured corpus result or a statistical guarantee from a point threshold.",
+      "required_report": "Report the full prevalence tradeoff and break-even prevalence when defined. At prespecified q values, obtain intervals by independent document/family resampling within each stratum. Never choose q to claim a success.",
+      "prevalence_status": "No representative natural-source q has been measured. A fraction of documents mentioning arithmetic is not the prevalence of the exact calculation-boundary windows. Without representative sampling, report hypothetical mixtures only.",
+      "claim_boundary": "Passing the mechanism/retention criteria cannot be called an overall natural-corpus LM gain; keep those criteria and that broader claim separate."
+    },
+    "cost_plan": "validation/causal_reader_cost_plan_20261021.json;8reservedchip-hour proposed hard total includingqualification,3roles on all13312science documents plus1024fixed secondary contexts; old proxy7.780. Actual source/runtime feasibility and whole-question review remain required. No model execution released."
+  },
+  "prior_proposal_resolution": {
+    "pointwise_cap_variant": "The earlier universal per-token .03-regret cap remains rejected for the fixed saved candidates: its hindsight upper bound averages .137nats per16 on the inspected V30 panel.",
+    "distinction": "The revised draft keeps exact off-mode identity but relies on prospective empirical active-mode retention. It does not claim that fallback availability guarantees a good learned selector.",
+    "old_evidence": "No fixed-mixture policy sweep or new model result is reported; the original V30 decisions stay unchanged."
+  },
+  "remaining_release_conditions": [
+    "Decide whether the two-reader selective-use mechanism warrants a bounded science budget relative to the training-side north star. It is not automatically the next main study.",
+    "Verify genuinely fresh source availability, freeze source/protocol identities and all numerical settings, and support the proposed sample size with an explicit power calculation. No outcome-dependent expansion.",
+    "Qualify exact native source/stop/forced-closure handling on ordinary as well as calculation prefixes, feature causality, distribution normalization and the actual disabled path. CPU fixture mathematics cannot certify actual models.",
+    "This fixed-source feasibility attempt is closed without execution. A later source/mechanism design requires a new prospective finite CPU/accelerator/storage plan and whole-question decision before any actual model/feature/head call."
+  ],
+  "scope_limits": [
+    "B0 remains frozen, so this cannot demonstrate improved direct B0 weights, internalization or general pretraining.",
+    "A gate computed after a calculation does not save its generation cost.",
+    "Existing supervised writer competence and the extra prediction path are real prerequisites/costs.",
+    "Learned mixing is prior work; no novelty claim from adding a head.",
+    "The raw-regression source review found the intended implementation,not a causal explanation. Another full CPT study still needs a credible uniform-NTP control.",
+    "Teacher-forced full-span likelihood does not establish complete-answer accuracy; ordinary FineMath suffix retention is not broad-language retention.",
+    "The deliberately enriched calculation cohort and a tolerated ordinary cost cannot establish a gain under the natural corpus mixture."
+  ],
+  "sources": [
+    {
+      "url": "https://arxiv.org/html/2403.09629v2",
+      "role": "Prior learned mixing and zero-contribution instability; not proof this draft will work."
+    }
+  ],
+  "assessment": {
+    "status": "RETAINED_UNEXECUTED_CANDIDATE_FIXED_SOURCE_FEASIBILITY_CLOSED_NO_GO",
+    "recommendation": "Close the fixed12-shard attempt:6095eligible calculations<6672required. Preserve sample size/exclusions; no model/feature/head call or automatic source expansion. A later source/mechanism proposal is a new protocol.",
+    "why_it_is_different": "The previous writer is not being asked to overcome an already degraded raw model. The actual unchanged B0 remains a separate predictor, and a supervised causal head rather than a sibling-centered reward learns when to use the fixed assisted path.",
+    "why_it_might_fail": "The gate may not distinguish useful from harmful predictions prospectively, the assisted reader may contain little complementary full-span information, or apparent gain may be ordinary ensembling. The new active path can still regress.",
+    "north_star_boundary": "Even a pass would be a fixed-backbone selective-inference result. Improving pretrained weights needs a separate intervention and a truly uniform-NTP control; internalization needs an explicit transfer study.",
+    "saved_score_decision": "Retain the fixed pair only as an unexecuted candidate. The2.063nats/16future-aware bound does not override the closed source-quota failure or release model calls."
+  },
+  "saved_greedy_opportunity": {
+    "report": "validation/greedy_token_opportunity_20261021.json",
+    "status": "EXPLORATORY_EXISTING_SCORES_NO_CAUSAL_POLICY_OR_CONFIRMATION",
+    "documents": 256,
+    "mean_upper_nats_per16": 2.0633008101119144,
+    "mean_actual_greedy_minus_B0_nats_per16": -1.4288793143047838,
+    "decision": "The unrestricted fixed pair has complementary token probabilities; absence of oracle opportunity is not a reason to reject it. This does not release feature/model calls or head fitting, establish causal recoverability, measure ordinary retention or justify a training campaign."
+  },
+  "implementation_status": {
+    "status": "CPU_FIXTURE_AND_RELEASE_GUARD_CHECKS_ONLY_ACTUAL_MODELS_UNQUALIFIED",
+    "feature_and_head_module": "train/causal_reader_gate.py",
+    "tests": "tests/test_causal_reader_gate.py",
+    "checks": [
+      "Independent dense HF feature/entropy/target alignment on a tiny randomly initialized fixture.",
+      "Current/future perturbation and right-padding invariance.",
+      "Detached reader features/targets; gradients reach only head parameters.",
+      "Closed/near-boundary/saturated gates have consistent stable values and finite gradients.",
+      "Full-vocabulary normalization and exact disabled/closed raw object bypass.",
+      "Balanced unpredictable-coin fixture gives no causal improvement despite positive hindsight bound.",
+      "The same fixed head recipe learns a simple linearly separable prospective signal.",
+      "All four TRAIN-only terminal heads freeze before DEV readout; CPU preparation cannot release model/head workers; paired bootstrap requires the fixed4096 original documents."
+    ],
+    "full_CPU_suite_passed": 1964,
+    "no_claim": "These tests neither execute released B0/T weights nor qualify actual-model feature extraction, latency, generalization or head efficacy.",
+    "fitting_module": "train/causal_reader_fit.py",
+    "guarded_worker": "train/causal_reader_gate_driver.py",
+    "native_checker": "scripts/check_causal_reader_qualification.py",
+    "head_entrypoint": "train/causal_reader_head_driver.py",
+    "full_CPU_check_log_sha256": "480ef5bdce09f4432f6c5c4c3023fb8e127887ed8c8f6693267835022638e98f",
+    "supervisor": "train/causal_reader_supervisor.py",
+    "protocol_freezer": "scripts/freeze_causal_reader_protocol.py",
+    "cost_checker": "scripts/causal_reader_cost_profile.py",
+    "native_numerical_contract": "Freeze before model calls: each original native greedy action must have independent CPU masked-logit regret<=.001 and CPU behavior-logp error<=.001. Report exact matches and numerical near ties separately; do not demand bitwise argmax equality where permitted FP32 kernels are numerically tied. Native sampler policy unchanged. No post-outcome tolerance change."
+  },
+  "secondary_interventions": {
+    "sources": 256,
+    "selection": "Before model calls, choose first64 item IDs under SHA256(causal-reader-secondary:+item_id) in each of four fixed source-index stripes. Sources all from calculation DEV; do not select examples by notes or outcomes.",
+    "conditions": [
+      "closed empty note",
+      "fixed whole greedy donor derangement",
+      "supplied prefix-interpreter correct calculation",
+      "supplied prefix-interpreter corrupt calculation"
+    ],
+    "metadata": "Hold each source original generated action-count/cap metadata across content interventions. Hidden states/entropies/predictive scores use the actually altered context. Explicit counterfactual diagnostic, not deployed-note generation.",
+    "primary_effect": "Supporting only; no change to8 primary/guard requirements or power plan. Include1024 reader contexts in the same hard8-chip-hour budget."
+  },
+  "feasibility_outcome": {
+    "status": "CLOSED_NO_GO_FIXED_SOURCE_QUOTA",
+    "report": "validation/causal_reader_feasibility_complete_20261021.json",
+    "eligible_calculations": 6095,
+    "required": 6672,
+    "shortfall": 577,
+    "actual_model_calls": 0,
+    "actual_qualification_run": false,
+    "experiment_head_fits": 0
+  }
+}

@@ -1,0 +1,13 @@
+The intact late-two seed completes all original4400 updates /2,302,851,264 authentic targets,with its complete cooldown,exact state/all32-RNG readback,all32 replica agreement,and full512-window switch/final gradient audits. The final overall/family-max body discrepancies are0.361360%/0.401994%,below the unchanged2% gates;NTP loss discrepancy is0.000003485 nats. All538 registered source hashes remain unchanged.
+
+Independent consumed-DEV scoring gives2.481846767 NLL. The frozen same-seed ordinary8 reference scores2.482287130:late-two gains only0.000440363 nats. Its conditional source-group95% interval is[-0.001535781,0.002489394],crossing zero and far below0.01. Web favors late-two by0.001831440,while math/code favor ordinary8 by0.001115811/0.002176695. These are one reused training seed and518 consumed source groups,not training-seed uncertainty or independent confirmation.
+
+Against the original same-seed fixed-two endpoint2.484647907,the schedule gains0.002801140 nats,also below the useful-effect threshold. The failed seed17293 remains unresolved;the original paired experiment is numerically incomplete. No paired mean,advancement,4B,timing sweep,router or fresh confirmation is admitted. This bounded75% timing attempt is closed without a useful demonstrated advantage.
+
+Nominal retained work is1,272,560,454,311,731,200 matrix operations,against ordinary8’s1,272,538,842,904,800,000. This is approximate matrix-work matching,not complete operation or hardware-time matching. Retained seed5231 training assignments total11.989721 chip-hours versus ordinary8’s11.637053,a cross-run descriptive comparison. Recovery training adds3.471371 chip-hours and its Native audits0.472595;the entire recovery reservation is11.990534 opportunity chip-hours.
+
+Original stopped MAIN plus recovery uses21.447457 assigned Native chip-hours including failed work. The complete nonoverlapping MAIN reservation,including the attended between-controller interval,is38.722573 opportunity chip-hours;assigned and reservation costs overlap and must not be added. The7700 actual updates across seed trajectories include3179 discarded failed-seed updates. TUNE and earlier preparation costs remain separately reported.
+
+The recovery closes in2697.87 seconds,well before its unchanged02:48:50 UTC cutoff. No managed worker remains active. Fresh source groups,adequately powered fresh paired seeds,strong ordinary controls and measured inference costs remain required for the overall goal,which is unachieved.
+
+[Complete machine report](report.json) · [Reconciled totals and intervals](completion-verification.json) · [Costs](execution-costs.json) · [Original paired failure](../main/REPORT.md) · [Frozen recovery protocol](../../../docs/LATE_TWO_SINGLE_RECOVERY_20261027.md).

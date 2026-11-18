@@ -1,0 +1,1323 @@
+{
+  "updated_unix": 1792808105.3526351,
+  "status": "RUNNING",
+  "active_phases": [
+    {
+      "identity": "vdepth-v1-fixed-s211-u3840-dev-r1",
+      "assigned_chips": 8,
+      "module": "scripts.evaluate_depth_curve"
+    },
+    {
+      "identity": "vdepth-v1-fixed-s211-u3840-dev-r3",
+      "assigned_chips": 8,
+      "module": "scripts.evaluate_depth_curve"
+    }
+  ],
+  "completed_tuning_trials": [
+    {
+      "identity": "vdepth-v1-tune-fixed-lr1000-dev-r2",
+      "cohort": "tune",
+      "weighted_nll": 2.9402217044084042,
+      "targets": 759473
+    },
+    {
+      "identity": "vdepth-v1-tune-fixed-lr150-dev-r2",
+      "cohort": "tune",
+      "weighted_nll": 3.3049840565045594,
+      "targets": 759473
+    },
+    {
+      "identity": "vdepth-v1-tune-fixed-lr300-dev-r2",
+      "cohort": "tune",
+      "weighted_nll": 3.071832589221524,
+      "targets": 759473
+    },
+    {
+      "identity": "vdepth-v1-tune-fixed-lr600-dev-r2",
+      "cohort": "tune",
+      "weighted_nll": 2.9431037295302347,
+      "targets": 759473
+    },
+    {
+      "identity": "vdepth-v1-tune-mixture-lr1000-dev-r2",
+      "cohort": "tune",
+      "weighted_nll": 2.982256630830667,
+      "targets": 759473
+    },
+    {
+      "identity": "vdepth-v1-tune-mixture-lr150-dev-r2",
+      "cohort": "tune",
+      "weighted_nll": 3.340207608102247,
+      "targets": 759473
+    },
+    {
+      "identity": "vdepth-v1-tune-mixture-lr300-dev-r2",
+      "cohort": "tune",
+      "weighted_nll": 3.0877973957471316,
+      "targets": 759473
+    },
+    {
+      "identity": "vdepth-v1-tune-mixture-lr600-dev-r2",
+      "cohort": "tune",
+      "weighted_nll": 2.957476335421853,
+      "targets": 759473
+    },
+    {
+      "identity": "vdepth-v1-tune-ordinary-lr1000-dev-r1",
+      "cohort": "tune",
+      "weighted_nll": 3.0173110266832084,
+      "targets": 759473
+    },
+    {
+      "identity": "vdepth-v1-tune-ordinary-lr150-dev-r1",
+      "cohort": "tune",
+      "weighted_nll": 3.3455626568315884,
+      "targets": 759473
+    },
+    {
+      "identity": "vdepth-v1-tune-ordinary-lr300-dev-r1",
+      "cohort": "tune",
+      "weighted_nll": 3.095383558412032,
+      "targets": 759473
+    },
+    {
+      "identity": "vdepth-v1-tune-ordinary-lr600-dev-r1",
+      "cohort": "tune",
+      "weighted_nll": 2.969665302053677,
+      "targets": 759473
+    }
+  ],
+  "completed_learning_curve_cells": [
+    {
+      "identity": "vdepth-v1-fixed-s103-u1152-dev-r2",
+      "training_real_targets": 301465908,
+      "depth": 2,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 880611.4181861877,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.48982280912505
+          },
+          "code": {
+            "nll_sum": 439449.63550567627,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.7505512598071036
+          },
+          "math": {
+            "nll_sum": 659135.5972332954,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.6220894319840853
+          }
+        },
+        "weighted_nll": 2.9684218238332676,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-fixed-s103-u384-dev-r2",
+      "training_real_targets": 100488104,
+      "depth": 2,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 1055751.1050300598,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 4.183893384759507
+          },
+          "code": {
+            "nll_sum": 590853.632320404,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 2.3536703340984486
+          },
+          "math": {
+            "nll_sum": 813780.8620772362,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 3.237279563355728
+          }
+        },
+        "weighted_nll": 3.6285260103465395,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-fixed-s103-u3840-dev-r1",
+      "training_real_targets": 1004887590,
+      "depth": 1,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 952087.0040435791,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.7730772896704767
+          },
+          "code": {
+            "nll_sum": 496719.7963256836,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.9786874193864743
+          },
+          "math": {
+            "nll_sum": 733016.4526939392,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.91599285814168
+          }
+        },
+        "weighted_nll": 3.242782429307917,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-fixed-s103-u3840-dev-r2",
+      "training_real_targets": 1004887590,
+      "depth": 2,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 765022.4418334961,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.031748977888681
+          },
+          "code": {
+            "nll_sum": 355714.0429611206,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.416989833932004
+          },
+          "math": {
+            "nll_sum": 560348.7360570431,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.229108100378884
+          }
+        },
+        "weighted_nll": 2.548268973595386,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-fixed-s103-u3840-dev-r3",
+      "training_real_targets": 1004887590,
+      "depth": 3,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 781998.0007286072,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.099022342060844
+          },
+          "code": {
+            "nll_sum": 368303.16467285156,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.4671387044549626
+          },
+          "math": {
+            "nll_sum": 576230.3959798813,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.2922865007275153
+          }
+        },
+        "weighted_nll": 2.611298446273002,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-fixed-s103-u3840-dev-r4",
+      "training_real_targets": 1004887590,
+      "depth": 4,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 807834.806350708,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.201412422081217
+          },
+          "code": {
+            "nll_sum": 386729.24209976196,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.5405391363744576
+          },
+          "math": {
+            "nll_sum": 598728.9096956253,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.381787227584058
+          }
+        },
+        "weighted_nll": 2.7053127260404333,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-fixed-s211-u1152-dev-r2",
+      "training_real_targets": 301465908,
+      "depth": 2,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 880651.6599655151,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.489982285457603
+          },
+          "code": {
+            "nll_sum": 438044.7429008484,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.744954858489248
+          },
+          "math": {
+            "nll_sum": 656552.182518959,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.611812420016704
+          }
+        },
+        "weighted_nll": 2.965342826975752,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-fixed-s211-u384-dev-r2",
+      "training_real_targets": 100488104,
+      "depth": 2,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 1053673.4460601807,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 4.175659717204297
+          },
+          "code": {
+            "nll_sum": 587761.7038192749,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 2.341353611326209
+          },
+          "math": {
+            "nll_sum": 807808.6093320847,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 3.213521506782951
+          }
+        },
+        "weighted_nll": 3.61637085394441,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-fixed-s211-u3840-dev-r2",
+      "training_real_targets": 1004887590,
+      "depth": 2,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 764334.0443954468,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.0290208902992695
+          },
+          "code": {
+            "nll_sum": 355077.37296295166,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.4144536537253836
+          },
+          "math": {
+            "nll_sum": 559171.6790659428,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.2244256819051103
+          }
+        },
+        "weighted_nll": 2.5451884013056603,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-fixed-s307-u1152-dev-r2",
+      "training_real_targets": 301465908,
+      "depth": 2,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 878239.5495910645,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.480423202269443
+          },
+          "code": {
+            "nll_sum": 436651.8568458557,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.739406285362024
+          },
+          "math": {
+            "nll_sum": 656147.609858036,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.6102030004934242
+          }
+        },
+        "weighted_nll": 2.9581757785327554,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-fixed-s307-u384-dev-r2",
+      "training_real_targets": 100488104,
+      "depth": 2,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 1056427.1472167969,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 4.1865725090525645
+          },
+          "code": {
+            "nll_sum": 592655.8369178772,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 2.3608494310270567
+          },
+          "math": {
+            "nll_sum": 810404.3545322418,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 3.223847570321356
+          }
+        },
+        "weighted_nll": 3.628882905701221,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-fixed-s307-u3840-dev-r2",
+      "training_real_targets": 1004887590,
+      "depth": 2,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 764989.1817207336,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.031617169581685
+          },
+          "code": {
+            "nll_sum": 354853.8288154602,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.4135631637638584
+          },
+          "math": {
+            "nll_sum": 559330.3004791737,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.2250566894444765
+          }
+        },
+        "weighted_nll": 2.546694272390678,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-mixture-s103-u1152-dev-r2",
+      "training_real_targets": 301465908,
+      "depth": 2,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 893754.9505882263,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.541910027416615
+          },
+          "code": {
+            "nll_sum": 447742.18368148804,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.7835846940924096
+          },
+          "math": {
+            "nll_sum": 668770.8178434372,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.6604190416163593
+          }
+        },
+        "weighted_nll": 3.0139467635917225,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-mixture-s103-u384-dev-r2",
+      "training_real_targets": 100488104,
+      "depth": 2,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 1096019.141483307,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 4.343473773102268
+          },
+          "code": {
+            "nll_sum": 651688.5053482056,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 2.596006554258193
+          },
+          "math": {
+            "nll_sum": 858624.9724731445,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 3.415672701959378
+          }
+        },
+        "weighted_nll": 3.808420115104875,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-mixture-s103-u3840-dev-r1",
+      "training_real_targets": 1004887590,
+      "depth": 1,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 784498.6846046448,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.108932437988265
+          },
+          "code": {
+            "nll_sum": 368314.5978240967,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.4671842485075655
+          },
+          "math": {
+            "nll_sum": 576888.7988445759,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.2949056752960715
+          }
+        },
+        "weighted_nll": 2.6177774475536864,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-mixture-s103-u3840-dev-r2",
+      "training_real_targets": 1004887590,
+      "depth": 2,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 776194.9958381653,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.076025298858928
+          },
+          "code": {
+            "nll_sum": 362610.5272254944,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.4444620360726368
+          },
+          "math": {
+            "nll_sum": 569270.419878006,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.264599208673814
+          }
+        },
+        "weighted_nll": 2.587427428264647,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-mixture-s103-u3840-dev-r3",
+      "training_real_targets": 1004887590,
+      "depth": 3,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 776884.5653800964,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.0787580314424616
+          },
+          "code": {
+            "nll_sum": 363434.4720726013,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.4477442271898393
+          },
+          "math": {
+            "nll_sum": 569886.7582006454,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.267051047429152
+          }
+        },
+        "weighted_nll": 2.590213873789275,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-mixture-s103-u3840-dev-r4",
+      "training_real_targets": 1004887590,
+      "depth": 4,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 779566.7227706909,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.089387298615308
+          },
+          "code": {
+            "nll_sum": 365724.12928390503,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.4568650956396718
+          },
+          "math": {
+            "nll_sum": 572306.8366551399,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.2766782958538134
+          }
+        },
+        "weighted_nll": 2.600341057467882,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-mixture-s211-u1152-dev-r2",
+      "training_real_targets": 301465908,
+      "depth": 2,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 895488.5478286743,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.5487801940606185
+          },
+          "code": {
+            "nll_sum": 449245.6505126953,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.789573766656822
+          },
+          "math": {
+            "nll_sum": 669448.0633401871,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.663113173548151
+          }
+        },
+        "weighted_nll": 3.0198055044773655,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-mixture-s211-u384-dev-r2",
+      "training_real_targets": 100488104,
+      "depth": 2,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 1097522.5739364624,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 4.3494318072120315
+          },
+          "code": {
+            "nll_sum": 655487.8299407959,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 2.6111411952149934
+          },
+          "math": {
+            "nll_sum": 857947.2959728241,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 3.4129768554639788
+          }
+        },
+        "weighted_nll": 3.8144826944630132,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-mixture-s211-u3840-dev-r2",
+      "training_real_targets": 1004887590,
+      "depth": 2,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 777070.6219711304,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.0794953652105335
+          },
+          "code": {
+            "nll_sum": 363455.13540649414,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.4478265397514058
+          },
+          "math": {
+            "nll_sum": 569876.9201915264,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.267011911112056
+          }
+        },
+        "weighted_nll": 2.5906649092990124,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-mixture-s307-u1152-dev-r2",
+      "training_real_targets": 301465908,
+      "depth": 2,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 893831.4709205627,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.5422132739969276
+          },
+          "code": {
+            "nll_sum": 448088.2591819763,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.784963288712635
+          },
+          "math": {
+            "nll_sum": 669994.9681453705,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.6652888007119575
+          }
+        },
+        "weighted_nll": 3.015378382283075,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-mixture-s307-u384-dev-r2",
+      "training_real_targets": 100488104,
+      "depth": 2,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 1105602.2929954529,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 4.381451364625295
+          },
+          "code": {
+            "nll_sum": 682557.2599334717,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 2.71897249361034
+          },
+          "math": {
+            "nll_sum": 874180.5925354958,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 3.477554091986951
+          }
+        },
+        "weighted_nll": 3.868176135894635,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-mixture-s307-u3840-dev-r2",
+      "training_real_targets": 1004887590,
+      "depth": 2,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 775956.6707191467,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.075080827302959
+          },
+          "code": {
+            "nll_sum": 362611.28884506226,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.4444650699904884
+          },
+          "math": {
+            "nll_sum": 569712.7818231583,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.2663589567231748
+          }
+        },
+        "weighted_nll": 2.587213301724508,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-ordinary-s103-u1152-dev-r1",
+      "training_real_targets": 301465908,
+      "depth": 1,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 895953.2998886108,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.550621985236453
+          },
+          "code": {
+            "nll_sum": 451350.6833381653,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.7979591823377827
+          },
+          "math": {
+            "nll_sum": 671358.6003804207,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.670713429100481
+          }
+        },
+        "weighted_nll": 3.0241077134295247,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-ordinary-s103-u384-dev-r1",
+      "training_real_targets": 100488104,
+      "depth": 1,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 1091393.7487106323,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 4.325143552909927
+          },
+          "code": {
+            "nll_sum": 659206.5136032104,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 2.625954602359075
+          },
+          "math": {
+            "nll_sum": 860005.3504686356,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 3.421163946203071
+          }
+        },
+        "weighted_nll": 3.8045098414583856,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-ordinary-s103-u3840-dev-r1",
+      "training_real_targets": 1004887590,
+      "depth": 1,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 779461.4906387329,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.0889702684851326
+          },
+          "code": {
+            "nll_sum": 364770.8504066467,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.4530677013430269
+          },
+          "math": {
+            "nll_sum": 572060.3087828159,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.2756975900151004
+          }
+        },
+        "weighted_nll": 2.599135219362705,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-ordinary-s103-u6496-dev-r1",
+      "training_real_targets": 1699926288,
+      "depth": 1,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 751083.3483543396,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 2.976508987403114
+          },
+          "code": {
+            "nll_sum": 343670.1198158264,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.3690127664103668
+          },
+          "math": {
+            "nll_sum": 547463.1649436951,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.177848359616574
+          }
+        },
+        "weighted_nll": 2.495277617647256,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-ordinary-s211-u1152-dev-r1",
+      "training_real_targets": 301465908,
+      "depth": 1,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 896182.1732444763,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.551528999886962
+          },
+          "code": {
+            "nll_sum": 451082.66022872925,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.7968915100632552
+          },
+          "math": {
+            "nll_sum": 672289.3030295372,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.6744158320518787
+          }
+        },
+        "weighted_nll": 3.0251788683552037,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-ordinary-s211-u384-dev-r1",
+      "training_real_targets": 100488104,
+      "depth": 1,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 1093517.7166061401,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 4.333560740621233
+          },
+          "code": {
+            "nll_sum": 649905.1986083984,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 2.5889027371019915
+          },
+          "math": {
+            "nll_sum": 854698.1841831207,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 3.4000516520265127
+          }
+        },
+        "weighted_nll": 3.797927322198441,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-ordinary-s211-u3840-dev-r1",
+      "training_real_targets": 1004887590,
+      "depth": 1,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 779191.6807937622,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.0879010243989673
+          },
+          "code": {
+            "nll_sum": 364367.8609352112,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.451462389448528
+          },
+          "math": {
+            "nll_sum": 572592.7418553829,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.277815647572114
+          }
+        },
+        "weighted_nll": 2.5985962220435086,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-ordinary-s211-u6496-dev-r1",
+      "training_real_targets": 1699926288,
+      "depth": 1,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 750678.1296386719,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 2.9749031241501322
+          },
+          "code": {
+            "nll_sum": 343897.6438179016,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.3699191101555623
+          },
+          "math": {
+            "nll_sum": 548303.6236972809,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.1811917657761652
+          }
+        },
+        "weighted_nll": 2.4951640496764247,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-ordinary-s307-u1152-dev-r1",
+      "training_real_targets": 301465908,
+      "depth": 1,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 895925.9369926453,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.550513547330139
+          },
+          "code": {
+            "nll_sum": 454481.7782859802,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.8104319249745264
+          },
+          "math": {
+            "nll_sum": 673975.2101659775,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.6811224934798488
+          }
+        },
+        "weighted_nll": 3.0286190120889582,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-ordinary-s307-u384-dev-r1",
+      "training_real_targets": 100488104,
+      "depth": 1,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 1092889.21118927,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 4.331070002374879
+          },
+          "code": {
+            "nll_sum": 657838.1989364624,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 2.62050390956027
+          },
+          "math": {
+            "nll_sum": 861474.7910823822,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 3.427009488031499
+          }
+        },
+        "weighted_nll": 3.8081446809432817,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-ordinary-s307-u3840-dev-r1",
+      "training_real_targets": 1004887590,
+      "depth": 1,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 779506.9146232605,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 3.0891502816600833
+          },
+          "code": {
+            "nll_sum": 366040.7543067932,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.4581263740386528
+          },
+          "math": {
+            "nll_sum": 573858.3962595463,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.2828505130104713
+          }
+        },
+        "weighted_nll": 2.6016855464058746,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    },
+    {
+      "identity": "vdepth-v1-ordinary-s307-u6496-dev-r1",
+      "training_real_targets": 1699926288,
+      "depth": 1,
+      "metrics": {
+        "domains": {
+          "web": {
+            "nll_sum": 751011.0310821533,
+            "real_targets": 252337,
+            "documents": 291,
+            "nll": 2.9762223973581095
+          },
+          "code": {
+            "nll_sum": 344348.36183929443,
+            "real_targets": 251035,
+            "documents": 153,
+            "nll": 1.3717145491238052
+          },
+          "math": {
+            "nll_sum": 549105.112953186,
+            "real_targets": 251378,
+            "documents": 159,
+            "nll": 2.1843801484345726
+          }
+        },
+        "weighted_nll": 2.496952377926541,
+        "weights": {
+          "web": 0.6,
+          "math": 0.2,
+          "code": 0.2
+        },
+        "unit": "nats per real source token"
+      }
+    }
+  ],
+  "stage_states": {
+    "controller_liveness": "ALIVE",
+    "tuning": "COMPLETE",
+    "primary_fits": "COMPLETE",
+    "longer_exposure": "UNEXECUTED_TIME_GATE"
+  },
+  "scope": "Only actual native progress and completed readouts. Training rank-zero loss is omitted; TUNE selects the declared LR only. Stable and annealed curve endpoints differ. No best-depth or TEST selection."
+}

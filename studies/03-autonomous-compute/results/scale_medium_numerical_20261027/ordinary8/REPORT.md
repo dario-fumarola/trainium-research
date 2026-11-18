@@ -1,0 +1,3 @@
+The374.89M conventional eight-layer model passes complete independent512-window FP32 gradients/NLL, first actual update/moments and named fresh-process replay. Overall gradient discrepancy0.035402%, largest family0.045770%; Native-minus-CPU NLL-0.000003156. Replay updates/moments are exactly equal. Independent CPU wall557.195s; one prescribed CPU optimizer step, zero research updates. The100 warm Native intervals total160.055585s on all16 chips. All102 Native updates remain numerical only; their weights cannot initialize science.
+
+Both medium shapes now pass. The32768-row padded vocabulary is counted in parameters, output projections and all work; the existing tokenizer has32000 tokens. No held-out quality or efficiency result is established.

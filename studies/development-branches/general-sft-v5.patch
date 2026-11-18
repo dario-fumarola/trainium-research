@@ -1,0 +1,625 @@
+diff --git a/tests/test_prepare_general_sft_data.py b/tests/test_prepare_general_sft_data.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..3686e165928c0db0a6c38f97eeb666349532d1f2
+--- /dev/null
++++ b/tests/test_prepare_general_sft_data.py
+@@ -0,0 +1,206 @@
++"""Native GENERAL dispatch, closed-order proof and old/new source separation."""
++import copy
++import json
++from pathlib import Path
++
++import pytest
++import torch
++
++from train import general_hindsight_filtered_data as native
++from train import prepare_general_sft_data as prep
++from train import useful_note_sft_data as packing
++from train import useful_note_sft_driver as driver
++from weekend_thinking.artifacts import canonical_hash, sha256_file
++
++
++class Tok:
++    all_special_ids=[151643,151644]
++    eos_token_id=151643
++    def get_vocab(self):return {str(i):i for i in range(1,11)}
++    def decode(self,ids,**kwargs):return ''.join({1:'past ',2:'future ',3:'a useful cue ',4:'else '}.get(t,str(t)) for t in ids)
++    def encode(self,*args,**kwargs):raise AssertionError('Native labels must never be re-encoded')
++
++
++PARTS=dict(old_open=[151667,198],old_close=[151668,198])
++
++
++def example(i=0):
++    row=dict(item_id=str(i),document_id='doc'+str(i),split='train',teacher_index=i,pool_index=i+10,
++        prefix_ids=[1]*512,natural_future16_ids=[2]*16,reanchor_ids=[1]*24,source_line=i+1,
++        original_source_ids=[1]*512+[2]*16,source528_sha256=canonical_hash([1]*512+[2]*16),
++        teacher_note_ids=[3]*3,teacher_note_text=Tok().decode([3]*3),teacher_kind=prep.KIND,
++        selection_uses_likelihood=True,teacher_prompt_sha256='prompt',teacher_protocol_sha256='protocol')
++    return row
++
++
++def decision(i,positive=True):
++    # Teacher still loses to raw/other: those were never acceptance requirements.
++    path=dict(absolute_ll=dict(teacher=-2.,empty=-3. if positive else -1.,raw=0.,other=0.),
++        statuses=dict(teacher='ok',empty='ok',raw='ok',other='ok'),
++        strict_teacher_positive=dict(empty=positive,raw=False,other=False))
++    return dict(teacher_index=i,pool_index=i+10,item_id=str(i),document_id='doc'+str(i),
++        eligible_plain_label=dict(eligible=True),accepted=positive,paths=dict(I3=path))
++
++
++def tiny(monkeypatch):
++    monkeypatch.setattr(prep,'ITEMS',2);monkeypatch.setattr(native,'TEACHER_N',4);monkeypatch.setattr(native,'RAW_N',4)
++
++
++def selected_fixture():
++    dd=[decision(i,i!=1) for i in range(4)]
++    rr=[dict(example(i),label_decision=dd[i]) for i in (0,2)]
++    return rr,dd
++
++
++def test_first_original_accepted_order_is_preserved_without_stricter_new_gate(monkeypatch):
++    tiny(monkeypatch);rows,dd=selected_fixture()
++    result=prep.selected_rows(rows,dd,Tok())
++    assert [r['item_id'] for r in result]==['0','2']
++    assert all(r['native_window_cut']==512 and 'absolute_source_cut' not in r for r in result)
++    assert [dict(r,native_window_cut=512) for r in rows]==result
++    with pytest.raises(ValueError,match='first5120'):prep.selected_rows(list(reversed(rows)),dd,Tok())
++
++
++def test_quota_failure_or_forged_original_acceptance_cannot_be_prepared(monkeypatch):
++    tiny(monkeypatch);rows,dd=selected_fixture()
++    for d in dd[1:]:
++        d['paths']['I3']['absolute_ll']['empty']=-1.;d['paths']['I3']['strict_teacher_positive']['empty']=False;d['accepted']=False
++    with pytest.raises(ValueError,match='quota'):prep.selected_rows(rows[:1],dd,Tok())
++    rows,dd=selected_fixture();dd[0]['accepted']=False
++    with pytest.raises(ValueError,match='strict gain'):prep.selected_rows(rows,dd,Tok())
++
++
++@pytest.mark.parametrize('change',[
++    dict(split='dev'),dict(teacher_kind='exact-postorder-v1'),dict(selection_uses_likelihood=False),
++    dict(teacher_note_ids=[151667]),dict(teacher_note_ids=[2]*16),dict(teacher_note_text='rewritten'),
++    dict(original_source_ids=[1]*528),dict(source528_sha256='wrong')])
++def test_native_original_label_and_causal_lineage_cannot_be_changed(monkeypatch,change):
++    tiny(monkeypatch);rows,dd=selected_fixture();rows[0].update(change)
++    with pytest.raises(ValueError):prep.selected_rows(rows,dd,Tok())
++
++
++@pytest.mark.parametrize('component',packing.COMPONENTS)
++def test_dispatch_is_exact_qualified_native_adapter_with_explicit_padding(component):
++    row=example();tok=Tok();shape=prep.SHAPES[component]
++    actual=packing.pack_example(row,tok,component,interface='I3',parts=PARTS,**shape)
++    expected=native.pack_native(row,tok,component,parts=PARTS,**shape)
++    assert all(torch.equal(actual[k],expected[k]) for k in actual)
++    active=actual['note_close_mask']|actual['future_mask'];labels=actual['labels'][active].tolist()
++    if component=='source':assert labels==row['original_source_ids'][1:]
++    if component=='reader':assert labels==row['natural_future16_ids']
++    if component=='writer':
++        assert labels==row['teacher_note_ids']+[151668] and not actual['future_mask'].any()
++        changed=dict(row,natural_future16_ids=[4]*16,original_source_ids=[1]*512+[4]*16)
++        after=packing.pack_example(changed,tok,component,interface='I3',parts=PARTS,**shape)
++        assert all(torch.equal(actual[k],after[k]) for k in actual)
++    assert torch.equal(actual['labels'][active],actual['input_ids'].gather(1,actual['target_positions'])[active])
++
++
++def test_unknown_teacher_kind_is_not_reinterpreted_as_symbolic():
++    with pytest.raises(ValueError,match='Unknown explicit teacher'):
++        packing.pack_example(dict(example(),teacher_kind='other'),Tok(),'writer',interface='I3',parts=PARTS,**prep.SHAPES['writer'])
++
++
++def inventory(rows):
++    p=dict(items=len(rows),purpose='qualification',data_sha256='data',packing=prep.SHAPES,interface='I3',parts=PARTS)
++    m=dict(schema=prep.SCHEMA,status='complete_CPU_inventory_NOT_Neuron_training_qualification',
++        teacher_kind=prep.KIND,purpose='qualification',split='train',selection_uses_likelihood=True,
++        items=len(rows),unique_documents=len(rows),training_sha256='data',packing=prep.SHAPES,interface='I3',parts=PARTS,
++        ordered_item_ids_sha256=canonical_hash([r['item_id'] for r in rows]),ordered_document_ids_sha256=canonical_hash([r['document_id'] for r in rows]))
++    return p,m
++
++
++def test_driver_honest_general_schema_requires_64_subset_unique_docs_and_cut512():
++    rows=[dict(example(i),native_window_cut=512) for i in range(64)];p,m=inventory(rows)
++    assert driver.validate_inventory(p,m,rows)==64
++    for field,value in [('selection_uses_likelihood',False),('schema','useful-note-supervised-train-v3'),('teacher_kind','symbolic')]:
++        bad=dict(m);bad[field]=value
++        with pytest.raises(ValueError):driver.validate_inventory(p,bad,rows)
++    bad=copy.deepcopy(rows);bad[0]['native_window_cut']=511
++    with pytest.raises(ValueError):driver.validate_inventory(p,m,bad)
++    p['purpose']=m['purpose']='science'
++    with pytest.raises(ValueError,match='GENERAL'):driver.validate_inventory(p,m,rows)
++
++
++def test_original_filter_source_pins_resolve_at_main_not_modified_worktree(tmp_path,monkeypatch):
++    tiny(monkeypatch);old=tmp_path/'old-main';(old/'train').mkdir(parents=True)
++    old_file=old/'train/useful_note_sft_data.py';old_file.write_text('old exact filter packer')
++    directory=tmp_path/'closed';directory.mkdir();control=tmp_path/'control';control.mkdir()
++    source={'train/useful_note_sft_data.py':sha256_file(old_file)}
++    p=dict(schema=native.SCHEMA,control_dir=str(control),source_files=source)
++    (directory/'protocol.json').write_text(json.dumps(p));protocol_sha=sha256_file(directory/'protocol.json')
++    rows,decisions=selected_fixture()
++    for r in rows:r['teacher_protocol_sha256']=protocol_sha
++    data=directory/'training.jsonl';data.write_text(''.join(json.dumps(r)+'\n' for r in rows))
++    choices=directory/'decisions.jsonl';choices.write_text(''.join(json.dumps(d)+'\n' for d in decisions))
++    status='COMPLETE_FIXED5120_NATIVE_LABELS_NOT_TRAINING_RELEASE'
++    s=dict(status=status,counts=dict(raw_documents=4,teacher_attempts=4,reader_attempts=32,selected=2,requested=2),
++        protocol_sha256=protocol_sha,source_files=source,input_hashes={},training_file=str(data),training_sha256=sha256_file(data),
++        decisions_file=str(choices),decisions_sha256=sha256_file(choices))
++    m=dict(schema='general-hindsight-native-labels-v1',status=status,items=2,selection_uses_likelihood=True,
++        source_files=source,protocol_sha256=protocol_sha,examples_file=str(data),examples_sha256=sha256_file(data),
++        decisions_sha256=sha256_file(choices),item_ids_sha256=canonical_hash([r['item_id'] for r in rows]))
++    for name,value in [('summary.json',s),('training.manifest.json',m),('manifest.json',{})]:
++        (directory/name).write_text(json.dumps(value))
++    for phase in ('raw','teacher','reader'):
++        (control/f'{phase}.closure.json').write_text(json.dumps(dict(status='COMPLETE_PHYSICALLY_CLOSED',protocol_sha256=protocol_sha,
++            all16_exit0=True,all48_owned_PID_start_identities_absent=True,all_sessions_absent=True,assigned_devices_empty=True,owned_group_survivors=[])))
++    monkeypatch.setattr(native,'load',lambda *a:(_ for _ in ()).throw(AssertionError('Cannot reinterpret old filter with changed worktree hashes')))
++    _,actual,_,pins=prep.closed_publication(directory,old)
++    assert actual==rows and pins[str(old_file)]==source['train/useful_note_sft_data.py']
++    old_file.write_text('changed')
++    with pytest.raises(ValueError,match='provenance changed'):prep.closed_publication(directory,old)
++
++
++def test_CPU_preparation_counts_all_four_native_components_without_model(tmp_path,monkeypatch):
++    from transformers import AutoTokenizer
++    tiny(monkeypatch);rows,dd=selected_fixture()
++    monkeypatch.setattr(prep,'closed_publication',lambda *a:(dict(model_dir='unused',parts=PARTS),rows,dd,{}))
++    monkeypatch.setattr(AutoTokenizer,'from_pretrained',lambda *a,**k:Tok())
++    monkeypatch.setattr(driver,'source_files',lambda:{'prepared-source':'fixed'})
++    out=tmp_path/'new'
++    m=prep.prepare('unused','unused',out,'2099-01-01T00:00:00+00:00')
++    assert m['schema']==prep.SCHEMA and m['selection_uses_likelihood'] is True and m['teacher_kind']==prep.KIND
++    assert m['packing']==prep.SHAPES and m['items']==m['unique_documents']==2
++    counts=m['component_counts']
++    assert counts['source']['active_labels']==2*527
++    assert counts['writer']['active_labels']==counts['writer']['note_close_labels']==2*4
++    assert counts['writer']['non_note_labels']==0
++    assert counts['reader']['active_labels']==counts['reader']['non_note_labels']==2*16
++    assert counts['reader']['note_close_labels']==0
++    written=[json.loads(line) for line in (out/'training.jsonl').read_text().splitlines()]
++    assert written==[dict(r,native_window_cut=512) for r in rows]
++    assert m['training_sha256']==sha256_file(out/'training.jsonl')
++
++
++@pytest.mark.parametrize('size,duplicate',[(5000,False),(5001,False),(5120,True),(5120,False)])
++def test_qualification_loader_checks_actual_full_parent_quota_and_unique_documents(tmp_path,monkeypatch,size,duplicate):
++    from transformers import AutoTokenizer
++    import train.evaluate as evaluate
++    rows=[dict(example(i),native_window_cut=512) for i in range(size)]
++    if duplicate:rows[-1]['document_id']=rows[0]['document_id']
++    parent_data=tmp_path/'science-training.jsonl'
++    lines=[json.dumps(r)+'\n' for r in rows];parent_data.write_text(''.join(lines))
++    _,science=inventory(rows);science.update(purpose='science',unique_documents=5120,
++        training_file=str(parent_data),training_sha256=sha256_file(parent_data))
++    parent=tmp_path/'science-manifest.json';parent.write_text(json.dumps(science))
++    selected=rows[:64];p,m=inventory(selected)
++    data=tmp_path/'qualification-training.jsonl';data.write_text(''.join(lines[:64]))
++    m.update(training_sha256=sha256_file(data),parent_science_manifest=str(parent),
++        parent_science_manifest_sha256=sha256_file(parent),parent_science_training_sha256=sha256_file(parent_data),
++        preparation_source_sha256=sha256_file(driver.__file__),filter_input_hashes={},source_files={},
++        tokenizer_vocab_sha256=canonical_hash(Tok().get_vocab()),writer_stop_ids=[151668,151643])
++    manifest=tmp_path/'qualification-manifest.json';manifest.write_text(json.dumps(m))
++    p.update(data_file=str(data),data_sha256=sha256_file(data),dataset_file=str(manifest),dataset_sha256=sha256_file(manifest),
++        source_files={'train/useful_note_sft_driver.py':sha256_file(driver.__file__)},model_dir='not-a-model',model_manifest_sha256='assets')
++    reached=[]
++    def assets(*args):
++        reached.append(True);return dict(model_id='Qwen/Qwen3-1.7B-Base',manifest_sha256='assets')
++    monkeypatch.setattr(evaluate,'asset_provenance',assets)
++    monkeypatch.setattr(AutoTokenizer,'from_pretrained',lambda *a,**k:Tok())
++    if size!=5120 or duplicate:
++        with pytest.raises(ValueError):driver.load_inputs(p)
++        assert not reached
++    else:
++        actual,_,_,_=driver.load_inputs(p)
++        assert actual==selected and reached==[True]
+diff --git a/train/prepare_general_sft_data.py b/train/prepare_general_sft_data.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..50c113572f8ab09364838071388a119aa943ac39
+--- /dev/null
++++ b/train/prepare_general_sft_data.py
+@@ -0,0 +1,167 @@
++"""CPU inventory for a CLOSED passing GENERAL native-label publication.
++
++Historical filter hashes resolve at the unchanged MAIN source root, separately
++from this worktree's training source closure. No model or training release.
++"""
++from __future__ import annotations
++
++import argparse
++from datetime import datetime, timezone
++import json
++import math
++from pathlib import Path
++
++import torch
++
++from train import general_hindsight_filtered_data as native
++from train import useful_note_sft_data as packing
++from weekend_thinking.artifacts import atomic_json, canonical_hash, require_utc_deadline, sha256_file, utc_now
++
++SCHEMA = 'general-native-supervised-train-v1'
++KIND = 'future-aware-general-firstline-native-v1'
++ITEMS = 5120
++SHAPES = dict(source=dict(width=544,target_slots=544),writer=dict(width=640,target_slots=128),
++              reader=dict(width=704,target_slots=16),augmented=dict(width=704,target_slots=704))
++
++
++def read(path):
++    return json.loads(Path(path).read_text())
++
++
++def verify_pins(pins):
++    for name, digest in pins.items():
++        if not Path(name).is_absolute() or sha256_file(name) != digest:
++            raise ValueError(f'Immutable absolute provenance changed: {name}')
++
++
++def selected_rows(rows, decisions, tokenizer):
++    """Verify the original first accepted order, never rank/re-filter/replace."""
++    if ([d['teacher_index'] for d in decisions] != list(range(native.TEACHER_N))
++            or len({d['item_id'] for d in decisions}) != native.TEACHER_N):
++        raise ValueError('Complete original teacher decision order required')
++    for d in decisions:
++        path=d['paths']['I3']; ll=path['absolute_ll']; status=path['statuses']
++        positive=status['teacher']==status['empty']=='ok'
++        if positive:
++            if not all(isinstance(ll[k],(int,float)) and math.isfinite(ll[k]) for k in ('teacher','empty')):
++                raise ValueError('Finite original teacher/empty evidence required')
++            positive=ll['teacher']>ll['empty']
++        if (path['strict_teacher_positive']['empty'] is not positive
++                or d['accepted'] is not bool(d['eligible_plain_label']['eligible'] and positive)):
++            raise ValueError('Original strict gain decision changed')
++    chosen=[d for d in decisions if d['accepted']][:ITEMS]
++    if (len(chosen)!=ITEMS or len(rows)!=ITEMS
++            or [r['item_id'] for r in rows]!=[d['item_id'] for d in chosen]
++            or len({r['document_id'] for r in rows})!=ITEMS):
++        raise ValueError('Actual complete first5120 unique-document quota required; no fallback')
++    defined=set(tokenizer.get_vocab().values()); result=[]
++    for r,d in zip(rows,chosen):
++        native.validate_native(r,defined)
++        if (r.get('teacher_kind')!=KIND or r.get('selection_uses_likelihood') is not True
++                or r['document_id']!=d['document_id'] or r['teacher_index']!=d['teacher_index']
++                or r['pool_index']!=d['pool_index'] or r['label_decision']!=d
++                or r['original_source_ids']!=r['prefix_ids']+r['natural_future16_ids']
++                or not native.label_eligibility(dict(status='ok',content_ids=r['teacher_note_ids']),
++                    r['natural_future16_ids'],tokenizer,set(tokenizer.all_special_ids)|{151667,151668})['eligible']
++                or native.pilot.decode(tokenizer,r['teacher_note_ids'])!=r['teacher_note_text']):
++            raise ValueError('Original native teacher eligibility/source/decision changed')
++        result.append(dict(r,native_window_cut=512))
++    return result
++
++
++def closed_publication(directory, historical_root):
++    directory=Path(directory).resolve(); historical_root=Path(historical_root).resolve()
++    p=read(directory/'protocol.json'); m=read(directory/'training.manifest.json'); s=read(directory/'summary.json')
++    required=dict(raw_documents=native.RAW_N,teacher_attempts=native.TEACHER_N,
++                  reader_attempts=native.TEACHER_N*8,selected=ITEMS,requested=ITEMS)
++    if (p['schema']!=native.SCHEMA or m['schema']!='general-hindsight-native-labels-v1'
++            or s['status']!='COMPLETE_FIXED5120_NATIVE_LABELS_NOT_TRAINING_RELEASE'
++            or m['status']!=s['status'] or m['items']!=ITEMS or m['selection_uses_likelihood'] is not True
++            or any(s['counts'][k]!=v for k,v in required.items())
++            or m['protocol_sha256']!=sha256_file(directory/'protocol.json')
++            or s['protocol_sha256']!=m['protocol_sha256'] or s['source_files']!=p['source_files']
++            or m['source_files']!=p['source_files']):
++        raise ValueError('Only the actual fully passing original GENERAL publication is preparable')
++    pins={str(historical_root/name):digest for name,digest in p['source_files'].items()}
++    if any(Path(name).is_absolute() or '..' in Path(name).parts for name in p['source_files']):
++        raise ValueError('Historical source names must resolve inside the explicit original root')
++    for name in ('protocol.json','manifest.json','training.manifest.json','summary.json'):
++        pins[str(directory/name)]=sha256_file(directory/name)
++    pins.update(s['input_hashes'])
++    for phase in ('raw','teacher','reader'):
++        path=Path(p['control_dir'])/f'{phase}.closure.json'; c=read(path)
++        if (c['status']!='COMPLETE_PHYSICALLY_CLOSED' or c['protocol_sha256']!=m['protocol_sha256']
++                or not c['all16_exit0'] or not c['all48_owned_PID_start_identities_absent']
++                or not c['all_sessions_absent'] or not c['assigned_devices_empty'] or c['owned_group_survivors']):
++            raise ValueError('All three original whole physical closures required')
++        pins[str(path.resolve())]=sha256_file(path)
++    for path,digest in ((Path(m['examples_file']),m['examples_sha256']),
++                        (Path(s['decisions_file']),s['decisions_sha256'])):
++        if not path.is_absolute():raise ValueError('Original closed artifact paths must be absolute')
++        pins[str(path)]=digest
++    if (m['examples_file']!=s['training_file'] or m['examples_sha256']!=s['training_sha256']
++            or m['decisions_sha256']!=s['decisions_sha256']):
++        raise ValueError('Original summary/publication bindings differ')
++    verify_pins(pins)
++    rows=[json.loads(line) for line in Path(m['examples_file']).read_text().splitlines()]
++    decisions=[json.loads(line) for line in Path(s['decisions_file']).read_text().splitlines()]
++    if canonical_hash([r['item_id'] for r in rows])!=m['item_ids_sha256']:
++        raise ValueError('Original native label order changed')
++    if any(r.get('teacher_protocol_sha256')!=m['protocol_sha256'] for r in rows):
++        raise ValueError('Original teacher protocol lineage changed')
++    return p,rows,decisions,pins
++
++
++def prepare(directory, historical_root, output, deadline_utc):
++    from transformers import AutoTokenizer
++    from train.useful_note_sft_driver import source_files
++    deadline=require_utc_deadline(deadline_utc)
++    def check():
++        if datetime.now(timezone.utc)>=deadline:raise TimeoutError('Finite GENERAL CPU preparation; partials retained')
++    check(); output=Path(output).resolve()
++    if output.exists():raise FileExistsError(output)
++    p,rows,decisions,pins=closed_publication(directory,historical_root)
++    tok=AutoTokenizer.from_pretrained(p['model_dir'],local_files_only=True,trust_remote_code=False)
++    rows=selected_rows(rows,decisions,tok); counts={c:dict(examples=0,active_labels=0,note_close_labels=0,non_note_labels=0) for c in SHAPES}
++    frozen=source_files(); output.mkdir(parents=True,exist_ok=False)
++    try:
++        with (output/'training.jsonl').open('x') as stream:
++            for row in rows:
++                check()
++                for c in SHAPES:
++                    b=packing.pack_example(row,tok,c,interface='I3',parts=p['parts'],**SHAPES[c])
++                    n=b['note_close_mask'];f=b['future_mask'];active=n|f
++                    if ((n&f).any() or not torch.equal(b['labels'][active],b['input_ids'].gather(1,b['target_positions'])[active])
++                            or (b['labels'][~active]!=-100).any()):raise ValueError('Native causal labels/masks changed')
++                    expected=row['teacher_note_ids']+[151668] if c=='writer' else row['natural_future16_ids'] if c=='reader' else row['original_source_ids'][1:] if c=='source' else b['input_ids'][0,1:1+int(active.sum())].tolist()
++                    if b['labels'][active].tolist()!=expected or (c=='writer' and f.any()) or (c!='writer' and n.any()):
++                        raise ValueError('Native component target role changed')
++                    for k,v in dict(examples=1,active_labels=int(active.sum()),note_close_labels=int(n.sum()),non_note_labels=int(f.sum())).items():counts[c][k]+=v
++                stream.write(json.dumps(row,sort_keys=True,allow_nan=False)+'\n')
++        check();verify_pins(pins)
++        if source_files()!=frozen:raise ValueError('Training source closure changed during preparation')
++        manifest=dict(schema=SCHEMA,status='complete_CPU_inventory_NOT_Neuron_training_qualification',purpose='science',split='train',
++            items=ITEMS,unique_documents=ITEMS,unique_native_window_cuts=ITEMS,created_utc=utc_now(),teacher_kind=KIND,
++            selection_uses_likelihood=True,interface='I3',parts=p['parts'],packing=SHAPES,component_counts=counts,
++            ordered_item_ids_sha256=canonical_hash([r['item_id'] for r in rows]),ordered_document_ids_sha256=canonical_hash([r['document_id'] for r in rows]),
++            training_file=str(output/'training.jsonl'),training_sha256=sha256_file(output/'training.jsonl'),
++            tokenizer_vocab_sha256=canonical_hash(tok.get_vocab()),model_dir=p['model_dir'],writer_stop_ids=[151668,151643],
++            reader_target='Original natural16',mask_semantics='Writer note+first-close; reader16; source527; augmented every real token afterfirst.',
++            input_hashes=pins,filter_input_hashes=pins,source_files=frozen,
++            selection='Exact original first5120 strict I3-positive native eligible labels; no new likelihood ranking or replacement.',
++            padding='Reuse qualified544/640/704/704 trunk and544/128/16/704 head shapes; extra padding explicit.',
++            limitations=['Future-aware generated labels, not deployed prefix-only utility.','Original teacher>empty filter does not require teacher>raw/other or semantic correctness.','CPU inventory does not release qualification/training.'])
++        atomic_json(output/'manifest.json',manifest);return manifest
++    except BaseException as exc:
++        atomic_json(output/'FAILED.json',dict(status='FAILED_CPU_PREPARATION_PARTIALS_RETAINED',error=repr(exc),finished_utc=utc_now()));raise
++
++
++def main():
++    parser=argparse.ArgumentParser(description=__doc__)
++    for name in ('publication','historical-source-root','output'):parser.add_argument('--'+name,type=Path,required=True)
++    parser.add_argument('--deadline-utc',required=True);a=parser.parse_args()
++    m=prepare(a.publication,a.historical_source_root,a.output,a.deadline_utc)
++    print(json.dumps(dict(schema=SCHEMA,items=m['items'],packing=m['packing'])))
++
++
++if __name__=='__main__':main()
+diff --git a/train/useful_note_sft_data.py b/train/useful_note_sft_data.py
+index 9baf12d8dbed238352e0d3433c1a885c47b64f45..5e634ca40f8977945681c251cc66b9614791fa9e 100644
+--- a/train/useful_note_sft_data.py
++++ b/train/useful_note_sft_data.py
+@@ -130,6 +130,14 @@ def pack_example(row, tokenizer, component, *, interface, parts, width, target_s
+     that pass. T labels every real augmented token after the first, including
+     inserted delimiters/reanchor; W excludes these from its reader labels.
+     """
++    if row.get('teacher_kind') == 'future-aware-general-firstline-native-v1':
++        from train.general_hindsight_filtered_data import pack_native
++        if interface != 'I3':
++            raise ValueError('GENERAL native labels retain the original I3 interface')
++        return pack_native(row, tokenizer, component, parts=parts,
++                           width=width, target_slots=target_slots)
++    if row.get('teacher_kind') is not None:
++        raise ValueError('Unknown explicit teacher kind; never reinterpret as symbolic')
+     if component not in COMPONENTS or row.get('split') != 'train':
+         raise ValueError('A declared component and TRAIN document are required')
+     past = list(row['prefix_ids']); original = list(row['original_source_ids'])
+diff --git a/train/useful_note_sft_driver.py b/train/useful_note_sft_driver.py
+index f44dc70efd5a73108bb2837b9fb8094e8a2c25c9..32879cef2900cbaf43e20322d4c4d4ea8c75eab2 100644
+--- a/train/useful_note_sft_driver.py
++++ b/train/useful_note_sft_driver.py
+@@ -22,7 +22,7 @@ import time
+ from weekend_thinking.artifacts import atomic_json, canonical_hash, require_utc_deadline, sha256_file, utc_now
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+-SCHEMA = 'useful-note-sft-v4'
++SCHEMA = 'useful-note-sft-v5'
+ WEIGHTS = {'W': {'writer': 1., 'reader': 1., 'source': .5},
+            'Cprime': {'continuation': 1., 'source': .5}, 'T': {'augmented': 1.}}
+ COMPONENTS = ('source', 'writer', 'reader', 'augmented')
+@@ -48,14 +48,16 @@ def planned_steps(p):
+ 
+ def source_files():
+     from train.filter_symbolic_notes import sources
++    from train.general_hindsight_filtered_data import sources as general_sources
+     names = ('train/useful_note_sft_driver.py', 'train/useful_note_sft_data.py',
+              'train/masked_causal_ce.py', 'train/neuron_driver.py',
+              'train/warmstart_driver.py', 'train/useful_note_precision.py',
+              'train/useful_note_controls.py', 'train/prepare_reader_learning_data.py',
++             'train/prepare_general_sft_data.py',
+              'train/useful_note_recovery.py',
+              'weekend_thinking/runtime_policy.py',
+              'weekend_thinking/checkpoints.py')
+-    return {**sources(), **{name: sha256_file(ROOT/name) for name in names}}
++    return {**sources(), **general_sources(), **{name: sha256_file(ROOT/name) for name in names}}
+ 
+ 
+ def validate_protocol(p):
+@@ -121,24 +123,40 @@ def batch_indices(step, rank, p, count=None, order=None):
+         [order_index(pos,p['items'] if count is None else count,p['seed']) for pos in positions])
+ 
+ 
++def inventory_contract(manifest):
++    if manifest.get('schema') == 'useful-note-supervised-train-v3':
++        return 'teacher_note_kind', 'exact-postorder-v1', False
++    if manifest.get('schema') == 'general-native-supervised-train-v1':
++        return 'teacher_kind', 'future-aware-general-firstline-native-v1', True
++    raise ValueError('Explicit symbolic or GENERAL native training schema required')
++
++
+ def validate_inventory(p,manifest,rows):
+     """Unique item/cut identities; repeated TRAIN documents remain explicit."""
+     ids=[r['item_id'] for r in rows];docs=[r['document_id'] for r in rows]
+-    cuts=[r.get('absolute_source_cut') for r in rows]
+-    if (manifest.get('schema') != 'useful-note-supervised-train-v3'
+-            or manifest.get('status') != 'complete_CPU_inventory_NOT_Neuron_training_qualification'
++    kind_field, kind, likelihood = inventory_contract(manifest)
++    cut_field='native_window_cut' if likelihood else 'absolute_source_cut'
++    cuts=[r.get(cut_field) for r in rows]
++    if (manifest.get('status') != 'complete_CPU_inventory_NOT_Neuron_training_qualification'
+             or len(rows) != p['items'] or len(set(ids)) != len(rows)
+             or any(type(c) is not int or c < 0 for c in cuts)
+             or len(set(zip(docs,cuts))) != len(rows)
+-            or any(r.get('split') != 'train' or r.get('teacher_note_kind') != 'exact-postorder-v1' for r in rows)
++            or any(r.get('split') != 'train' or r.get(kind_field) != kind for r in rows)
+             or manifest.get('items') != p['items'] or manifest.get('unique_documents') != len(set(docs))
+             or manifest.get('purpose') != p['purpose'] or manifest.get('split') != 'train'
+             or manifest.get('training_sha256') != p['data_sha256']
+-            or manifest.get('selection_uses_likelihood') is not False
++            or manifest.get('selection_uses_likelihood') is not likelihood
+             or manifest.get('ordered_item_ids_sha256') != canonical_hash(ids)
+             or manifest.get('ordered_document_ids_sha256') != canonical_hash(docs)
+             or any(manifest.get(k) != p[k] for k in ('packing','interface','parts'))):
+         raise ValueError('Complete fixed TRAIN item/document/cut inventory and native packing required')
++    if likelihood and (manifest.get('teacher_kind') != kind
++            or p['items'] != (64 if p['purpose']=='qualification' else 5120)
++            or len(set(docs)) != len(rows) or any(c != 512 for c in cuts)
++            or any(len(r['prefix_ids']) != 512 or len(r['natural_future16_ids']) != 16
++                or r['original_source_ids'] != r['prefix_ids']+r['natural_future16_ids']
++                or r.get('selection_uses_likelihood') is not True for r in rows)):
++        raise ValueError('GENERAL requires unique documents, original native512+16 and honest gain selection')
+     return len(set(docs))
+ 
+ 
+@@ -157,9 +175,16 @@ def load_inputs(p):
+                 or manifest['preparation_source_sha256']!=p['source_files']['train/useful_note_sft_driver.py']):
+             raise ValueError('Qualification subset preparation/parent changed')
+         science=json.loads(parent.read_text());data=Path(science['training_file'])
+-        if (science['purpose']!='science' or science['schema']!='useful-note-supervised-train-v3'
++        if (science['purpose']!='science' or science['schema']!=manifest['schema']
+                 or science['items']<5000 or sha256_file(data)!=manifest['parent_science_training_sha256']):
+             raise ValueError('Qualification requires the fixed new science parent')
++        if manifest['schema']=='general-native-supervised-train-v1':
++            if (science['items']!=5120 or science['unique_documents']!=5120
++                    or science['training_sha256']!=manifest['parent_science_training_sha256']):
++                raise ValueError('GENERAL qualification requires the actual complete5120-document parent')
++            parent_rows=[json.loads(line) for line in data.read_text().splitlines()]
++            parent_protocol=dict(p,items=5120,purpose='science',data_sha256=science['training_sha256'])
++            validate_inventory(parent_protocol,science,parent_rows)
+         with data.open('rb') as f: first=b''.join(next(f) for _ in range(64))
+         if Path(p['data_file']).read_bytes()!=first:
+             raise ValueError('Qualification must preserve the exact first64 science rows')
+@@ -191,11 +216,14 @@ def prepare_qualification_inventory(science_dir,output,model_dir,deadline):
+         if datetime.now(timezone.utc)>=require_utc_deadline(deadline):raise TimeoutError('Qualification inventory deadline')
+     check();path=science_dir/'manifest.json';m=json.loads(path.read_text())
+     data=Path(m['training_file'])
+-    if (output.exists() or m['schema']!='useful-note-supervised-train-v3' or m['purpose']!='science'
++    _,_,uses_likelihood=inventory_contract(m)
++    if (output.exists() or m['purpose']!='science'
+             or m['status']!='complete_CPU_inventory_NOT_Neuron_training_qualification'
+-            or m['items']<5000 or m['selection_uses_likelihood'] is not False
++            or m['items']<5000 or m['selection_uses_likelihood'] is not uses_likelihood
+             or sha256_file(data)!=m['training_sha256']):
+         raise ValueError('Fresh qualification output and complete new science inventory required')
++    if uses_likelihood and (m['items']!=5120 or m['unique_documents']!=5120):
++        raise ValueError('GENERAL qualification requires the actual complete5120-document quota')
+     lines=data.read_bytes().splitlines(keepends=True)
+     rows=[json.loads(line) for line in lines]
+     if (len(rows)!=m['items'] or canonical_hash([r['item_id'] for r in rows])!=m['ordered_item_ids_sha256']
+@@ -217,7 +245,8 @@ def prepare_qualification_inventory(science_dir,output,model_dir,deadline):
+     keys=('interface','parts','packing','tokenizer_vocab_sha256','writer_stop_ids','mask_semantics','reader_target',
+           'input_hashes','filter_input_hashes','source_files','selection_uses_likelihood')
+     manifest={k:m[k] for k in keys}
+-    manifest.update(schema='useful-note-supervised-train-v3',status=m['status'],purpose='qualification',split='train',
++    if uses_likelihood:manifest['teacher_kind']=m['teacher_kind']
++    manifest.update(schema=m['schema'],status=m['status'],purpose='qualification',split='train',
+         items=64,unique_documents=len({r['document_id'] for r in selected}),component_counts=counts,
+         training_file=str(target.resolve()),training_sha256=sha256_file(target),created_utc=utc_now(),
+         ordered_item_ids_sha256=canonical_hash([r['item_id'] for r in selected]),
+diff --git a/validation/general_native_SFT_v5_CPU_readiness_20261018.json b/validation/general_native_SFT_v5_CPU_readiness_20261018.json
+new file mode 100644
+index 0000000000000000000000000000000000000000..d69d5dde56bb284f04d9ebce40681ce9d2f5dc08
+--- /dev/null
++++ b/validation/general_native_SFT_v5_CPU_readiness_20261018.json
+@@ -0,0 +1,93 @@
++{
++  "base_commit": "731a9ce",
++  "branch": "general-sft-v5",
++  "checks": {
++    "compile": true,
++    "focused": {
++      "log": "/home/ubuntu/dario/local/checks/general-sft-v5.focused-corrected.log",
++      "passed": 105,
++      "sha256": "9b897838678c327dfba369969d0203d4691313b0958fc7b1ce24c2f8bc7d9bc1"
++    },
++    "log_sha256": "7cf6e1233156e5cf5cc60c64042fa9354e51cc9cc2a06848833f7d42e4dd2d74",
++    "seconds": 71.5,
++    "smoke": true,
++    "tests": 1557
++  },
++  "data_schema": "general-native-supervised-train-v1",
++  "independent_scope_review": {
++    "file": "local/analysis/general-sft-v5-driver-scope-review-20261018.json",
++    "sha256": "dd7023224963d932b7f5e5de1ccaccdd24b9b0daeb0521dc00aec8075f60da3c"
++  },
++  "limits": [
++    "Only kind/schema/provenance/packing dispatch changed. Backward objective, one ZeRO reduction owner, BF16 model/FP32 optimizer masters and recovery math are unchanged.",
++    "Historical filter source hashes are checked at absolute unchanged main paths; worktree training sources have a distinct closure.",
++    "Fixed old component shapes explicitly add padding; actual compiler reuse and hardware qualification remain unmeasured.",
++    "CPU checks do not establish an actual5120-label quota, Neuron hardware behavior, compiler reuse, training or useful generated notes.",
++    "Current actual arithmetic training and general-label pipeline continue from unchanged main sources; this branch is isolated."
++  ],
++  "native_cut_semantics": "native_window_cut=512 is a cut within the saved native528-token window, NOT a proven absolute document offset. Symbolic rows retain absolute_source_cut.",
++  "observed_utc": "2026-10-18T10:36:24.830903+00:00",
++  "prerequisite": "Complete original fixed5120 quota and all raw/teacher/reader physical closures, then reviewed CPU native inventory. No fallback or partial qualification dataset.",
++  "protocol_contract": {
++    "betas": [
++      0.9,
++      0.95
++    ],
++    "clip": 1.0,
++    "compute_dtype": "bf16",
++    "epochs": 2,
++    "eps": 1e-08,
++    "global_batch": 32,
++    "gradient_dtype": "bf16",
++    "interface": "I3",
++    "loss_weights": {
++      "Cprime": {
++        "continuation": 1.0,
++        "source": 0.5
++      },
++      "T": {
++        "augmented": 1.0
++      },
++      "W": {
++        "reader": 1.0,
++        "source": 0.5,
++        "writer": 1.0
++      }
++    },
++    "lr": 1e-05,
++    "optimizer_dtype": "fp32",
++    "packing": {
++      "augmented": {
++        "target_slots": 704,
++        "width": 704
++      },
++      "reader": {
++        "target_slots": 16,
++        "width": 704
++      },
++      "source": {
++        "target_slots": 544,
++        "width": 544
++      },
++      "writer": {
++        "target_slots": 128,
++        "width": 640
++      }
++    },
++    "parameter_dtype": "bf16",
++    "schema": "useful-note-sft-v5",
++    "steps": 320,
++    "tail_policy": "exact",
++    "warmup_steps": 20,
++    "weight_decay": 0.1
++  },
++  "qualification_parent_guard": "Exact actual5120-item/5120-unique-document parent and every full parent row checked;5000/5001 and duplicates beyondfirst64 rejected before assets.",
++  "schema": "general-native-sft-v5-CPU-readiness-v1",
++  "source_sha256": {
++    "tests/test_prepare_general_sft_data.py": "eb284a0133bcc1889613b088932efc40f8286abc86329f353370e484528992f1",
++    "train/prepare_general_sft_data.py": "2c0f58a6dda27a2614c34ba410f15a4116fab816989f8c953290ebd137c16788",
++    "train/useful_note_sft_data.py": "72f595325cbb6bbc3e29680385d639ddfb5f525dc776eb9351ae4c4bd509ab08",
++    "train/useful_note_sft_driver.py": "3d9cebba155abf95c85b89426c8489fe684cfbc8ff556c4b0682f0c0118a67ed"
++  },
++  "status": "PASS_CPU_ONLY_NO_DATA_QUOTA_OR_MODEL_RELEASE"
++}

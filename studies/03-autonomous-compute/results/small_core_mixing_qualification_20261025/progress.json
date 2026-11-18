@@ -1,0 +1,1930 @@
+{
+  "records": [
+    {
+      "case": {
+        "identity": "one-ntp",
+        "arm": "one",
+        "objective_weight": 0.0,
+        "gradient_rule": "all_sampled_steps"
+      },
+      "model_variant": "all_mixes_then_one_core_fullgrad",
+      "native": {
+        "warm": {
+          "status": "CAPTURED_FUTURE_SPAN_TRAINING_QUALIFICATION",
+          "case": {
+            "identity": "one-ntp",
+            "arm": "one",
+            "objective_weight": 0.0,
+            "gradient_rule": "all_sampled_steps"
+          },
+          "mode": "warm",
+          "signature": {
+            "plan_sha256": "4c8238f2600d5a6fa53f3a56f0afa613b968bf9ee4b918607839e51edb43f50b",
+            "case": {
+              "identity": "one-ntp",
+              "arm": "one",
+              "objective_weight": 0.0,
+              "gradient_rule": "all_sampled_steps"
+            },
+            "preparation_manifest_sha256": "109860d9b1692a61598563f3d8347a3be197ed0b3e67a3a582c21d597ba2bd8d",
+            "depth_table_sha256": "0be872430599007db09978f0fc3e205c87159fd1267e3b1b13848b762c706692",
+            "initial_sha256": "30cbb12c185465757368ba2d5c576d678fdb4916f097404210dda36c1133167a",
+            "state_seed": 2009,
+            "routing_seed": 271828,
+            "precision": "fp16_body_fp32_heads_masters_moments",
+            "manual_loss_scale": 8192,
+            "world": 32,
+            "accumulation": 16,
+            "gradient_rule": "all_sampled_steps"
+          },
+          "qualification_only": true,
+          "research_optimizer_updates": 0,
+          "actual_optimizer_calls_per_replica": 121,
+          "phase_real_targets": 63328362,
+          "real_targets": 63328362,
+          "valid_anchors": 3787431,
+          "cursor": 61952,
+          "model_matmuls": 30135762989088768,
+          "optimizer_matmuls_all_replicas": 3157123377830400,
+          "model_matmul_scope": "Nominal dense autograd operators including zero-weight control head;native optimizer/dead-code/tile work and communication require separate profiling.",
+          "probes": [
+            {
+              "update": 0,
+              "cursor": 0,
+              "real_targets": 523314,
+              "valid_anchors": 31241,
+              "source_row_count": 512,
+              "source_rows_canonical_json_sha256": "bf76bdc365e7bdf25c436efc1b231a0a21573a70745b737c763d4e59aa300131",
+              "noise_sha256_by_rank": [
+                "d068a201c83fdac8c84f714f56fe71c2e670d917a2dfb7ce10329d35ed9d6667",
+                "2dc5e734b8993dc4f7da60e1a4c1500dab94efb6304e53bb6124ae214f7bd67b",
+                "df426496f2a2f0cfa6c7ddc38b7e9e3ce2f07c98256ace0d7174accfc04d7e71",
+                "0f8f5fca1f23ca91999733d9a338a663461cdfe457d167af75adf5a652ed0aee",
+                "2d4f4d81bd000ceca89c5ab1d530b56eff7495d80c1ca8597ef4da15b70e7531",
+                "f3e26e94f6fc75140df569e12cca53f9f436de244c3aa28824b6ba53d6d434d3",
+                "91e86277b5846cfcb0118ebc7285fe507ea3cc9698076135535350f30f8a5cee",
+                "d287c72c107262e8225c0b5fe2d5c6a30e84aa336e923f9b97c7e0f8f18cda99",
+                "73f121b3c2897d404444395c5d2a529c349abbd51bdf7fdd6389c77ef5dc60b9",
+                "a1d16a3d1a28378633eb9006a46de63a4ee462be06ef491c1edb2192f6924222",
+                "f19070b48a43fe0e400074c49e36b074344021ca5482bdcb96eb0d444057ea9a",
+                "e35326c746ee4117b19846314698ec6c78c684dabb05145d2f7758981cddcbf6",
+                "8345b1525ec2a4578fc332b75b53e4445759bacd7936b8aabcc62f6c69585c5c",
+                "bec359b96559c3b2dc465333921336e15eab5116e3cd188445a41387312e0618",
+                "162dda651f97b5272e32017de1a30d9c25cf47e3feeb201c6a9d593ad9b49d29",
+                "429250b693e175451d01071fe769467c1cef28bf8b43c42eccc7a9838e8ad19d",
+                "362a1da7e2d7f7e6e82ac13c061e0e621bcdcf005fea0bcd62d5be416e134b51",
+                "eca6eb85ec25803717130029371fc93765c2985bcd32f4cc3e6129cbdc621793",
+                "83fd8b17baaa4cb1d1c316b8be6b919f497906d4cf67fe3e3a55fcb252533aab",
+                "ab8b2805e71598726ac8453080186ba4ac4eba5f7e459a562adf34daf16748e0",
+                "8d3ade3b38ca66db23f1048540835bb575cd697446856643af0dbc2dc57fc66c",
+                "f45eed59a5168b1480c1505fab37827446ab308f3aeccc635ea53dd814c22486",
+                "b7c86a45c5fb87042a5c4bcb292320fca0afe636da06e2f05d95845e1da4da1a",
+                "09578510faf4f3538e734e50f490b50bc6458279680473b3d07fd34c0ca2e5c8",
+                "28e21cd17db25980ccfa24300d3e482da4e4eb4b089fa8291be7f869af814026",
+                "af6b5926f9a5d41cae98c7c4d89df39c9b9cf1c03659fd0c9947f97051aa2c49",
+                "a4e500e655748a15fcddbcbd7dce85f308ecacb5acf1901ef2f110cfc1c5ad97",
+                "8fd17731f52e6f8de354c80235069dd8b0dfeacf648358003e4493ca5abb19c0",
+                "126528231f7540995a7e69aae7e46038ef5b9403f0603b709a1761bb430f5500",
+                "549a583700c93190a480a0b1384d2fddc74cdc5e95c4a8a72493ee618dc77b0c",
+                "67f969ec4f3a8d20e66b37639070ad5117a4135db432b27fbd1a80538a139ef4",
+                "a9e07acc8d3f86212f5e096d5d99b5aeab9850ca8d74a2d6dcd561b0ec90b34d"
+              ],
+              "gradient_file": "gradient-u0.pt",
+              "gradient_sha256": "dbb42f08ca5057bfa9a6dfc55465ad0f6280a53e8ba67e02cf41763676c2428a",
+              "raw_gradient_norm": 21.15028953552246
+            },
+            {
+              "update": 120,
+              "cursor": 61440,
+              "real_targets": 523312,
+              "valid_anchors": 31246,
+              "source_row_count": 512,
+              "source_rows_canonical_json_sha256": "844aa1c377867200ffb35ba7808dc19294bd943c6e946a10f909f26c4dfbdfed",
+              "noise_sha256_by_rank": [
+                "f56b94bc826ce9800a708ebd0256761866fb1c6b5765efc9e76e7ccf8e605dba",
+                "8daf54c8b019378d56586694b59b04a5e07b4eb4a8096d59030f72bb989fcf63",
+                "d5d40eee64bfaf61c9a8f243e5ad3117ededdca3bbe4a79b36b68febbba4b94e",
+                "5bcd8a899f61543c06c80ea64cf72b80f4da9df11ac29cd0b110f27a9989390a",
+                "b4b7c5a0634342debb349b028c970937cfccf3cffabfbbba34e3e490ff7f5ed1",
+                "1a90e64b451d38bda6910ed4a9aa89414792804d67035e63f3d7b2514df2797c",
+                "668732507f0614432173df6352b2b0e07305642d9b8f82ee62bea5d948332f3f",
+                "910c204ed8011f04b6b2d84423baa24bd5e7074f142e85667550fb870723e18f",
+                "129b8604ed890b51de66e9ea81b8cfdb8b722d6eabc93fd1e4b432d8ea05494e",
+                "1fb6f61ab2969852fe982250bbf9193c87a6d8f8ce04ceb1f1782c291c566bb3",
+                "565f5078546b2998f0659bc1007412953aae74c17803b3da6a8b1b4a1bb1e319",
+                "28abe70a1cef208d69ff38eda2a9cb3deedca9149d4f0cc48cb26b6433b760dd",
+                "39569f44ed19f2aac656894b253caa9feffbc36ad1ff5eab907b39f98e05e9b0",
+                "90267b281fecc2b079ed154f36ec372a8ab7774954c23d4bc8b24eb5b49cbd15",
+                "b082ca29f0c6aa3929bc72d72f7dcc74aa22dfcfd8e928cab674b93bed3dc313",
+                "3f7144596b5b4c2849d7cfda54697178c51b79671b236f7560ebf9c6bbcc5546",
+                "1e33fb96c995c50e9839314ab12f0d8347906474522cabcae2f8de049955048f",
+                "48e682408bc58e00b4c3412c4319d799de79740264126da257e8113242517d6b",
+                "a03b34d9e1a1f25e722cfb79dee119e1cb4b99290a128426d1ed78c3fa93f34d",
+                "5b936c825bb46d9109235134a4172d53334bf4780023c1756489093f5dfcbb80",
+                "885b9c763441b62cf957ccdfccde90de24e72ed498f5648af3d1fbe93f01cf28",
+                "a62de69eefdc8dec1cd927086b434467cc1aa3fe2f533f923e4898882f46ac7e",
+                "5f6836c36eb45cafb2861933584d293db6ef86e04717a61225d0728d6f79d912",
+                "c8071556ae862a35a4f254fa73c3dde2b43edead62ac56c0fca1d1e08695164c",
+                "600b365265766812c87bc369f4f031dc9f33085e4b0417874c17bf341a943bbf",
+                "b98dd7a9dc2e387b8f79aaa7158100549b124ddf16c0716d6161eff91c29a875",
+                "6700e733541ac5ef6dbb0abc437992f1ad91e86d36878f58e3ad5a5f00d3c76a",
+                "5bb527f4a6066fbf30fcbb80498309add9e01d033e1fd5054fb23644f7fa2af4",
+                "ccd02a8f6e1d77bcf27db48be7ba4da3016e2b4310ec9bae6388c852cb98a198",
+                "f6a50d02aa712be071de9d7aca20fa4dc9c690910a3607624cc5e2d6f364c9de",
+                "601d76162121be1b7b4cdfb4f2c62c7e316f707e4dfd450e4a4a5f8ea7aa5cfe",
+                "674baf72acfe89e0a86844f8f3f42281fadc1ddc30f650b6fc08027b5548ba85"
+              ],
+              "gradient_file": "gradient-u120.pt",
+              "gradient_sha256": "c54b5223337f8eda17cb4a3f01452d436fb86e44b28b7ee806d10b1348be3be5",
+              "raw_gradient_norm": 3.0719213485717773
+            }
+          ],
+          "full_checkpoint_sha256": "58f88b55cbf9ff020a681b0533da389152be6091e7e130592a462d5f11a9236b",
+          "full_checkpoint_state_digest": "6523d623c99edceee25df6f5db74b623b5aa867792ab7f6957d3eb004ecda4d6",
+          "first_update_sha256": "f49245f4fd2ed865e3c31535f8bb2bde3217955f3b6580c6ebbfa041e2e8a979",
+          "final_sha256": "edfd88d18758b7e1e134530e5cd8ec3affeb77ae3d9eeac5b5d3f1b24b477dc7",
+          "final_model_optimizer_digest": "4fbecc6983d8cb88d7121afbd1ba1e969afbfc946e24f1a9867b5acbbad8f3ab",
+          "all_complete_replica_states_equal": true,
+          "recovered_state_digest": null,
+          "complete_state_on_load_exact": false,
+          "cpu_rng_on_load_exact": false,
+          "warm_updates": 100,
+          "warm_seconds": 105.94392108917236,
+          "warm_targets_per_second": 494010.7508003965,
+          "warm_model_matmuls": 24905589247180800,
+          "warm_optimizer_matmuls_all_replicas": 2609192874240000,
+          "progress": [
+            {
+              "update": 1,
+              "real_targets": 523314,
+              "valid_anchors": 31241,
+              "global_train_nll": 10.561340801125137,
+              "global_future_loss": 6.87628086889024,
+              "gradient_norm_before_clip": 21.15028953552246,
+              "lr": 5e-06,
+              "elapsed_seconds": 91.2873044013977
+            },
+            {
+              "update": 10,
+              "real_targets": 5233798,
+              "valid_anchors": 313085,
+              "global_train_nll": 10.398222420092022,
+              "global_future_loss": 6.899895406693972,
+              "gradient_norm_before_clip": 21.258729934692383,
+              "lr": 5e-05,
+              "elapsed_seconds": 113.1196756362915
+            },
+            {
+              "update": 20,
+              "real_targets": 10467614,
+              "valid_anchors": 626164,
+              "global_train_nll": 9.887956664628554,
+              "global_future_loss": 6.894528628607037,
+              "gradient_norm_before_clip": 25.430622100830078,
+              "lr": 0.0001,
+              "elapsed_seconds": 123.70780634880066
+            },
+            {
+              "update": 30,
+              "real_targets": 15701370,
+              "valid_anchors": 939182,
+              "global_train_nll": 9.293197893699057,
+              "global_future_loss": 6.84433853950353,
+              "gradient_norm_before_clip": 44.60898208618164,
+              "lr": 9.824819231794262e-05,
+              "elapsed_seconds": 134.31148552894592
+            },
+            {
+              "update": 40,
+              "real_targets": 20934888,
+              "valid_anchors": 1251957,
+              "global_train_nll": 8.601919821468831,
+              "global_future_loss": 6.853383503672948,
+              "gradient_norm_before_clip": 63.59488296508789,
+              "lr": 9.236745922441589e-05,
+              "elapsed_seconds": 144.91084957122803
+            },
+            {
+              "update": 50,
+              "real_targets": 26168398,
+              "valid_anchors": 1564695,
+              "global_train_nll": 7.852056230317669,
+              "global_future_loss": 6.855054149457305,
+              "gradient_norm_before_clip": 50.89744186401367,
+              "lr": 8.29004296357349e-05,
+              "elapsed_seconds": 155.530779838562
+            },
+            {
+              "update": 60,
+              "real_targets": 31402312,
+              "valid_anchors": 1877926,
+              "global_train_nll": 7.358645560671774,
+              "global_future_loss": 6.883838786911412,
+              "gradient_norm_before_clip": 20.737279891967773,
+              "lr": 7.075569021361259e-05,
+              "elapsed_seconds": 166.12016034126282
+            },
+            {
+              "update": 70,
+              "real_targets": 36636094,
+              "valid_anchors": 2190986,
+              "global_train_nll": 6.956805007317623,
+              "global_future_loss": 6.867043087347955,
+              "gradient_norm_before_clip": 4.924899578094482,
+              "lr": 5.7098817567433805e-05,
+              "elapsed_seconds": 176.7367935180664
+            },
+            {
+              "update": 80,
+              "real_targets": 41869746,
+              "valid_anchors": 2503921,
+              "global_train_nll": 6.814514911828203,
+              "global_future_loss": 6.87495414234217,
+              "gradient_norm_before_clip": 4.320184230804443,
+              "lr": 4.324051345542129e-05,
+              "elapsed_seconds": 187.3318281173706
+            },
+            {
+              "update": 90,
+              "real_targets": 47103690,
+              "valid_anchors": 2817102,
+              "global_train_nll": 6.69118669779634,
+              "global_future_loss": 6.836522034168929,
+              "gradient_norm_before_clip": 4.008650779724121,
+              "lr": 3.051081177597877e-05,
+              "elapsed_seconds": 197.9465799331665
+            },
+            {
+              "update": 100,
+              "real_targets": 52337398,
+              "valid_anchors": 3130071,
+              "global_train_nll": 6.655886398807818,
+              "global_future_loss": 6.854483838681894,
+              "gradient_norm_before_clip": 3.1877543926239014,
+              "lr": 2.0131430180369964e-05,
+              "elapsed_seconds": 208.56500816345215
+            },
+            {
+              "update": 110,
+              "real_targets": 57571286,
+              "valid_anchors": 3443191,
+              "global_train_nll": 6.603571947202287,
+              "global_future_loss": 6.853194131421629,
+              "gradient_norm_before_clip": 3.5405757427215576,
+              "lr": 1.3098517205605332e-05,
+              "elapsed_seconds": 219.16752457618713
+            },
+            {
+              "update": 120,
+              "real_targets": 62805050,
+              "valid_anchors": 3756185,
+              "global_train_nll": 6.617494516454458,
+              "global_future_loss": 6.849264295064172,
+              "gradient_norm_before_clip": 3.145106077194214,
+              "lr": 1.0087048128988257e-05,
+              "elapsed_seconds": 229.65173768997192
+            },
+            {
+              "update": 121,
+              "real_targets": 63328362,
+              "valid_anchors": 3787431,
+              "global_train_nll": 6.585528804995873,
+              "global_future_loss": 6.893894918549575,
+              "gradient_norm_before_clip": 3.0719213485717773,
+              "lr": 1.0021767296860541e-05,
+              "elapsed_seconds": 246.38881254196167
+            }
+          ],
+          "test_accessed": false,
+          "wall_seconds": 254.55076265335083,
+          "scope": "Finite actual-update qualification of four-cell causal objective,full gradients,global token/anchor normalization,FP16 body and FP32 heads/masters,moments,manual8192 unscale,runtime schedule,owned32-rank DDP and exact state load. Independent CPU gradient/first-update/recovery checks are mandatory before any scientific adoption."
+        },
+        "replay": {
+          "status": "CAPTURED_FUTURE_SPAN_TRAINING_QUALIFICATION",
+          "case": {
+            "identity": "one-ntp",
+            "arm": "one",
+            "objective_weight": 0.0,
+            "gradient_rule": "all_sampled_steps"
+          },
+          "mode": "replay",
+          "signature": {
+            "plan_sha256": "4c8238f2600d5a6fa53f3a56f0afa613b968bf9ee4b918607839e51edb43f50b",
+            "case": {
+              "identity": "one-ntp",
+              "arm": "one",
+              "objective_weight": 0.0,
+              "gradient_rule": "all_sampled_steps"
+            },
+            "preparation_manifest_sha256": "109860d9b1692a61598563f3d8347a3be197ed0b3e67a3a582c21d597ba2bd8d",
+            "depth_table_sha256": "0be872430599007db09978f0fc3e205c87159fd1267e3b1b13848b762c706692",
+            "initial_sha256": "30cbb12c185465757368ba2d5c576d678fdb4916f097404210dda36c1133167a",
+            "state_seed": 2009,
+            "routing_seed": 271828,
+            "precision": "fp16_body_fp32_heads_masters_moments",
+            "manual_loss_scale": 8192,
+            "world": 32,
+            "accumulation": 16,
+            "gradient_rule": "all_sampled_steps"
+          },
+          "qualification_only": true,
+          "research_optimizer_updates": 0,
+          "actual_optimizer_calls_per_replica": 1,
+          "phase_real_targets": 523312,
+          "real_targets": 63328362,
+          "valid_anchors": 3787431,
+          "cursor": 61952,
+          "model_matmuls": 30135762989088768,
+          "optimizer_matmuls_all_replicas": 3157123377830400,
+          "model_matmul_scope": "Nominal dense autograd operators including zero-weight control head;native optimizer/dead-code/tile work and communication require separate profiling.",
+          "probes": [
+            {
+              "update": 120,
+              "cursor": 61440,
+              "real_targets": 523312,
+              "valid_anchors": 31246,
+              "source_row_count": 512,
+              "source_rows_canonical_json_sha256": "844aa1c377867200ffb35ba7808dc19294bd943c6e946a10f909f26c4dfbdfed",
+              "noise_sha256_by_rank": [
+                "f56b94bc826ce9800a708ebd0256761866fb1c6b5765efc9e76e7ccf8e605dba",
+                "8daf54c8b019378d56586694b59b04a5e07b4eb4a8096d59030f72bb989fcf63",
+                "d5d40eee64bfaf61c9a8f243e5ad3117ededdca3bbe4a79b36b68febbba4b94e",
+                "5bcd8a899f61543c06c80ea64cf72b80f4da9df11ac29cd0b110f27a9989390a",
+                "b4b7c5a0634342debb349b028c970937cfccf3cffabfbbba34e3e490ff7f5ed1",
+                "1a90e64b451d38bda6910ed4a9aa89414792804d67035e63f3d7b2514df2797c",
+                "668732507f0614432173df6352b2b0e07305642d9b8f82ee62bea5d948332f3f",
+                "910c204ed8011f04b6b2d84423baa24bd5e7074f142e85667550fb870723e18f",
+                "129b8604ed890b51de66e9ea81b8cfdb8b722d6eabc93fd1e4b432d8ea05494e",
+                "1fb6f61ab2969852fe982250bbf9193c87a6d8f8ce04ceb1f1782c291c566bb3",
+                "565f5078546b2998f0659bc1007412953aae74c17803b3da6a8b1b4a1bb1e319",
+                "28abe70a1cef208d69ff38eda2a9cb3deedca9149d4f0cc48cb26b6433b760dd",
+                "39569f44ed19f2aac656894b253caa9feffbc36ad1ff5eab907b39f98e05e9b0",
+                "90267b281fecc2b079ed154f36ec372a8ab7774954c23d4bc8b24eb5b49cbd15",
+                "b082ca29f0c6aa3929bc72d72f7dcc74aa22dfcfd8e928cab674b93bed3dc313",
+                "3f7144596b5b4c2849d7cfda54697178c51b79671b236f7560ebf9c6bbcc5546",
+                "1e33fb96c995c50e9839314ab12f0d8347906474522cabcae2f8de049955048f",
+                "48e682408bc58e00b4c3412c4319d799de79740264126da257e8113242517d6b",
+                "a03b34d9e1a1f25e722cfb79dee119e1cb4b99290a128426d1ed78c3fa93f34d",
+                "5b936c825bb46d9109235134a4172d53334bf4780023c1756489093f5dfcbb80",
+                "885b9c763441b62cf957ccdfccde90de24e72ed498f5648af3d1fbe93f01cf28",
+                "a62de69eefdc8dec1cd927086b434467cc1aa3fe2f533f923e4898882f46ac7e",
+                "5f6836c36eb45cafb2861933584d293db6ef86e04717a61225d0728d6f79d912",
+                "c8071556ae862a35a4f254fa73c3dde2b43edead62ac56c0fca1d1e08695164c",
+                "600b365265766812c87bc369f4f031dc9f33085e4b0417874c17bf341a943bbf",
+                "b98dd7a9dc2e387b8f79aaa7158100549b124ddf16c0716d6161eff91c29a875",
+                "6700e733541ac5ef6dbb0abc437992f1ad91e86d36878f58e3ad5a5f00d3c76a",
+                "5bb527f4a6066fbf30fcbb80498309add9e01d033e1fd5054fb23644f7fa2af4",
+                "ccd02a8f6e1d77bcf27db48be7ba4da3016e2b4310ec9bae6388c852cb98a198",
+                "f6a50d02aa712be071de9d7aca20fa4dc9c690910a3607624cc5e2d6f364c9de",
+                "601d76162121be1b7b4cdfb4f2c62c7e316f707e4dfd450e4a4a5f8ea7aa5cfe",
+                "674baf72acfe89e0a86844f8f3f42281fadc1ddc30f650b6fc08027b5548ba85"
+              ],
+              "gradient_file": "gradient-u120.pt",
+              "gradient_sha256": "54d6fac5d5d046df215a5fdadd53da1fc14c0b77e4b5ab4e9ecc9f14384c13df",
+              "raw_gradient_norm": 3.0719213485717773
+            }
+          ],
+          "full_checkpoint_sha256": "2a646d660f35ab531fde312b5b078360e831d35f414f039c722e7241166f0b81",
+          "full_checkpoint_state_digest": "6523d623c99edceee25df6f5db74b623b5aa867792ab7f6957d3eb004ecda4d6",
+          "first_update_sha256": null,
+          "final_sha256": "338234f3392a466b4468a9af1042879be3c9e757e2bee3599166596bc65ce5a5",
+          "final_model_optimizer_digest": "e0a58822731ffc32e48e6fa97f316565de4c2d2809510bfaaa307e601d7f00d0",
+          "all_complete_replica_states_equal": true,
+          "recovered_state_digest": "6523d623c99edceee25df6f5db74b623b5aa867792ab7f6957d3eb004ecda4d6",
+          "complete_state_on_load_exact": true,
+          "cpu_rng_on_load_exact": true,
+          "warm_updates": 0,
+          "warm_seconds": null,
+          "warm_targets_per_second": null,
+          "warm_model_matmuls": 0,
+          "warm_optimizer_matmuls_all_replicas": 0,
+          "progress": [
+            {
+              "update": 121,
+              "real_targets": 63328362,
+              "valid_anchors": 3787431,
+              "global_train_nll": 6.585528804995873,
+              "global_future_loss": 6.893894918549575,
+              "gradient_norm_before_clip": 3.0719213485717773,
+              "lr": 1.0021767296860541e-05,
+              "elapsed_seconds": 118.65619468688965
+            }
+          ],
+          "test_accessed": false,
+          "wall_seconds": 126.61652779579163,
+          "scope": "Finite actual-update qualification of four-cell causal objective,full gradients,global token/anchor normalization,FP16 body and FP32 heads/masters,moments,manual8192 unscale,runtime schedule,owned32-rank DDP and exact state load. Independent CPU gradient/first-update/recovery checks are mandatory before any scientific adoption."
+        }
+      },
+      "initial_cpu": {
+        "status": "PASS_INDEPENDENT_FUTURE_SPAN_QUALIFICATION_AUDIT",
+        "case": {
+          "identity": "one-ntp",
+          "arm": "one",
+          "objective_weight": 0.0,
+          "gradient_rule": "all_sampled_steps"
+        },
+        "update": 0,
+        "native_mode": "warm",
+        "gradient": {
+          "body": {
+            "overall": {
+              "relative_l2": 0.00034513353182602144,
+              "maximum_absolute_error": 6.510317325592041e-05,
+              "reference_l2": 21.150209228432452
+            },
+            "families": {
+              "recurrent_injection_readout": {
+                "relative_l2": 0.00023575881337266786,
+                "maximum_absolute_error": 1.3033859431743622e-06,
+                "reference_l2": 0.5835576943636668
+              },
+              "tied_input_output": {
+                "relative_l2": 0.0002564711473559477,
+                "maximum_absolute_error": 1.4372402802109718e-05,
+                "reference_l2": 0.6953565131825522
+              },
+              "transformer_body": {
+                "relative_l2": 0.0003452873767849119,
+                "maximum_absolute_error": 6.510317325592041e-05,
+                "reference_l2": 21.13071911089144
+              },
+              "value_embeddings": {
+                "relative_l2": 0.0,
+                "maximum_absolute_error": 0.0,
+                "reference_l2": 0.0
+              }
+            },
+            "passes_two_percent_gate": true
+          },
+          "future_head": {
+            "relative_l2": 0.0,
+            "maximum_absolute_error": 0.0,
+            "reference_l2": 0.0
+          },
+          "future_head_named": {
+            "future_lm_head.weight": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0
+            },
+            "future_lm_head.bias": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0
+            }
+          },
+          "passes_two_percent_gate": true
+        },
+        "loss_differences": {
+          "ntp_nll": 1.9948736564856517e-06,
+          "future_mean": 3.1259002586381257e-07
+        },
+        "cpu_ntp_nll": 10.56133880625148,
+        "cpu_future_mean": 6.876280556300214,
+        "first_or_recovered_update": {
+          "update_comparison": {
+            "relative_l2": 1.4079805278675802e-05,
+            "maximum_absolute_error": 1.4901161193847656e-08,
+            "reference_l2": 0.025318138755392048,
+            "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+          },
+          "moment_comparison": {
+            "relative_l2": 3.828535262234933e-05,
+            "maximum_absolute_error": 3.2887328416109085e-08,
+            "reference_l2": 0.1451515218979924
+          },
+          "families": {
+            "adamw": {
+              "update_comparison": {
+                "relative_l2": 1.4036223340535559e-05,
+                "maximum_absolute_error": 1.4901161193847656e-08,
+                "reference_l2": 0.025314683253113545,
+                "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+              },
+              "moment_comparison": {
+                "relative_l2": 3.821228399725584e-05,
+                "maximum_absolute_error": 1.635635271668434e-08,
+                "reference_l2": 0.008586748326813233
+              }
+            },
+            "muon": {
+              "update_comparison": {
+                "relative_l2": 6.84568295141656e-05,
+                "maximum_absolute_error": 9.099210274143843e-11,
+                "reference_l2": 0.0004182843910754758,
+                "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+              },
+              "moment_comparison": {
+                "relative_l2": 3.828560898316291e-05,
+                "maximum_absolute_error": 3.2887328416109085e-08,
+                "reference_l2": 0.14489731558063917
+              }
+            }
+          },
+          "future_head": {
+            "update_comparison": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0,
+              "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+            },
+            "moment_comparison": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0
+            }
+          }
+        },
+        "optimizer_step_passes_two_percent_gate": true,
+        "cpu_raw_gradient_norm_before_clip": 21.149478912353516,
+        "gold_fingerprint": {
+          "case": {
+            "identity": "one-ntp",
+            "arm": "one",
+            "objective_weight": 0.0,
+            "gradient_rule": "all_sampled_steps"
+          },
+          "update": 0,
+          "model_digest": "a1f7ae4efd9c714eb86f202302195f6c9af227fc9657be1f6c82287d4d233521",
+          "source_cursor": 0,
+          "real_targets": 523314,
+          "valid_anchors": 31241,
+          "noise_sha256_by_rank": [
+            "d068a201c83fdac8c84f714f56fe71c2e670d917a2dfb7ce10329d35ed9d6667",
+            "2dc5e734b8993dc4f7da60e1a4c1500dab94efb6304e53bb6124ae214f7bd67b",
+            "df426496f2a2f0cfa6c7ddc38b7e9e3ce2f07c98256ace0d7174accfc04d7e71",
+            "0f8f5fca1f23ca91999733d9a338a663461cdfe457d167af75adf5a652ed0aee",
+            "2d4f4d81bd000ceca89c5ab1d530b56eff7495d80c1ca8597ef4da15b70e7531",
+            "f3e26e94f6fc75140df569e12cca53f9f436de244c3aa28824b6ba53d6d434d3",
+            "91e86277b5846cfcb0118ebc7285fe507ea3cc9698076135535350f30f8a5cee",
+            "d287c72c107262e8225c0b5fe2d5c6a30e84aa336e923f9b97c7e0f8f18cda99",
+            "73f121b3c2897d404444395c5d2a529c349abbd51bdf7fdd6389c77ef5dc60b9",
+            "a1d16a3d1a28378633eb9006a46de63a4ee462be06ef491c1edb2192f6924222",
+            "f19070b48a43fe0e400074c49e36b074344021ca5482bdcb96eb0d444057ea9a",
+            "e35326c746ee4117b19846314698ec6c78c684dabb05145d2f7758981cddcbf6",
+            "8345b1525ec2a4578fc332b75b53e4445759bacd7936b8aabcc62f6c69585c5c",
+            "bec359b96559c3b2dc465333921336e15eab5116e3cd188445a41387312e0618",
+            "162dda651f97b5272e32017de1a30d9c25cf47e3feeb201c6a9d593ad9b49d29",
+            "429250b693e175451d01071fe769467c1cef28bf8b43c42eccc7a9838e8ad19d",
+            "362a1da7e2d7f7e6e82ac13c061e0e621bcdcf005fea0bcd62d5be416e134b51",
+            "eca6eb85ec25803717130029371fc93765c2985bcd32f4cc3e6129cbdc621793",
+            "83fd8b17baaa4cb1d1c316b8be6b919f497906d4cf67fe3e3a55fcb252533aab",
+            "ab8b2805e71598726ac8453080186ba4ac4eba5f7e459a562adf34daf16748e0",
+            "8d3ade3b38ca66db23f1048540835bb575cd697446856643af0dbc2dc57fc66c",
+            "f45eed59a5168b1480c1505fab37827446ab308f3aeccc635ea53dd814c22486",
+            "b7c86a45c5fb87042a5c4bcb292320fca0afe636da06e2f05d95845e1da4da1a",
+            "09578510faf4f3538e734e50f490b50bc6458279680473b3d07fd34c0ca2e5c8",
+            "28e21cd17db25980ccfa24300d3e482da4e4eb4b089fa8291be7f869af814026",
+            "af6b5926f9a5d41cae98c7c4d89df39c9b9cf1c03659fd0c9947f97051aa2c49",
+            "a4e500e655748a15fcddbcbd7dce85f308ecacb5acf1901ef2f110cfc1c5ad97",
+            "8fd17731f52e6f8de354c80235069dd8b0dfeacf648358003e4493ca5abb19c0",
+            "126528231f7540995a7e69aae7e46038ef5b9403f0603b709a1761bb430f5500",
+            "549a583700c93190a480a0b1384d2fddc74cdc5e95c4a8a72493ee618dc77b0c",
+            "67f969ec4f3a8d20e66b37639070ad5117a4135db432b27fbd1a80538a139ef4",
+            "a9e07acc8d3f86212f5e096d5d99b5aeab9850ca8d74a2d6dcd561b0ec90b34d"
+          ],
+          "depth_table_sha256": "0be872430599007db09978f0fc3e205c87159fd1267e3b1b13848b762c706692",
+          "plan_sha256": "4c8238f2600d5a6fa53f3a56f0afa613b968bf9ee4b918607839e51edb43f50b"
+        },
+        "reused_gold": false,
+        "cpu_global_sha256": "becd745ad4228ad0429f7bcbaf9c51c76ade112ea11279e64d5a18feb24d51f5",
+        "diagnostic_matrix_operations": 249055892471808,
+        "assigned_chips": 0,
+        "optimizer_updates": 0,
+        "prescribed_cpu_reference_optimizer_steps": 1,
+        "research_optimizer_updates": 0,
+        "test_accessed": false,
+        "wall_seconds": 442.0946943759918,
+        "scope": "Independent pinned upstream FP32 full512-window natural TRAIN objective with separately constructed dense presence targets. Exact state/source/depth/noise required for gold reuse. Native raw-gradient replay isolates clipping and independent optimizer arithmetic;no held-out score or scientific training adoption."
+      },
+      "trained_cpu": {
+        "status": "PASS_INDEPENDENT_FUTURE_SPAN_QUALIFICATION_AUDIT",
+        "case": {
+          "identity": "one-ntp",
+          "arm": "one",
+          "objective_weight": 0.0,
+          "gradient_rule": "all_sampled_steps"
+        },
+        "update": 120,
+        "native_mode": "warm",
+        "gradient": {
+          "body": {
+            "overall": {
+              "relative_l2": 0.0008917569259859379,
+              "maximum_absolute_error": 3.433844540268183e-05,
+              "reference_l2": 3.0718112972654685
+            },
+            "families": {
+              "recurrent_injection_readout": {
+                "relative_l2": 0.0011904004012502421,
+                "maximum_absolute_error": 1.0227922757621855e-06,
+                "reference_l2": 0.09132039109738725
+              },
+              "tied_input_output": {
+                "relative_l2": 0.0007269836093728028,
+                "maximum_absolute_error": 1.222570426762104e-05,
+                "reference_l2": 0.22707644509267327
+              },
+              "transformer_body": {
+                "relative_l2": 0.0008922691310545332,
+                "maximum_absolute_error": 3.433844540268183e-05,
+                "reference_l2": 3.062045298307552
+              },
+              "value_embeddings": {
+                "relative_l2": 0.000377845037031134,
+                "maximum_absolute_error": 1.5414116205647588e-08,
+                "reference_l2": 0.0003337278402042804
+              }
+            },
+            "passes_two_percent_gate": true
+          },
+          "future_head": {
+            "relative_l2": 0.0,
+            "maximum_absolute_error": 0.0,
+            "reference_l2": 0.0
+          },
+          "future_head_named": {
+            "future_lm_head.weight": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0
+            },
+            "future_lm_head.bias": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0
+            }
+          },
+          "passes_two_percent_gate": true
+        },
+        "loss_differences": {
+          "ntp_nll": -1.945429124461384e-06,
+          "future_mean": -2.226847536590526e-06
+        },
+        "cpu_ntp_nll": 6.585530750424997,
+        "cpu_future_mean": 6.893897145397111,
+        "first_or_recovered_update": {
+          "update_comparison": {
+            "relative_l2": 0.0002316355137035051,
+            "maximum_absolute_error": 2.384185791015625e-07,
+            "reference_l2": 0.04121666564466328,
+            "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+          },
+          "moment_comparison": {
+            "relative_l2": 3.0685794694127533e-06,
+            "maximum_absolute_error": 4.842877388000488e-08,
+            "reference_l2": 0.8494932995349792
+          },
+          "families": {
+            "adamw": {
+              "update_comparison": {
+                "relative_l2": 0.0002310095911696281,
+                "maximum_absolute_error": 2.384185791015625e-07,
+                "reference_l2": 0.041179454415807774,
+                "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+              },
+              "moment_comparison": {
+                "relative_l2": 1.1297172760781411e-05,
+                "maximum_absolute_error": 1.885928213596344e-08,
+                "reference_l2": 0.07044170059017574
+              }
+            },
+            "muon": {
+              "update_comparison": {
+                "relative_l2": 0.0004623993195724351,
+                "maximum_absolute_error": 4.842877388000488e-08,
+                "reference_l2": 0.0017510170988245266,
+                "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+              },
+              "moment_comparison": {
+                "relative_l2": 2.932189201517322e-06,
+                "maximum_absolute_error": 4.842877388000488e-08,
+                "reference_l2": 0.8465676776092917
+              }
+            }
+          },
+          "future_head": {
+            "update_comparison": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0,
+              "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+            },
+            "moment_comparison": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0
+            }
+          }
+        },
+        "optimizer_step_passes_two_percent_gate": true,
+        "cpu_raw_gradient_norm_before_clip": 3.0717687606811523,
+        "gold_fingerprint": {
+          "case": {
+            "identity": "one-ntp",
+            "arm": "one",
+            "objective_weight": 0.0,
+            "gradient_rule": "all_sampled_steps"
+          },
+          "update": 120,
+          "model_digest": "158925c9e995006a78d66cd939969e5914e94be77ca53d76322ddd79f6bfdf98",
+          "source_cursor": 61440,
+          "real_targets": 523312,
+          "valid_anchors": 31246,
+          "noise_sha256_by_rank": [
+            "f56b94bc826ce9800a708ebd0256761866fb1c6b5765efc9e76e7ccf8e605dba",
+            "8daf54c8b019378d56586694b59b04a5e07b4eb4a8096d59030f72bb989fcf63",
+            "d5d40eee64bfaf61c9a8f243e5ad3117ededdca3bbe4a79b36b68febbba4b94e",
+            "5bcd8a899f61543c06c80ea64cf72b80f4da9df11ac29cd0b110f27a9989390a",
+            "b4b7c5a0634342debb349b028c970937cfccf3cffabfbbba34e3e490ff7f5ed1",
+            "1a90e64b451d38bda6910ed4a9aa89414792804d67035e63f3d7b2514df2797c",
+            "668732507f0614432173df6352b2b0e07305642d9b8f82ee62bea5d948332f3f",
+            "910c204ed8011f04b6b2d84423baa24bd5e7074f142e85667550fb870723e18f",
+            "129b8604ed890b51de66e9ea81b8cfdb8b722d6eabc93fd1e4b432d8ea05494e",
+            "1fb6f61ab2969852fe982250bbf9193c87a6d8f8ce04ceb1f1782c291c566bb3",
+            "565f5078546b2998f0659bc1007412953aae74c17803b3da6a8b1b4a1bb1e319",
+            "28abe70a1cef208d69ff38eda2a9cb3deedca9149d4f0cc48cb26b6433b760dd",
+            "39569f44ed19f2aac656894b253caa9feffbc36ad1ff5eab907b39f98e05e9b0",
+            "90267b281fecc2b079ed154f36ec372a8ab7774954c23d4bc8b24eb5b49cbd15",
+            "b082ca29f0c6aa3929bc72d72f7dcc74aa22dfcfd8e928cab674b93bed3dc313",
+            "3f7144596b5b4c2849d7cfda54697178c51b79671b236f7560ebf9c6bbcc5546",
+            "1e33fb96c995c50e9839314ab12f0d8347906474522cabcae2f8de049955048f",
+            "48e682408bc58e00b4c3412c4319d799de79740264126da257e8113242517d6b",
+            "a03b34d9e1a1f25e722cfb79dee119e1cb4b99290a128426d1ed78c3fa93f34d",
+            "5b936c825bb46d9109235134a4172d53334bf4780023c1756489093f5dfcbb80",
+            "885b9c763441b62cf957ccdfccde90de24e72ed498f5648af3d1fbe93f01cf28",
+            "a62de69eefdc8dec1cd927086b434467cc1aa3fe2f533f923e4898882f46ac7e",
+            "5f6836c36eb45cafb2861933584d293db6ef86e04717a61225d0728d6f79d912",
+            "c8071556ae862a35a4f254fa73c3dde2b43edead62ac56c0fca1d1e08695164c",
+            "600b365265766812c87bc369f4f031dc9f33085e4b0417874c17bf341a943bbf",
+            "b98dd7a9dc2e387b8f79aaa7158100549b124ddf16c0716d6161eff91c29a875",
+            "6700e733541ac5ef6dbb0abc437992f1ad91e86d36878f58e3ad5a5f00d3c76a",
+            "5bb527f4a6066fbf30fcbb80498309add9e01d033e1fd5054fb23644f7fa2af4",
+            "ccd02a8f6e1d77bcf27db48be7ba4da3016e2b4310ec9bae6388c852cb98a198",
+            "f6a50d02aa712be071de9d7aca20fa4dc9c690910a3607624cc5e2d6f364c9de",
+            "601d76162121be1b7b4cdfb4f2c62c7e316f707e4dfd450e4a4a5f8ea7aa5cfe",
+            "674baf72acfe89e0a86844f8f3f42281fadc1ddc30f650b6fc08027b5548ba85"
+          ],
+          "depth_table_sha256": "0be872430599007db09978f0fc3e205c87159fd1267e3b1b13848b762c706692",
+          "plan_sha256": "4c8238f2600d5a6fa53f3a56f0afa613b968bf9ee4b918607839e51edb43f50b"
+        },
+        "reused_gold": false,
+        "cpu_global_sha256": "e5704e466ee418e802d2d3d3b2818bf35cde988558f183346d042e27f2e8b53a",
+        "diagnostic_matrix_operations": 249055892471808,
+        "assigned_chips": 0,
+        "optimizer_updates": 0,
+        "prescribed_cpu_reference_optimizer_steps": 1,
+        "research_optimizer_updates": 0,
+        "test_accessed": false,
+        "wall_seconds": 444.4686472415924,
+        "scope": "Independent pinned upstream FP32 full512-window natural TRAIN objective with separately constructed dense presence targets. Exact state/source/depth/noise required for gold reuse. Native raw-gradient replay isolates clipping and independent optimizer arithmetic;no held-out score or scientific training adoption."
+      },
+      "replay_cpu": {
+        "status": "PASS_INDEPENDENT_FUTURE_SPAN_QUALIFICATION_AUDIT",
+        "case": {
+          "identity": "one-ntp",
+          "arm": "one",
+          "objective_weight": 0.0,
+          "gradient_rule": "all_sampled_steps"
+        },
+        "update": 120,
+        "native_mode": "replay",
+        "gradient": {
+          "body": {
+            "overall": {
+              "relative_l2": 0.0008917568832922352,
+              "maximum_absolute_error": 3.433832898736e-05,
+              "reference_l2": 3.0718112972654685
+            },
+            "families": {
+              "recurrent_injection_readout": {
+                "relative_l2": 0.0011904004697008798,
+                "maximum_absolute_error": 1.0227849998045713e-06,
+                "reference_l2": 0.09132039109738725
+              },
+              "tied_input_output": {
+                "relative_l2": 0.0007269840878635069,
+                "maximum_absolute_error": 1.2225937098264694e-05,
+                "reference_l2": 0.22707644509267327
+              },
+              "transformer_body": {
+                "relative_l2": 0.000892269085887499,
+                "maximum_absolute_error": 3.433832898736e-05,
+                "reference_l2": 3.062045298307552
+              },
+              "value_embeddings": {
+                "relative_l2": 0.00037784746920628684,
+                "maximum_absolute_error": 1.541775418445468e-08,
+                "reference_l2": 0.0003337278402042804
+              }
+            },
+            "passes_two_percent_gate": true
+          },
+          "future_head": {
+            "relative_l2": 0.0,
+            "maximum_absolute_error": 0.0,
+            "reference_l2": 0.0
+          },
+          "future_head_named": {
+            "future_lm_head.weight": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0
+            },
+            "future_lm_head.bias": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0
+            }
+          },
+          "passes_two_percent_gate": true
+        },
+        "loss_differences": {
+          "ntp_nll": -1.945429124461384e-06,
+          "future_mean": -2.226847536590526e-06
+        },
+        "cpu_ntp_nll": 6.585530750424997,
+        "cpu_future_mean": 6.893897145397111,
+        "first_or_recovered_update": {
+          "update_comparison": {
+            "relative_l2": 0.00023159884598725674,
+            "maximum_absolute_error": 2.384185791015625e-07,
+            "reference_l2": 0.04121666560406655,
+            "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+          },
+          "moment_comparison": {
+            "relative_l2": 3.067960824341532e-06,
+            "maximum_absolute_error": 4.842877388000488e-08,
+            "reference_l2": 0.8494933013864328
+          },
+          "families": {
+            "adamw": {
+              "update_comparison": {
+                "relative_l2": 0.00023096926517058618,
+                "maximum_absolute_error": 2.384185791015625e-07,
+                "reference_l2": 0.041179454374581696,
+                "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+              },
+              "moment_comparison": {
+                "relative_l2": 1.1296884906231168e-05,
+                "maximum_absolute_error": 1.8742866814136505e-08,
+                "reference_l2": 0.07044170060509765
+              }
+            },
+            "muon": {
+              "update_comparison": {
+                "relative_l2": 0.00046336313721645397,
+                "maximum_absolute_error": 4.842877388000488e-08,
+                "reference_l2": 0.001751017112762445,
+                "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+              },
+              "moment_comparison": {
+                "relative_l2": 2.9315449718366652e-06,
+                "maximum_absolute_error": 4.842877388000488e-08,
+                "reference_l2": 0.8465676794659022
+              }
+            }
+          },
+          "future_head": {
+            "update_comparison": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0,
+              "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+            },
+            "moment_comparison": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0
+            }
+          }
+        },
+        "optimizer_step_passes_two_percent_gate": true,
+        "cpu_raw_gradient_norm_before_clip": 3.0717687606811523,
+        "gold_fingerprint": {
+          "case": {
+            "identity": "one-ntp",
+            "arm": "one",
+            "objective_weight": 0.0,
+            "gradient_rule": "all_sampled_steps"
+          },
+          "update": 120,
+          "model_digest": "158925c9e995006a78d66cd939969e5914e94be77ca53d76322ddd79f6bfdf98",
+          "source_cursor": 61440,
+          "real_targets": 523312,
+          "valid_anchors": 31246,
+          "noise_sha256_by_rank": [
+            "f56b94bc826ce9800a708ebd0256761866fb1c6b5765efc9e76e7ccf8e605dba",
+            "8daf54c8b019378d56586694b59b04a5e07b4eb4a8096d59030f72bb989fcf63",
+            "d5d40eee64bfaf61c9a8f243e5ad3117ededdca3bbe4a79b36b68febbba4b94e",
+            "5bcd8a899f61543c06c80ea64cf72b80f4da9df11ac29cd0b110f27a9989390a",
+            "b4b7c5a0634342debb349b028c970937cfccf3cffabfbbba34e3e490ff7f5ed1",
+            "1a90e64b451d38bda6910ed4a9aa89414792804d67035e63f3d7b2514df2797c",
+            "668732507f0614432173df6352b2b0e07305642d9b8f82ee62bea5d948332f3f",
+            "910c204ed8011f04b6b2d84423baa24bd5e7074f142e85667550fb870723e18f",
+            "129b8604ed890b51de66e9ea81b8cfdb8b722d6eabc93fd1e4b432d8ea05494e",
+            "1fb6f61ab2969852fe982250bbf9193c87a6d8f8ce04ceb1f1782c291c566bb3",
+            "565f5078546b2998f0659bc1007412953aae74c17803b3da6a8b1b4a1bb1e319",
+            "28abe70a1cef208d69ff38eda2a9cb3deedca9149d4f0cc48cb26b6433b760dd",
+            "39569f44ed19f2aac656894b253caa9feffbc36ad1ff5eab907b39f98e05e9b0",
+            "90267b281fecc2b079ed154f36ec372a8ab7774954c23d4bc8b24eb5b49cbd15",
+            "b082ca29f0c6aa3929bc72d72f7dcc74aa22dfcfd8e928cab674b93bed3dc313",
+            "3f7144596b5b4c2849d7cfda54697178c51b79671b236f7560ebf9c6bbcc5546",
+            "1e33fb96c995c50e9839314ab12f0d8347906474522cabcae2f8de049955048f",
+            "48e682408bc58e00b4c3412c4319d799de79740264126da257e8113242517d6b",
+            "a03b34d9e1a1f25e722cfb79dee119e1cb4b99290a128426d1ed78c3fa93f34d",
+            "5b936c825bb46d9109235134a4172d53334bf4780023c1756489093f5dfcbb80",
+            "885b9c763441b62cf957ccdfccde90de24e72ed498f5648af3d1fbe93f01cf28",
+            "a62de69eefdc8dec1cd927086b434467cc1aa3fe2f533f923e4898882f46ac7e",
+            "5f6836c36eb45cafb2861933584d293db6ef86e04717a61225d0728d6f79d912",
+            "c8071556ae862a35a4f254fa73c3dde2b43edead62ac56c0fca1d1e08695164c",
+            "600b365265766812c87bc369f4f031dc9f33085e4b0417874c17bf341a943bbf",
+            "b98dd7a9dc2e387b8f79aaa7158100549b124ddf16c0716d6161eff91c29a875",
+            "6700e733541ac5ef6dbb0abc437992f1ad91e86d36878f58e3ad5a5f00d3c76a",
+            "5bb527f4a6066fbf30fcbb80498309add9e01d033e1fd5054fb23644f7fa2af4",
+            "ccd02a8f6e1d77bcf27db48be7ba4da3016e2b4310ec9bae6388c852cb98a198",
+            "f6a50d02aa712be071de9d7aca20fa4dc9c690910a3607624cc5e2d6f364c9de",
+            "601d76162121be1b7b4cdfb4f2c62c7e316f707e4dfd450e4a4a5f8ea7aa5cfe",
+            "674baf72acfe89e0a86844f8f3f42281fadc1ddc30f650b6fc08027b5548ba85"
+          ],
+          "depth_table_sha256": "0be872430599007db09978f0fc3e205c87159fd1267e3b1b13848b762c706692",
+          "plan_sha256": "4c8238f2600d5a6fa53f3a56f0afa613b968bf9ee4b918607839e51edb43f50b"
+        },
+        "reused_gold": true,
+        "cpu_global_sha256": "e5704e466ee418e802d2d3d3b2818bf35cde988558f183346d042e27f2e8b53a",
+        "diagnostic_matrix_operations": 0,
+        "assigned_chips": 0,
+        "optimizer_updates": 0,
+        "prescribed_cpu_reference_optimizer_steps": 1,
+        "research_optimizer_updates": 0,
+        "test_accessed": false,
+        "wall_seconds": 46.77684044837952,
+        "scope": "Independent pinned upstream FP32 full512-window natural TRAIN objective with separately constructed dense presence targets. Exact state/source/depth/noise required for gold reuse. Native raw-gradient replay isolates clipping and independent optimizer arithmetic;no held-out score or scientific training adoption."
+      }
+    },
+    {
+      "case": {
+        "identity": "recurrent-ntp",
+        "arm": "recurrent",
+        "objective_weight": 0.0,
+        "gradient_rule": "all_sampled_steps"
+      },
+      "model_variant": "all_mixes_then_one_core_fullgrad",
+      "native": {
+        "warm": {
+          "status": "CAPTURED_FUTURE_SPAN_TRAINING_QUALIFICATION",
+          "case": {
+            "identity": "recurrent-ntp",
+            "arm": "recurrent",
+            "objective_weight": 0.0,
+            "gradient_rule": "all_sampled_steps"
+          },
+          "mode": "warm",
+          "signature": {
+            "plan_sha256": "4c8238f2600d5a6fa53f3a56f0afa613b968bf9ee4b918607839e51edb43f50b",
+            "case": {
+              "identity": "recurrent-ntp",
+              "arm": "recurrent",
+              "objective_weight": 0.0,
+              "gradient_rule": "all_sampled_steps"
+            },
+            "preparation_manifest_sha256": "109860d9b1692a61598563f3d8347a3be197ed0b3e67a3a582c21d597ba2bd8d",
+            "depth_table_sha256": "827a8314b34596c3a4422c5b5ffc036cc10d695cf6ead5e04ad00c3927b81d3c",
+            "initial_sha256": "30cbb12c185465757368ba2d5c576d678fdb4916f097404210dda36c1133167a",
+            "state_seed": 2009,
+            "routing_seed": 271828,
+            "precision": "fp16_body_fp32_heads_masters_moments",
+            "manual_loss_scale": 8192,
+            "world": 32,
+            "accumulation": 16,
+            "gradient_rule": "all_sampled_steps"
+          },
+          "qualification_only": true,
+          "research_optimizer_updates": 0,
+          "actual_optimizer_calls_per_replica": 121,
+          "phase_real_targets": 63328362,
+          "real_targets": 63328362,
+          "valid_anchors": 3787431,
+          "cursor": 61952,
+          "model_matmuls": 30390608631693312,
+          "optimizer_matmuls_all_replicas": 3157123377830400,
+          "model_matmul_scope": "Nominal dense autograd operators including zero-weight control head;native optimizer/dead-code/tile work and communication require separate profiling.",
+          "probes": [
+            {
+              "update": 0,
+              "cursor": 0,
+              "real_targets": 523314,
+              "valid_anchors": 31241,
+              "source_row_count": 512,
+              "source_rows_canonical_json_sha256": "6b4ee1d12fd0980fcacd599864897f67b98a72f76186e183d31bff461af38b4c",
+              "noise_sha256_by_rank": [
+                "d068a201c83fdac8c84f714f56fe71c2e670d917a2dfb7ce10329d35ed9d6667",
+                "2dc5e734b8993dc4f7da60e1a4c1500dab94efb6304e53bb6124ae214f7bd67b",
+                "df426496f2a2f0cfa6c7ddc38b7e9e3ce2f07c98256ace0d7174accfc04d7e71",
+                "0f8f5fca1f23ca91999733d9a338a663461cdfe457d167af75adf5a652ed0aee",
+                "2d4f4d81bd000ceca89c5ab1d530b56eff7495d80c1ca8597ef4da15b70e7531",
+                "f3e26e94f6fc75140df569e12cca53f9f436de244c3aa28824b6ba53d6d434d3",
+                "91e86277b5846cfcb0118ebc7285fe507ea3cc9698076135535350f30f8a5cee",
+                "d287c72c107262e8225c0b5fe2d5c6a30e84aa336e923f9b97c7e0f8f18cda99",
+                "73f121b3c2897d404444395c5d2a529c349abbd51bdf7fdd6389c77ef5dc60b9",
+                "a1d16a3d1a28378633eb9006a46de63a4ee462be06ef491c1edb2192f6924222",
+                "f19070b48a43fe0e400074c49e36b074344021ca5482bdcb96eb0d444057ea9a",
+                "e35326c746ee4117b19846314698ec6c78c684dabb05145d2f7758981cddcbf6",
+                "8345b1525ec2a4578fc332b75b53e4445759bacd7936b8aabcc62f6c69585c5c",
+                "bec359b96559c3b2dc465333921336e15eab5116e3cd188445a41387312e0618",
+                "162dda651f97b5272e32017de1a30d9c25cf47e3feeb201c6a9d593ad9b49d29",
+                "429250b693e175451d01071fe769467c1cef28bf8b43c42eccc7a9838e8ad19d",
+                "362a1da7e2d7f7e6e82ac13c061e0e621bcdcf005fea0bcd62d5be416e134b51",
+                "eca6eb85ec25803717130029371fc93765c2985bcd32f4cc3e6129cbdc621793",
+                "83fd8b17baaa4cb1d1c316b8be6b919f497906d4cf67fe3e3a55fcb252533aab",
+                "ab8b2805e71598726ac8453080186ba4ac4eba5f7e459a562adf34daf16748e0",
+                "8d3ade3b38ca66db23f1048540835bb575cd697446856643af0dbc2dc57fc66c",
+                "f45eed59a5168b1480c1505fab37827446ab308f3aeccc635ea53dd814c22486",
+                "b7c86a45c5fb87042a5c4bcb292320fca0afe636da06e2f05d95845e1da4da1a",
+                "09578510faf4f3538e734e50f490b50bc6458279680473b3d07fd34c0ca2e5c8",
+                "28e21cd17db25980ccfa24300d3e482da4e4eb4b089fa8291be7f869af814026",
+                "af6b5926f9a5d41cae98c7c4d89df39c9b9cf1c03659fd0c9947f97051aa2c49",
+                "a4e500e655748a15fcddbcbd7dce85f308ecacb5acf1901ef2f110cfc1c5ad97",
+                "8fd17731f52e6f8de354c80235069dd8b0dfeacf648358003e4493ca5abb19c0",
+                "126528231f7540995a7e69aae7e46038ef5b9403f0603b709a1761bb430f5500",
+                "549a583700c93190a480a0b1384d2fddc74cdc5e95c4a8a72493ee618dc77b0c",
+                "67f969ec4f3a8d20e66b37639070ad5117a4135db432b27fbd1a80538a139ef4",
+                "a9e07acc8d3f86212f5e096d5d99b5aeab9850ca8d74a2d6dcd561b0ec90b34d"
+              ],
+              "gradient_file": "gradient-u0.pt",
+              "gradient_sha256": "a4a09897a0bbae8071acf433e108d7db7239ace1799e51a338e10687e5f8f059",
+              "raw_gradient_norm": 21.13957405090332
+            },
+            {
+              "update": 120,
+              "cursor": 61440,
+              "real_targets": 523312,
+              "valid_anchors": 31246,
+              "source_row_count": 512,
+              "source_rows_canonical_json_sha256": "ee83c8478fc367ac862c0c54d46fe4e8a675d6aeca4c6a888e475fc3b961a57c",
+              "noise_sha256_by_rank": [
+                "f56b94bc826ce9800a708ebd0256761866fb1c6b5765efc9e76e7ccf8e605dba",
+                "8daf54c8b019378d56586694b59b04a5e07b4eb4a8096d59030f72bb989fcf63",
+                "d5d40eee64bfaf61c9a8f243e5ad3117ededdca3bbe4a79b36b68febbba4b94e",
+                "5bcd8a899f61543c06c80ea64cf72b80f4da9df11ac29cd0b110f27a9989390a",
+                "b4b7c5a0634342debb349b028c970937cfccf3cffabfbbba34e3e490ff7f5ed1",
+                "1a90e64b451d38bda6910ed4a9aa89414792804d67035e63f3d7b2514df2797c",
+                "668732507f0614432173df6352b2b0e07305642d9b8f82ee62bea5d948332f3f",
+                "910c204ed8011f04b6b2d84423baa24bd5e7074f142e85667550fb870723e18f",
+                "129b8604ed890b51de66e9ea81b8cfdb8b722d6eabc93fd1e4b432d8ea05494e",
+                "1fb6f61ab2969852fe982250bbf9193c87a6d8f8ce04ceb1f1782c291c566bb3",
+                "565f5078546b2998f0659bc1007412953aae74c17803b3da6a8b1b4a1bb1e319",
+                "28abe70a1cef208d69ff38eda2a9cb3deedca9149d4f0cc48cb26b6433b760dd",
+                "39569f44ed19f2aac656894b253caa9feffbc36ad1ff5eab907b39f98e05e9b0",
+                "90267b281fecc2b079ed154f36ec372a8ab7774954c23d4bc8b24eb5b49cbd15",
+                "b082ca29f0c6aa3929bc72d72f7dcc74aa22dfcfd8e928cab674b93bed3dc313",
+                "3f7144596b5b4c2849d7cfda54697178c51b79671b236f7560ebf9c6bbcc5546",
+                "1e33fb96c995c50e9839314ab12f0d8347906474522cabcae2f8de049955048f",
+                "48e682408bc58e00b4c3412c4319d799de79740264126da257e8113242517d6b",
+                "a03b34d9e1a1f25e722cfb79dee119e1cb4b99290a128426d1ed78c3fa93f34d",
+                "5b936c825bb46d9109235134a4172d53334bf4780023c1756489093f5dfcbb80",
+                "885b9c763441b62cf957ccdfccde90de24e72ed498f5648af3d1fbe93f01cf28",
+                "a62de69eefdc8dec1cd927086b434467cc1aa3fe2f533f923e4898882f46ac7e",
+                "5f6836c36eb45cafb2861933584d293db6ef86e04717a61225d0728d6f79d912",
+                "c8071556ae862a35a4f254fa73c3dde2b43edead62ac56c0fca1d1e08695164c",
+                "600b365265766812c87bc369f4f031dc9f33085e4b0417874c17bf341a943bbf",
+                "b98dd7a9dc2e387b8f79aaa7158100549b124ddf16c0716d6161eff91c29a875",
+                "6700e733541ac5ef6dbb0abc437992f1ad91e86d36878f58e3ad5a5f00d3c76a",
+                "5bb527f4a6066fbf30fcbb80498309add9e01d033e1fd5054fb23644f7fa2af4",
+                "ccd02a8f6e1d77bcf27db48be7ba4da3016e2b4310ec9bae6388c852cb98a198",
+                "f6a50d02aa712be071de9d7aca20fa4dc9c690910a3607624cc5e2d6f364c9de",
+                "601d76162121be1b7b4cdfb4f2c62c7e316f707e4dfd450e4a4a5f8ea7aa5cfe",
+                "674baf72acfe89e0a86844f8f3f42281fadc1ddc30f650b6fc08027b5548ba85"
+              ],
+              "gradient_file": "gradient-u120.pt",
+              "gradient_sha256": "27e43c14c49876355c373590426ba170e2eb134591523855ba84c4dedbaf8571",
+              "raw_gradient_norm": 3.0845184326171875
+            }
+          ],
+          "full_checkpoint_sha256": "6befb3792248e8e8b15bcbf6c22d7212b815e5e53ab3d51cb9d714f30f5fb55b",
+          "full_checkpoint_state_digest": "829fb7762f0e25c953d4a877930df754a3399a4cb4b64404ce53a8da5709eba2",
+          "first_update_sha256": "e74325e54f96f2da51e2ee077031b417a6199466364edbd04f4295960df95572",
+          "final_sha256": "bcc3d64a2ffda00a180563d6642527a3db5b949478806da35c55c4348d6f7849",
+          "final_model_optimizer_digest": "db3dee84dec5e19e88871c298473d9ff54d7bd08195d99ea42e92e6f95b4c596",
+          "all_complete_replica_states_equal": true,
+          "recovered_state_digest": null,
+          "complete_state_on_load_exact": false,
+          "cpu_rng_on_load_exact": false,
+          "warm_updates": 100,
+          "warm_seconds": 108.23533320426941,
+          "warm_targets_per_second": 483552.22320261237,
+          "warm_model_matmuls": 25116531599867904,
+          "warm_optimizer_matmuls_all_replicas": 2609192874240000,
+          "progress": [
+            {
+              "update": 1,
+              "real_targets": 523314,
+              "valid_anchors": 31241,
+              "global_train_nll": 10.561341756574446,
+              "global_future_loss": 6.87628086889024,
+              "gradient_norm_before_clip": 21.13957405090332,
+              "lr": 5e-06,
+              "elapsed_seconds": 91.9469690322876
+            },
+            {
+              "update": 10,
+              "real_targets": 5233798,
+              "valid_anchors": 313085,
+              "global_train_nll": 10.398558713829315,
+              "global_future_loss": 6.899900906341994,
+              "gradient_norm_before_clip": 21.247629165649414,
+              "lr": 5e-05,
+              "elapsed_seconds": 102.35553479194641
+            },
+            {
+              "update": 20,
+              "real_targets": 10467614,
+              "valid_anchors": 626164,
+              "global_train_nll": 9.88939066799144,
+              "global_future_loss": 6.8945196409740195,
+              "gradient_norm_before_clip": 25.41220474243164,
+              "lr": 0.0001,
+              "elapsed_seconds": 113.08407330513
+            },
+            {
+              "update": 30,
+              "real_targets": 15701370,
+              "valid_anchors": 939182,
+              "global_train_nll": 9.29639345640469,
+              "global_future_loss": 6.844316575349031,
+              "gradient_norm_before_clip": 44.55501937866211,
+              "lr": 9.824819231794262e-05,
+              "elapsed_seconds": 123.90583348274231
+            },
+            {
+              "update": 40,
+              "real_targets": 20934888,
+              "valid_anchors": 1251957,
+              "global_train_nll": 8.607689030192097,
+              "global_future_loss": 6.853343580325775,
+              "gradient_norm_before_clip": 63.66408157348633,
+              "lr": 9.236745922441589e-05,
+              "elapsed_seconds": 134.7156023979187
+            },
+            {
+              "update": 50,
+              "real_targets": 26168398,
+              "valid_anchors": 1564695,
+              "global_train_nll": 7.858582929495215,
+              "global_future_loss": 6.855017629590497,
+              "gradient_norm_before_clip": 51.35673904418945,
+              "lr": 8.29004296357349e-05,
+              "elapsed_seconds": 145.53927612304688
+            },
+            {
+              "update": 60,
+              "real_targets": 31402312,
+              "valid_anchors": 1877926,
+              "global_train_nll": 7.364190183228567,
+              "global_future_loss": 6.883875698324022,
+              "gradient_norm_before_clip": 21.159404754638672,
+              "lr": 7.075569021361259e-05,
+              "elapsed_seconds": 156.36211705207825
+            },
+            {
+              "update": 70,
+              "real_targets": 36636094,
+              "valid_anchors": 2190986,
+              "global_train_nll": 6.961482172130364,
+              "global_future_loss": 6.8671019498451615,
+              "gradient_norm_before_clip": 5.010336399078369,
+              "lr": 5.7098817567433805e-05,
+              "elapsed_seconds": 167.19207763671875
+            },
+            {
+              "update": 80,
+              "real_targets": 41869746,
+              "valid_anchors": 2503921,
+              "global_train_nll": 6.818053246976557,
+              "global_future_loss": 6.874935699588478,
+              "gradient_norm_before_clip": 4.290052890777588,
+              "lr": 4.324051345542129e-05,
+              "elapsed_seconds": 178.0146541595459
+            },
+            {
+              "update": 90,
+              "real_targets": 47103690,
+              "valid_anchors": 2817102,
+              "global_train_nll": 6.69406402726776,
+              "global_future_loss": 6.836478125498962,
+              "gradient_norm_before_clip": 4.0173139572143555,
+              "lr": 3.051081177597877e-05,
+              "elapsed_seconds": 188.83720993995667
+            },
+            {
+              "update": 100,
+              "real_targets": 52337398,
+              "valid_anchors": 3130071,
+              "global_train_nll": 6.658613706272329,
+              "global_future_loss": 6.85444296685594,
+              "gradient_norm_before_clip": 3.200319766998291,
+              "lr": 2.0131430180369964e-05,
+              "elapsed_seconds": 199.6544132232666
+            },
+            {
+              "update": 110,
+              "real_targets": 57571286,
+              "valid_anchors": 3443191,
+              "global_train_nll": 6.606385041921751,
+              "global_future_loss": 6.853160165116205,
+              "gradient_norm_before_clip": 3.5759334564208984,
+              "lr": 1.3098517205605332e-05,
+              "elapsed_seconds": 210.4947907924652
+            },
+            {
+              "update": 120,
+              "real_targets": 62805050,
+              "valid_anchors": 3756185,
+              "global_train_nll": 6.620240110511594,
+              "global_future_loss": 6.849220895057787,
+              "gradient_norm_before_clip": 3.1523354053497314,
+              "lr": 1.0087048128988257e-05,
+              "elapsed_seconds": 221.31939268112183
+            },
+            {
+              "update": 121,
+              "real_targets": 63328362,
+              "valid_anchors": 3787431,
+              "global_train_nll": 6.588244202311432,
+              "global_future_loss": 6.893872915733214,
+              "gradient_norm_before_clip": 3.0845184326171875,
+              "lr": 1.0021767296860541e-05,
+              "elapsed_seconds": 238.0708944797516
+            }
+          ],
+          "test_accessed": false,
+          "wall_seconds": 247.58180594444275,
+          "scope": "Finite actual-update qualification of four-cell causal objective,full gradients,global token/anchor normalization,FP16 body and FP32 heads/masters,moments,manual8192 unscale,runtime schedule,owned32-rank DDP and exact state load. Independent CPU gradient/first-update/recovery checks are mandatory before any scientific adoption."
+        },
+        "replay": {
+          "status": "CAPTURED_FUTURE_SPAN_TRAINING_QUALIFICATION",
+          "case": {
+            "identity": "recurrent-ntp",
+            "arm": "recurrent",
+            "objective_weight": 0.0,
+            "gradient_rule": "all_sampled_steps"
+          },
+          "mode": "replay",
+          "signature": {
+            "plan_sha256": "4c8238f2600d5a6fa53f3a56f0afa613b968bf9ee4b918607839e51edb43f50b",
+            "case": {
+              "identity": "recurrent-ntp",
+              "arm": "recurrent",
+              "objective_weight": 0.0,
+              "gradient_rule": "all_sampled_steps"
+            },
+            "preparation_manifest_sha256": "109860d9b1692a61598563f3d8347a3be197ed0b3e67a3a582c21d597ba2bd8d",
+            "depth_table_sha256": "827a8314b34596c3a4422c5b5ffc036cc10d695cf6ead5e04ad00c3927b81d3c",
+            "initial_sha256": "30cbb12c185465757368ba2d5c576d678fdb4916f097404210dda36c1133167a",
+            "state_seed": 2009,
+            "routing_seed": 271828,
+            "precision": "fp16_body_fp32_heads_masters_moments",
+            "manual_loss_scale": 8192,
+            "world": 32,
+            "accumulation": 16,
+            "gradient_rule": "all_sampled_steps"
+          },
+          "qualification_only": true,
+          "research_optimizer_updates": 0,
+          "actual_optimizer_calls_per_replica": 1,
+          "phase_real_targets": 523312,
+          "real_targets": 63328362,
+          "valid_anchors": 3787431,
+          "cursor": 61952,
+          "model_matmuls": 30390608631693312,
+          "optimizer_matmuls_all_replicas": 3157123377830400,
+          "model_matmul_scope": "Nominal dense autograd operators including zero-weight control head;native optimizer/dead-code/tile work and communication require separate profiling.",
+          "probes": [
+            {
+              "update": 120,
+              "cursor": 61440,
+              "real_targets": 523312,
+              "valid_anchors": 31246,
+              "source_row_count": 512,
+              "source_rows_canonical_json_sha256": "ee83c8478fc367ac862c0c54d46fe4e8a675d6aeca4c6a888e475fc3b961a57c",
+              "noise_sha256_by_rank": [
+                "f56b94bc826ce9800a708ebd0256761866fb1c6b5765efc9e76e7ccf8e605dba",
+                "8daf54c8b019378d56586694b59b04a5e07b4eb4a8096d59030f72bb989fcf63",
+                "d5d40eee64bfaf61c9a8f243e5ad3117ededdca3bbe4a79b36b68febbba4b94e",
+                "5bcd8a899f61543c06c80ea64cf72b80f4da9df11ac29cd0b110f27a9989390a",
+                "b4b7c5a0634342debb349b028c970937cfccf3cffabfbbba34e3e490ff7f5ed1",
+                "1a90e64b451d38bda6910ed4a9aa89414792804d67035e63f3d7b2514df2797c",
+                "668732507f0614432173df6352b2b0e07305642d9b8f82ee62bea5d948332f3f",
+                "910c204ed8011f04b6b2d84423baa24bd5e7074f142e85667550fb870723e18f",
+                "129b8604ed890b51de66e9ea81b8cfdb8b722d6eabc93fd1e4b432d8ea05494e",
+                "1fb6f61ab2969852fe982250bbf9193c87a6d8f8ce04ceb1f1782c291c566bb3",
+                "565f5078546b2998f0659bc1007412953aae74c17803b3da6a8b1b4a1bb1e319",
+                "28abe70a1cef208d69ff38eda2a9cb3deedca9149d4f0cc48cb26b6433b760dd",
+                "39569f44ed19f2aac656894b253caa9feffbc36ad1ff5eab907b39f98e05e9b0",
+                "90267b281fecc2b079ed154f36ec372a8ab7774954c23d4bc8b24eb5b49cbd15",
+                "b082ca29f0c6aa3929bc72d72f7dcc74aa22dfcfd8e928cab674b93bed3dc313",
+                "3f7144596b5b4c2849d7cfda54697178c51b79671b236f7560ebf9c6bbcc5546",
+                "1e33fb96c995c50e9839314ab12f0d8347906474522cabcae2f8de049955048f",
+                "48e682408bc58e00b4c3412c4319d799de79740264126da257e8113242517d6b",
+                "a03b34d9e1a1f25e722cfb79dee119e1cb4b99290a128426d1ed78c3fa93f34d",
+                "5b936c825bb46d9109235134a4172d53334bf4780023c1756489093f5dfcbb80",
+                "885b9c763441b62cf957ccdfccde90de24e72ed498f5648af3d1fbe93f01cf28",
+                "a62de69eefdc8dec1cd927086b434467cc1aa3fe2f533f923e4898882f46ac7e",
+                "5f6836c36eb45cafb2861933584d293db6ef86e04717a61225d0728d6f79d912",
+                "c8071556ae862a35a4f254fa73c3dde2b43edead62ac56c0fca1d1e08695164c",
+                "600b365265766812c87bc369f4f031dc9f33085e4b0417874c17bf341a943bbf",
+                "b98dd7a9dc2e387b8f79aaa7158100549b124ddf16c0716d6161eff91c29a875",
+                "6700e733541ac5ef6dbb0abc437992f1ad91e86d36878f58e3ad5a5f00d3c76a",
+                "5bb527f4a6066fbf30fcbb80498309add9e01d033e1fd5054fb23644f7fa2af4",
+                "ccd02a8f6e1d77bcf27db48be7ba4da3016e2b4310ec9bae6388c852cb98a198",
+                "f6a50d02aa712be071de9d7aca20fa4dc9c690910a3607624cc5e2d6f364c9de",
+                "601d76162121be1b7b4cdfb4f2c62c7e316f707e4dfd450e4a4a5f8ea7aa5cfe",
+                "674baf72acfe89e0a86844f8f3f42281fadc1ddc30f650b6fc08027b5548ba85"
+              ],
+              "gradient_file": "gradient-u120.pt",
+              "gradient_sha256": "c019bd4a8463bae174b6bc226f5f09e3c53f0a39c52a6525f40b7432e16c8640",
+              "raw_gradient_norm": 3.0845184326171875
+            }
+          ],
+          "full_checkpoint_sha256": "e1ccf8f4b80e73cd4cdc877bf6951c5e7d402bc0aaa43b5c809c3ea3eb9e9af5",
+          "full_checkpoint_state_digest": "829fb7762f0e25c953d4a877930df754a3399a4cb4b64404ce53a8da5709eba2",
+          "first_update_sha256": null,
+          "final_sha256": "990fd0edc0fc12235ae001e25ac57ff9c05deaca64f00a62ed6a8892f5bdddd4",
+          "final_model_optimizer_digest": "d723be79ea2f387b07c29f5c3a276a3aa0777f6a5df01b3b83eafae9462c1911",
+          "all_complete_replica_states_equal": true,
+          "recovered_state_digest": "829fb7762f0e25c953d4a877930df754a3399a4cb4b64404ce53a8da5709eba2",
+          "complete_state_on_load_exact": true,
+          "cpu_rng_on_load_exact": true,
+          "warm_updates": 0,
+          "warm_seconds": null,
+          "warm_targets_per_second": null,
+          "warm_model_matmuls": 0,
+          "warm_optimizer_matmuls_all_replicas": 0,
+          "progress": [
+            {
+              "update": 121,
+              "real_targets": 63328362,
+              "valid_anchors": 3787431,
+              "global_train_nll": 6.588244202311432,
+              "global_future_loss": 6.893872915733214,
+              "gradient_norm_before_clip": 3.0845184326171875,
+              "lr": 1.0021767296860541e-05,
+              "elapsed_seconds": 116.478022813797
+            }
+          ],
+          "test_accessed": false,
+          "wall_seconds": 125.14838218688965,
+          "scope": "Finite actual-update qualification of four-cell causal objective,full gradients,global token/anchor normalization,FP16 body and FP32 heads/masters,moments,manual8192 unscale,runtime schedule,owned32-rank DDP and exact state load. Independent CPU gradient/first-update/recovery checks are mandatory before any scientific adoption."
+        }
+      },
+      "initial_cpu": {
+        "status": "PASS_INDEPENDENT_FUTURE_SPAN_QUALIFICATION_AUDIT",
+        "case": {
+          "identity": "recurrent-ntp",
+          "arm": "recurrent",
+          "objective_weight": 0.0,
+          "gradient_rule": "all_sampled_steps"
+        },
+        "update": 0,
+        "native_mode": "warm",
+        "gradient": {
+          "body": {
+            "overall": {
+              "relative_l2": 0.0003458954858011302,
+              "maximum_absolute_error": 6.129592657089233e-05,
+              "reference_l2": 21.13949922866581
+            },
+            "families": {
+              "recurrent_injection_readout": {
+                "relative_l2": 0.00023834135489421367,
+                "maximum_absolute_error": 1.1851079761981964e-06,
+                "reference_l2": 0.583570434209391
+              },
+              "tied_input_output": {
+                "relative_l2": 0.0002578165665203885,
+                "maximum_absolute_error": 1.4591962099075317e-05,
+                "reference_l2": 0.6953864597089836
+              },
+              "transformer_body": {
+                "relative_l2": 0.0003460481292156998,
+                "maximum_absolute_error": 6.129592657089233e-05,
+                "reference_l2": 21.119997889647916
+              },
+              "value_embeddings": {
+                "relative_l2": 0.0,
+                "maximum_absolute_error": 0.0,
+                "reference_l2": 0.0
+              }
+            },
+            "passes_two_percent_gate": true
+          },
+          "future_head": {
+            "relative_l2": 0.0,
+            "maximum_absolute_error": 0.0,
+            "reference_l2": 0.0
+          },
+          "future_head_named": {
+            "future_lm_head.weight": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0
+            },
+            "future_lm_head.bias": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0
+            }
+          },
+          "passes_two_percent_gate": true
+        },
+        "loss_differences": {
+          "ntp_nll": 1.3921195023414157e-06,
+          "future_mean": 2.305351438636194e-07
+        },
+        "cpu_ntp_nll": 10.561340364454944,
+        "cpu_future_mean": 6.876280638355096,
+        "first_or_recovered_update": {
+          "update_comparison": {
+            "relative_l2": 1.4132384416920884e-05,
+            "maximum_absolute_error": 3.725290298461914e-09,
+            "reference_l2": 0.025318182998723585,
+            "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+          },
+          "moment_comparison": {
+            "relative_l2": 3.8502048420729515e-05,
+            "maximum_absolute_error": 3.306195139884949e-08,
+            "reference_l2": 0.14515207876314595
+          },
+          "families": {
+            "adamw": {
+              "update_comparison": {
+                "relative_l2": 1.4091438075869679e-05,
+                "maximum_absolute_error": 3.725290298461914e-09,
+                "reference_l2": 0.025314707019670358,
+                "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+              },
+              "moment_comparison": {
+                "relative_l2": 3.843040456299674e-05,
+                "maximum_absolute_error": 1.650187186896801e-08,
+                "reference_l2": 0.008591399279115433
+              }
+            },
+            "muon": {
+              "update_comparison": {
+                "relative_l2": 6.639004805458675e-05,
+                "maximum_absolute_error": 9.448797300137812e-11,
+                "reference_l2": 0.00041952218666973547,
+                "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+              },
+              "moment_comparison": {
+                "relative_l2": 3.850230006017969e-05,
+                "maximum_absolute_error": 3.306195139884949e-08,
+                "reference_l2": 0.14489759772918714
+              }
+            }
+          },
+          "future_head": {
+            "update_comparison": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0,
+              "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+            },
+            "moment_comparison": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0
+            }
+          }
+        },
+        "optimizer_step_passes_two_percent_gate": true,
+        "cpu_raw_gradient_norm_before_clip": 21.13875961303711,
+        "gold_fingerprint": {
+          "case": {
+            "identity": "recurrent-ntp",
+            "arm": "recurrent",
+            "objective_weight": 0.0,
+            "gradient_rule": "all_sampled_steps"
+          },
+          "update": 0,
+          "model_digest": "a1f7ae4efd9c714eb86f202302195f6c9af227fc9657be1f6c82287d4d233521",
+          "source_cursor": 0,
+          "real_targets": 523314,
+          "valid_anchors": 31241,
+          "noise_sha256_by_rank": [
+            "d068a201c83fdac8c84f714f56fe71c2e670d917a2dfb7ce10329d35ed9d6667",
+            "2dc5e734b8993dc4f7da60e1a4c1500dab94efb6304e53bb6124ae214f7bd67b",
+            "df426496f2a2f0cfa6c7ddc38b7e9e3ce2f07c98256ace0d7174accfc04d7e71",
+            "0f8f5fca1f23ca91999733d9a338a663461cdfe457d167af75adf5a652ed0aee",
+            "2d4f4d81bd000ceca89c5ab1d530b56eff7495d80c1ca8597ef4da15b70e7531",
+            "f3e26e94f6fc75140df569e12cca53f9f436de244c3aa28824b6ba53d6d434d3",
+            "91e86277b5846cfcb0118ebc7285fe507ea3cc9698076135535350f30f8a5cee",
+            "d287c72c107262e8225c0b5fe2d5c6a30e84aa336e923f9b97c7e0f8f18cda99",
+            "73f121b3c2897d404444395c5d2a529c349abbd51bdf7fdd6389c77ef5dc60b9",
+            "a1d16a3d1a28378633eb9006a46de63a4ee462be06ef491c1edb2192f6924222",
+            "f19070b48a43fe0e400074c49e36b074344021ca5482bdcb96eb0d444057ea9a",
+            "e35326c746ee4117b19846314698ec6c78c684dabb05145d2f7758981cddcbf6",
+            "8345b1525ec2a4578fc332b75b53e4445759bacd7936b8aabcc62f6c69585c5c",
+            "bec359b96559c3b2dc465333921336e15eab5116e3cd188445a41387312e0618",
+            "162dda651f97b5272e32017de1a30d9c25cf47e3feeb201c6a9d593ad9b49d29",
+            "429250b693e175451d01071fe769467c1cef28bf8b43c42eccc7a9838e8ad19d",
+            "362a1da7e2d7f7e6e82ac13c061e0e621bcdcf005fea0bcd62d5be416e134b51",
+            "eca6eb85ec25803717130029371fc93765c2985bcd32f4cc3e6129cbdc621793",
+            "83fd8b17baaa4cb1d1c316b8be6b919f497906d4cf67fe3e3a55fcb252533aab",
+            "ab8b2805e71598726ac8453080186ba4ac4eba5f7e459a562adf34daf16748e0",
+            "8d3ade3b38ca66db23f1048540835bb575cd697446856643af0dbc2dc57fc66c",
+            "f45eed59a5168b1480c1505fab37827446ab308f3aeccc635ea53dd814c22486",
+            "b7c86a45c5fb87042a5c4bcb292320fca0afe636da06e2f05d95845e1da4da1a",
+            "09578510faf4f3538e734e50f490b50bc6458279680473b3d07fd34c0ca2e5c8",
+            "28e21cd17db25980ccfa24300d3e482da4e4eb4b089fa8291be7f869af814026",
+            "af6b5926f9a5d41cae98c7c4d89df39c9b9cf1c03659fd0c9947f97051aa2c49",
+            "a4e500e655748a15fcddbcbd7dce85f308ecacb5acf1901ef2f110cfc1c5ad97",
+            "8fd17731f52e6f8de354c80235069dd8b0dfeacf648358003e4493ca5abb19c0",
+            "126528231f7540995a7e69aae7e46038ef5b9403f0603b709a1761bb430f5500",
+            "549a583700c93190a480a0b1384d2fddc74cdc5e95c4a8a72493ee618dc77b0c",
+            "67f969ec4f3a8d20e66b37639070ad5117a4135db432b27fbd1a80538a139ef4",
+            "a9e07acc8d3f86212f5e096d5d99b5aeab9850ca8d74a2d6dcd561b0ec90b34d"
+          ],
+          "depth_table_sha256": "827a8314b34596c3a4422c5b5ffc036cc10d695cf6ead5e04ad00c3927b81d3c",
+          "plan_sha256": "4c8238f2600d5a6fa53f3a56f0afa613b968bf9ee4b918607839e51edb43f50b"
+        },
+        "reused_gold": false,
+        "cpu_global_sha256": "f9813f2a943ee356de1306a9c346e9acb74d0744e68fd30638b346652d921add",
+        "diagnostic_matrix_operations": 251164989849600,
+        "assigned_chips": 0,
+        "optimizer_updates": 0,
+        "prescribed_cpu_reference_optimizer_steps": 1,
+        "research_optimizer_updates": 0,
+        "test_accessed": false,
+        "wall_seconds": 447.2805483341217,
+        "scope": "Independent pinned upstream FP32 full512-window natural TRAIN objective with separately constructed dense presence targets. Exact state/source/depth/noise required for gold reuse. Native raw-gradient replay isolates clipping and independent optimizer arithmetic;no held-out score or scientific training adoption."
+      },
+      "trained_cpu": {
+        "status": "PASS_INDEPENDENT_FUTURE_SPAN_QUALIFICATION_AUDIT",
+        "case": {
+          "identity": "recurrent-ntp",
+          "arm": "recurrent",
+          "objective_weight": 0.0,
+          "gradient_rule": "all_sampled_steps"
+        },
+        "update": 120,
+        "native_mode": "warm",
+        "gradient": {
+          "body": {
+            "overall": {
+              "relative_l2": 0.0008621103772192773,
+              "maximum_absolute_error": 4.1883205994963646e-05,
+              "reference_l2": 3.084382201822278
+            },
+            "families": {
+              "recurrent_injection_readout": {
+                "relative_l2": 0.0011647252765818001,
+                "maximum_absolute_error": 9.061262744580745e-07,
+                "reference_l2": 0.09156966020595314
+              },
+              "tied_input_output": {
+                "relative_l2": 0.0006895709213062869,
+                "maximum_absolute_error": 1.4451565220952034e-05,
+                "reference_l2": 0.22760030141738985
+              },
+              "transformer_body": {
+                "relative_l2": 0.000862645557396759,
+                "maximum_absolute_error": 4.1883205994963646e-05,
+                "reference_l2": 3.074609984175031
+              },
+              "value_embeddings": {
+                "relative_l2": 0.0003552394157970384,
+                "maximum_absolute_error": 1.5116256690816954e-08,
+                "reference_l2": 0.0003350428889223526
+              }
+            },
+            "passes_two_percent_gate": true
+          },
+          "future_head": {
+            "relative_l2": 0.0,
+            "maximum_absolute_error": 0.0,
+            "reference_l2": 0.0
+          },
+          "future_head_named": {
+            "future_lm_head.weight": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0
+            },
+            "future_lm_head.bias": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0
+            }
+          },
+          "passes_two_percent_gate": true
+        },
+        "loss_differences": {
+          "ntp_nll": -1.4014554174934801e-06,
+          "future_mean": -1.4650312740727145e-06
+        },
+        "cpu_ntp_nll": 6.5882456037668495,
+        "cpu_future_mean": 6.893874380764488,
+        "first_or_recovered_update": {
+          "update_comparison": {
+            "relative_l2": 0.00022921357689404054,
+            "maximum_absolute_error": 2.384185791015625e-07,
+            "reference_l2": 0.04101483853944611,
+            "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+          },
+          "moment_comparison": {
+            "relative_l2": 3.1277745568259075e-06,
+            "maximum_absolute_error": 7.078051567077637e-08,
+            "reference_l2": 0.850262968609967
+          },
+          "families": {
+            "adamw": {
+              "update_comparison": {
+                "relative_l2": 0.00022875915312487648,
+                "maximum_absolute_error": 2.384185791015625e-07,
+                "reference_l2": 0.04097747211128328,
+                "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+              },
+              "moment_comparison": {
+                "relative_l2": 1.1484782181008826e-05,
+                "maximum_absolute_error": 1.9208528101444244e-08,
+                "reference_l2": 0.07047789494435444
+              }
+            },
+            "muon": {
+              "update_comparison": {
+                "relative_l2": 0.0004081661758994445,
+                "maximum_absolute_error": 4.0978193283081055e-08,
+                "reference_l2": 0.0017503599018015958,
+                "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+              },
+              "moment_comparison": {
+                "relative_l2": 2.9896724497117968e-06,
+                "maximum_absolute_error": 7.078051567077637e-08,
+                "reference_l2": 0.847336994420547
+              }
+            }
+          },
+          "future_head": {
+            "update_comparison": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0,
+              "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+            },
+            "moment_comparison": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0
+            }
+          }
+        },
+        "optimizer_step_passes_two_percent_gate": true,
+        "cpu_raw_gradient_norm_before_clip": 3.084362268447876,
+        "gold_fingerprint": {
+          "case": {
+            "identity": "recurrent-ntp",
+            "arm": "recurrent",
+            "objective_weight": 0.0,
+            "gradient_rule": "all_sampled_steps"
+          },
+          "update": 120,
+          "model_digest": "dfade16e24ade04439ad7ce4bb4731d803bb888e51174c2d9cbcd0f7c1d48d99",
+          "source_cursor": 61440,
+          "real_targets": 523312,
+          "valid_anchors": 31246,
+          "noise_sha256_by_rank": [
+            "f56b94bc826ce9800a708ebd0256761866fb1c6b5765efc9e76e7ccf8e605dba",
+            "8daf54c8b019378d56586694b59b04a5e07b4eb4a8096d59030f72bb989fcf63",
+            "d5d40eee64bfaf61c9a8f243e5ad3117ededdca3bbe4a79b36b68febbba4b94e",
+            "5bcd8a899f61543c06c80ea64cf72b80f4da9df11ac29cd0b110f27a9989390a",
+            "b4b7c5a0634342debb349b028c970937cfccf3cffabfbbba34e3e490ff7f5ed1",
+            "1a90e64b451d38bda6910ed4a9aa89414792804d67035e63f3d7b2514df2797c",
+            "668732507f0614432173df6352b2b0e07305642d9b8f82ee62bea5d948332f3f",
+            "910c204ed8011f04b6b2d84423baa24bd5e7074f142e85667550fb870723e18f",
+            "129b8604ed890b51de66e9ea81b8cfdb8b722d6eabc93fd1e4b432d8ea05494e",
+            "1fb6f61ab2969852fe982250bbf9193c87a6d8f8ce04ceb1f1782c291c566bb3",
+            "565f5078546b2998f0659bc1007412953aae74c17803b3da6a8b1b4a1bb1e319",
+            "28abe70a1cef208d69ff38eda2a9cb3deedca9149d4f0cc48cb26b6433b760dd",
+            "39569f44ed19f2aac656894b253caa9feffbc36ad1ff5eab907b39f98e05e9b0",
+            "90267b281fecc2b079ed154f36ec372a8ab7774954c23d4bc8b24eb5b49cbd15",
+            "b082ca29f0c6aa3929bc72d72f7dcc74aa22dfcfd8e928cab674b93bed3dc313",
+            "3f7144596b5b4c2849d7cfda54697178c51b79671b236f7560ebf9c6bbcc5546",
+            "1e33fb96c995c50e9839314ab12f0d8347906474522cabcae2f8de049955048f",
+            "48e682408bc58e00b4c3412c4319d799de79740264126da257e8113242517d6b",
+            "a03b34d9e1a1f25e722cfb79dee119e1cb4b99290a128426d1ed78c3fa93f34d",
+            "5b936c825bb46d9109235134a4172d53334bf4780023c1756489093f5dfcbb80",
+            "885b9c763441b62cf957ccdfccde90de24e72ed498f5648af3d1fbe93f01cf28",
+            "a62de69eefdc8dec1cd927086b434467cc1aa3fe2f533f923e4898882f46ac7e",
+            "5f6836c36eb45cafb2861933584d293db6ef86e04717a61225d0728d6f79d912",
+            "c8071556ae862a35a4f254fa73c3dde2b43edead62ac56c0fca1d1e08695164c",
+            "600b365265766812c87bc369f4f031dc9f33085e4b0417874c17bf341a943bbf",
+            "b98dd7a9dc2e387b8f79aaa7158100549b124ddf16c0716d6161eff91c29a875",
+            "6700e733541ac5ef6dbb0abc437992f1ad91e86d36878f58e3ad5a5f00d3c76a",
+            "5bb527f4a6066fbf30fcbb80498309add9e01d033e1fd5054fb23644f7fa2af4",
+            "ccd02a8f6e1d77bcf27db48be7ba4da3016e2b4310ec9bae6388c852cb98a198",
+            "f6a50d02aa712be071de9d7aca20fa4dc9c690910a3607624cc5e2d6f364c9de",
+            "601d76162121be1b7b4cdfb4f2c62c7e316f707e4dfd450e4a4a5f8ea7aa5cfe",
+            "674baf72acfe89e0a86844f8f3f42281fadc1ddc30f650b6fc08027b5548ba85"
+          ],
+          "depth_table_sha256": "827a8314b34596c3a4422c5b5ffc036cc10d695cf6ead5e04ad00c3927b81d3c",
+          "plan_sha256": "4c8238f2600d5a6fa53f3a56f0afa613b968bf9ee4b918607839e51edb43f50b"
+        },
+        "reused_gold": false,
+        "cpu_global_sha256": "bde3fd5b06befbe51fd56ee04770eae256bec894b2f28c4bb585428401b3a2ed",
+        "diagnostic_matrix_operations": 251215724150784,
+        "assigned_chips": 0,
+        "optimizer_updates": 0,
+        "prescribed_cpu_reference_optimizer_steps": 1,
+        "research_optimizer_updates": 0,
+        "test_accessed": false,
+        "wall_seconds": 367.34126019477844,
+        "scope": "Independent pinned upstream FP32 full512-window natural TRAIN objective with separately constructed dense presence targets. Exact state/source/depth/noise required for gold reuse. Native raw-gradient replay isolates clipping and independent optimizer arithmetic;no held-out score or scientific training adoption."
+      },
+      "replay_cpu": {
+        "status": "PASS_INDEPENDENT_FUTURE_SPAN_QUALIFICATION_AUDIT",
+        "case": {
+          "identity": "recurrent-ntp",
+          "arm": "recurrent",
+          "objective_weight": 0.0,
+          "gradient_rule": "all_sampled_steps"
+        },
+        "update": 120,
+        "native_mode": "replay",
+        "gradient": {
+          "body": {
+            "overall": {
+              "relative_l2": 0.0008621101960877635,
+              "maximum_absolute_error": 4.1883671656250954e-05,
+              "reference_l2": 3.084382201822278
+            },
+            "families": {
+              "recurrent_injection_readout": {
+                "relative_l2": 0.0011647253612591185,
+                "maximum_absolute_error": 9.061153605216532e-07,
+                "reference_l2": 0.09156966020595314
+              },
+              "tied_input_output": {
+                "relative_l2": 0.0006895705939372965,
+                "maximum_absolute_error": 1.4451798051595688e-05,
+                "reference_l2": 0.22760030141738985
+              },
+              "transformer_body": {
+                "relative_l2": 0.0008626453765576958,
+                "maximum_absolute_error": 4.1883671656250954e-05,
+                "reference_l2": 3.074609984175031
+              },
+              "value_embeddings": {
+                "relative_l2": 0.00035523880056339684,
+                "maximum_absolute_error": 1.5116370377654675e-08,
+                "reference_l2": 0.0003350428889223526
+              }
+            },
+            "passes_two_percent_gate": true
+          },
+          "future_head": {
+            "relative_l2": 0.0,
+            "maximum_absolute_error": 0.0,
+            "reference_l2": 0.0
+          },
+          "future_head_named": {
+            "future_lm_head.weight": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0
+            },
+            "future_lm_head.bias": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0
+            }
+          },
+          "passes_two_percent_gate": true
+        },
+        "loss_differences": {
+          "ntp_nll": -1.4014554174934801e-06,
+          "future_mean": -1.4650312740727145e-06
+        },
+        "cpu_ntp_nll": 6.5882456037668495,
+        "cpu_future_mean": 6.893874380764488,
+        "first_or_recovered_update": {
+          "update_comparison": {
+            "relative_l2": 0.0002288755221567437,
+            "maximum_absolute_error": 2.384185791015625e-07,
+            "reference_l2": 0.04101483795288692,
+            "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+          },
+          "moment_comparison": {
+            "relative_l2": 3.1214259741979947e-06,
+            "maximum_absolute_error": 6.705522537231445e-08,
+            "reference_l2": 0.8502629678987069
+          },
+          "families": {
+            "adamw": {
+              "update_comparison": {
+                "relative_l2": 0.00022842201985607722,
+                "maximum_absolute_error": 2.384185791015625e-07,
+                "reference_l2": 0.0409774715272748,
+                "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+              },
+              "moment_comparison": {
+                "relative_l2": 1.1463580268906301e-05,
+                "maximum_absolute_error": 1.909211277961731e-08,
+                "reference_l2": 0.07047789362055759
+              }
+            },
+            "muon": {
+              "update_comparison": {
+                "relative_l2": 0.00040748701354018427,
+                "maximum_absolute_error": 4.0978193283081055e-08,
+                "reference_l2": 0.0017503598295655074,
+                "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+              },
+              "moment_comparison": {
+                "relative_l2": 2.9835481223968677e-06,
+                "maximum_absolute_error": 6.705522537231445e-08,
+                "reference_l2": 0.8473369938169388
+              }
+            }
+          },
+          "future_head": {
+            "update_comparison": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0,
+              "scope": "Actual update minus prescribed independent update, normalized by the independent update size."
+            },
+            "moment_comparison": {
+              "relative_l2": 0.0,
+              "maximum_absolute_error": 0.0,
+              "reference_l2": 0.0
+            }
+          }
+        },
+        "optimizer_step_passes_two_percent_gate": true,
+        "cpu_raw_gradient_norm_before_clip": 3.084362506866455,
+        "gold_fingerprint": {
+          "case": {
+            "identity": "recurrent-ntp",
+            "arm": "recurrent",
+            "objective_weight": 0.0,
+            "gradient_rule": "all_sampled_steps"
+          },
+          "update": 120,
+          "model_digest": "dfade16e24ade04439ad7ce4bb4731d803bb888e51174c2d9cbcd0f7c1d48d99",
+          "source_cursor": 61440,
+          "real_targets": 523312,
+          "valid_anchors": 31246,
+          "noise_sha256_by_rank": [
+            "f56b94bc826ce9800a708ebd0256761866fb1c6b5765efc9e76e7ccf8e605dba",
+            "8daf54c8b019378d56586694b59b04a5e07b4eb4a8096d59030f72bb989fcf63",
+            "d5d40eee64bfaf61c9a8f243e5ad3117ededdca3bbe4a79b36b68febbba4b94e",
+            "5bcd8a899f61543c06c80ea64cf72b80f4da9df11ac29cd0b110f27a9989390a",
+            "b4b7c5a0634342debb349b028c970937cfccf3cffabfbbba34e3e490ff7f5ed1",
+            "1a90e64b451d38bda6910ed4a9aa89414792804d67035e63f3d7b2514df2797c",
+            "668732507f0614432173df6352b2b0e07305642d9b8f82ee62bea5d948332f3f",
+            "910c204ed8011f04b6b2d84423baa24bd5e7074f142e85667550fb870723e18f",
+            "129b8604ed890b51de66e9ea81b8cfdb8b722d6eabc93fd1e4b432d8ea05494e",
+            "1fb6f61ab2969852fe982250bbf9193c87a6d8f8ce04ceb1f1782c291c566bb3",
+            "565f5078546b2998f0659bc1007412953aae74c17803b3da6a8b1b4a1bb1e319",
+            "28abe70a1cef208d69ff38eda2a9cb3deedca9149d4f0cc48cb26b6433b760dd",
+            "39569f44ed19f2aac656894b253caa9feffbc36ad1ff5eab907b39f98e05e9b0",
+            "90267b281fecc2b079ed154f36ec372a8ab7774954c23d4bc8b24eb5b49cbd15",
+            "b082ca29f0c6aa3929bc72d72f7dcc74aa22dfcfd8e928cab674b93bed3dc313",
+            "3f7144596b5b4c2849d7cfda54697178c51b79671b236f7560ebf9c6bbcc5546",
+            "1e33fb96c995c50e9839314ab12f0d8347906474522cabcae2f8de049955048f",
+            "48e682408bc58e00b4c3412c4319d799de79740264126da257e8113242517d6b",
+            "a03b34d9e1a1f25e722cfb79dee119e1cb4b99290a128426d1ed78c3fa93f34d",
+            "5b936c825bb46d9109235134a4172d53334bf4780023c1756489093f5dfcbb80",
+            "885b9c763441b62cf957ccdfccde90de24e72ed498f5648af3d1fbe93f01cf28",
+            "a62de69eefdc8dec1cd927086b434467cc1aa3fe2f533f923e4898882f46ac7e",
+            "5f6836c36eb45cafb2861933584d293db6ef86e04717a61225d0728d6f79d912",
+            "c8071556ae862a35a4f254fa73c3dde2b43edead62ac56c0fca1d1e08695164c",
+            "600b365265766812c87bc369f4f031dc9f33085e4b0417874c17bf341a943bbf",
+            "b98dd7a9dc2e387b8f79aaa7158100549b124ddf16c0716d6161eff91c29a875",
+            "6700e733541ac5ef6dbb0abc437992f1ad91e86d36878f58e3ad5a5f00d3c76a",
+            "5bb527f4a6066fbf30fcbb80498309add9e01d033e1fd5054fb23644f7fa2af4",
+            "ccd02a8f6e1d77bcf27db48be7ba4da3016e2b4310ec9bae6388c852cb98a198",
+            "f6a50d02aa712be071de9d7aca20fa4dc9c690910a3607624cc5e2d6f364c9de",
+            "601d76162121be1b7b4cdfb4f2c62c7e316f707e4dfd450e4a4a5f8ea7aa5cfe",
+            "674baf72acfe89e0a86844f8f3f42281fadc1ddc30f650b6fc08027b5548ba85"
+          ],
+          "depth_table_sha256": "827a8314b34596c3a4422c5b5ffc036cc10d695cf6ead5e04ad00c3927b81d3c",
+          "plan_sha256": "4c8238f2600d5a6fa53f3a56f0afa613b968bf9ee4b918607839e51edb43f50b"
+        },
+        "reused_gold": true,
+        "cpu_global_sha256": "bde3fd5b06befbe51fd56ee04770eae256bec894b2f28c4bb585428401b3a2ed",
+        "diagnostic_matrix_operations": 0,
+        "assigned_chips": 0,
+        "optimizer_updates": 0,
+        "prescribed_cpu_reference_optimizer_steps": 1,
+        "research_optimizer_updates": 0,
+        "test_accessed": false,
+        "wall_seconds": 47.66106343269348,
+        "scope": "Independent pinned upstream FP32 full512-window natural TRAIN objective with separately constructed dense presence targets. Exact state/source/depth/noise required for gold reuse. Native raw-gradient replay isolates clipping and independent optimizer arithmetic;no held-out score or scientific training adoption."
+      }
+    }
+  ],
+  "public_replay_rows_compacted": true,
+  "original_full_report_sha256": "3a6f664e415d2e3e2de25b2675bb05a3da65f51905fd32982b7522b2030c3d29"
+}

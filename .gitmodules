@@ -1,9 +1,0 @@
-[submodule "sources/useful-thoughts-trainium"]
-	path = sources/useful-thoughts-trainium
-	url = https://github.com/dario-fumarola/useful-thoughts-trainium.git
-[submodule "sources/pause-pretraining-trainium"]
-	path = sources/pause-pretraining-trainium
-	url = https://github.com/dario-fumarola/pause-pretraining-trainium.git
-[submodule "sources/autonomous-compute-trainium"]
-	path = sources/autonomous-compute-trainium
-	url = https://github.com/dario-fumarola/autonomous-compute-trainium.git

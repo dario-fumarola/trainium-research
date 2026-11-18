@@ -1,0 +1,7 @@
+{
+  "status": "PASS_PAIRED_NATIVE_PARCAE_STATIC_STAGE_GLOBAL_GRADIENTS",
+  "execution_revision": 2,
+  "observed_unix": 1792876120.363828,
+  "assigned_chips": 0,
+  "scope": "Bounded paired native gradient qualification after the registered scientific campaign completes. No early chip reservation, optimizer, learning run or scientific success claim."
+}

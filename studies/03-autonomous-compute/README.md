@@ -1,0 +1,544 @@
+# Autonomous computation during pretraining
+
+**Current result, October 30:** the completed matched-training-work control
+wins. The generated-state model scores **2.801700 broad NLL**, versus
+**2.691525** for the ordinary model trained on 3.783B targets at the same nominal
+matrix-work budget. Hard arithmetic answer NLL is **2.255895 versus 2.167148**.
+The registered advancement gate fails. All mature numerical audits pass.
+[Complete matched-work comparison](results/latent_exposure_20261030/work-recovery-v1/REPORT.md).
+
+The latent model's equal-data gain remains: at 1B targets it beats ordinary by
+**0.030495 broad nats** and **0.053447 arithmetic answer nats**. This is one
+from-scratch development seed, not a training-efficiency or reliable-reasoning
+result. Only 5/259 harder answers are correct. Both fresh confirmation reserves
+remain sealed; no larger fit or confirmation follows automatically.
+[Equal-data result](results/latent_exposure_20261030/learning-v1/REPORT.md) ·
+[Frozen design](docs/LATENT_LEARNING_EXPOSURE_20261030.md) · [Live status](STATUS.md).
+
+**Completed attribution:** removing past latent-memory access from the trained
+model raises broad NLL by **0.636840** and arithmetic answer NLL by **0.323091**.
+Lagging or replacing generated states also hurts. This shows pathway dependence;
+distribution-changing ablations do not prove a reasoning algorithm or a win at
+matched training work. [Full attribution and limits](results/latent_exposure_20261030/content-recovery-v1/REPORT.md).
+
+**Calculation remains weak:** at equal data, latent and ordinary each solve13/256 source-authored
+elementary cases; a constant answer selected only from TRAIN frequencies solves
+9/256. On the harder panel, latent solves5/259 versus3/259 for its TRAIN prior.
+These are development diagnostics, not reliable arithmetic competence.
+[Elementary readout](results/primitive_arithmetic_20261030/readout-v1/REPORT.md) ·
+[Constant-answer calibration](results/primitive_arithmetic_20261030/answer-prior-v1/REPORT.md).
+
+**Deployment also has a cost:** at context512, exact cached latent decoding uses
+17.51% more forward matrix work and9.09% more KV bytes than tied ordinary.
+This is a checked analytic inventory, not measured serving latency.
+[Decode costs](results/latent_exposure_20261030/decode-inventory-v1/REPORT.md).
+
+**Earlier exposure remains negative:** on 353 authentic calculations, the
+128M-target latent gains over ordinary are −0.010957, +0.068950 and −0.045059
+nats in three seeds. Only one clears both controls. The longer-prefix source
+audit excluded 94 expressions that would recur in training, freezing a separate
+259-case subset before the new fits. The new result does not repair the old gate.
+[Earlier arithmetic comparison](results/direct_arithmetic_20261030/readout-v1/REPORT.md) ·
+[Prospective source audit](results/latent_exposure_20261030/source-audit-v1/REPORT.md).
+
+The persistent latent model learns useful generated states from random
+initialization, but its useful margin over the strongest ordinary model
+**does not repeat reliably across the two new development seeds**.
+
+The new-seed gains over tied ordinary are**0.002267 and0.028967nats**; the
+predeclared replication gate fails. Gains over trained constant pauses are
+**0.131651 and0.138708nats**. The prepared ephemeral scientific follow-up is
+not admitted, and both fresh evaluation reserves remain unscored.
+[Complete replication](results/interleaved_workspace_20261029/seed-replication-v1/REPORT.md).
+
+The separate supported-budget experiment also closes negative: exact NLL is
+**3.487978 / 3.379654 / 3.381733** at zero/one/two latent tokens. The second
+step hurts, and the ordinary path deteriorates; all four advancement gates
+fail. [Completed budget comparison](results/budgeted_interleaved_20261029/learning-v1/REPORT.md).
+
+The exact depth-causal alternative also fails all four gates. Its supported
+zero/one/two-step losses are **3.473785 / 3.402455 / 3.408117**. Two steps hurt
+by **0.005662 nats** and trail strongest ordinary by **0.120335**. Its lower
+execution cost does not rescue predictive quality. All numerical checks pass;
+no scaling or confirmation follows.
+[Completed exact-graph comparison](results/depth_causal_workspace_20261029/learning-v1/REPORT.md).
+
+A schedule-only follow-up recovers **0.073799 nats** by training that exact
+graph at one fixed workspace depth throughout. Its **3.328656 NLL** still
+trails strongest ordinary by **0.040875**. The schedule-effect gate passes;
+the conventional competitiveness gate fails. This is a diagnosis of a training
+tradeoff, not a thinking or efficiency win.
+[Completed fixed-depth comparison](results/depth_causal_workspace_20261029/fixed-one-v1/REPORT.md).
+
+The separate matched-work sparse comparison is **negative**. Exact NLL is
+**3.287681 ordinary, 3.292243 generated workspace, and 3.292885 constant
+workspace**. Generated states trail ordinary by **0.004562 nats** and have no
+clear advantage over constant inputs (**+0.000641**, conditional interval
+[−0.003596, +0.004990]). Ordinary wins in web, math and code separately.
+
+Seven endpoints pass mature numerical audits and 72 exact execution checks.
+Both workspace LR 0.003 fits stop on non-finite gradients and remain unavailable,
+without retry. The original all-nine-complete gate stays unmet; the separately
+registered completion is descriptive and does not repair it. All attempts and
+qualification cost **56.403797 assigned chip-hours**. No scaling or confirmation
+is admitted. Both fresh reserves remain sealed.
+[Complete sparse comparison](results/chunked_persistent_workspace_20261029/control-completion-v1/REPORT.md) ·
+[Original failure](results/chunked_persistent_workspace_20261029/learning-v1/REPORT.md).
+
+A saved-checkpoint intervention finds **no measurable benefit from stored latent
+memory** in the sparse model. Removing the forced boundary readout helps by
+0.000903 nats but does not close the ordinary-model gap. This is an exploratory
+path diagnosis, not a repaired training result.
+[Path diagnostic](results/chunked_persistent_workspace_20261029/path-diagnostic-v1/REPORT.md).
+
+The original selected-seed comparison below is retained unchanged:
+
+| Predictor | Parameters | Development NLL ↓ |
+|---|---:|---:|
+| Generated persistent latent state, exact sequential | 51.747M | **3.262734** |
+| Tied-embedding ordinary, 11 layers | 51.179M | 3.287781 |
+| Deeper ordinary, 10 layers | 51.655M | 3.332768 |
+| Original ordinary, 6 layers | 51.747M | 3.377111 |
+| Trained constant pauses | 51.747M | 3.391128 |
+| Wider ordinary, 4 layers | 51.744M | 3.399334 |
+
+Every model receives128,025,288 authentic targets and independent, complete
+three-LR tuning. The **0.025047-nat lead over the strongest ordinary control**
+favors latent computation in web, math and code; its conditional source-group
+interval is[0.020119,0.029968]. All numerical/state audits pass.
+
+This remains one selected seed on reused DEV. The latent model uses
+**3.782219times the strongest control's training matrix work**. The completed fixed-recipe
+replication above shows substantial initialization variation.
+Both fresh evaluation reserves remain unscored. Training efficiency, autonomous
+allocation and general reasoning remain unestablished.
+[Strongest control](results/interleaved_workspace_20261029/tied-comparison-v1/REPORT.md) ·
+[Deeper control](results/interleaved_workspace_20261029/frontier-deeper-tuning-v1/REPORT.md) ·
+[Wider control](results/interleaved_workspace_20261029/frontier-wider-tuning-v1/REPORT.md) ·
+[Replication protocol](docs/INTERLEAVED_SEED_REPLICATION_20261029.md).
+
+The stricter code diagnostic does **not** establish better bracket-type
+tracking: comparisons with both tied ordinary and trained pauses are
+inconclusive. All three models use distant context. Raw closing-token gains
+must not be described as a demonstrated reasoning advantage.
+[Typed diagnostic](results/interleaved_workspace_20261029/bracket-type-dev-v1/REPORT.md) ·
+[Claim boundaries](results/interleaved_workspace_20261029/CURRENT_CLAIMS.md).
+
+The authored-arithmetic diagnostic also fails its advancement gates. On134
+conclusions, latent NLL2.116429 is slightly worse than tied ordinary2.102801;
+its comparison with pauses2.134533 is also inconclusive. All-answer accuracy
+is near the floor. The broad prediction lead is not an arithmetic-transfer
+finding. [Arithmetic result](results/interleaved_workspace_20261029/arithmetic-dev-v1/REPORT.md).
+
+
+The preceding fixed-round model has an **equal-data development lead**:
+**3.281309 NLL**, versus **3.377111 ordinary** and **3.391128 trained constant
+pauses**. The0.095803-nat ordinary comparison favors generated states in web,
+math and code. All three families select the interior learning rate after
+equal tuning opportunities; all nine mature numerical/state audits pass.
+
+The lead survives exact sequential generation: **3.340201 NLL**, improving
+**0.036910nats over ordinary** and **0.050927 over pauses**, again in every domain.
+The finite-round training approximation still overstates that benefit by
+0.058892nats. The completed mixed-round comparison above repairs this mismatch; its
+full exact-sequential broad result is reported above.
+
+On a registered natural-code diagnostic, exact sequential latent generation
+also improves distant closing-delimiter prediction by **0.349535nats over
+ordinary** and **0.203869 over trained pauses**. Both conditional intervals are
+positive. The additional full-context benefit relative to the controls remains
+inconclusive; this is a structural prediction lead, not an identified reasoning
+algorithm. [Structural result](results/interleaved_workspace_20261029/structural-dev-v1/REPORT.md).
+
+This51.75M-parameter,128M-target result is not yet an efficiency or reasoning
+claim. It uses4.937times ordinary training matrix work, one training seed and
+reused DEV. Both fresh evaluation reserves remain unscored.
+[Exact sequential result](results/interleaved_workspace_20261029/sequential-dev-v1/REPORT.md) ·
+[Completed learning-rate screen](results/interleaved_workspace_20261029/tuning-v1/REPORT.md).
+
+The joint-exit probability screen is complete and negative. After supervising
+both exits, the refined prediction scores **3.272421 NLL**, versus **3.271351**
+for its supported shallow exit, **3.253961** for equal-data ordinary training,
+and **2.980724** for matched-matrix-work ordinary training. All three registered
+gates fail. Every endpoint was recomputed in FP64 after a Native corruption
+readout missed its numerical tolerance; no threshold was relaxed.
+
+Corrupting the proposal worsens loss by 0.315763 nats, despite no benefit from
+the intact extra pass. Content sensitivity by itself is therefore insufficient
+evidence of useful computation. This objective variant is closed without a
+larger fit. Both fresh evaluation reserves remain unscored.
+[Complete result](results/probability_workspace_20261029/joint-exit-readout-recovery-v1/REPORT.md).
+
+A distinct persistent latent-token mechanism now passes complete actual-shape
+qualification. Equivalent grouped storage preserves its causal computation
+while reducing measured warm-update time from4.4902s to0.2463s. Generated,
+ordinary and constant-pause paths pass numerical and full-state replay gates.
+A bounded, equally budgeted nine-fit learning-rate screen is complete, with the
+qualified equal-data result and limitations above. [Execution evidence](results/interleaved_workspace_20261029/EXECUTION_INVESTIGATION.md) ·
+[Registered learning screen](docs/INTERLEAVED_LR_TUNING_20261029.md).
+
+The untied prediction/value-table comparison is complete and negative. At
+200Mnatural targets,the79.18Mworkspace scores**3.270157NLL**,versus**3.253960**
+for its equally parameterized ordinary control. At matched nominal training
+matrix work,the longer ordinary model scores**2.980723**. Both registered gates
+fail;web,math and code all favor ordinary training. All mature numerical,
+state/replica and independent readout checks pass.
+
+Untying worsens both model types relative to their historical tied versions.
+Its positive interaction only narrows the relative deficit;it is not a quality
+win. **No thinking or training-efficiency win is established.** The separately
+frozen141-group structural diagnostic also fails its absolute gates:long-target
+NLL is1.878298workspace,1.873312equal-data ordinary and1.538183equal-work ordinary.
+All models benefit from the longer prefix;greater context dependence is not an
+absolute workspace win. No fit was added. The earlier flat budget-cue result
+remains closed.
+[Structural diagnostic](results/probability_workspace_20261029/structural-readout-v1/REPORT.md) ·
+[Completed untied comparison](results/probability_workspace_20261029/untied-screen-v1/REPORT.md) ·
+[Budget-cue result](results/probability_workspace_20261029/budget-cue-screen-recovery-v1/REPORT.md) ·
+[Fixed-depth result](results/probability_workspace_20261029/fixed-one-v1/REPORT.md) ·
+[Live status](STATUS.md).
+
+Can a randomly initialized language model learn to use additional internal
+computation to predict unseen natural text better?
+
+Training uses authentic web text, mathematical web text and repository code.
+The completed recurrence comparisons use no generated research examples,external
+teacher models,added reasoning traces or reinforcement learning. Real-token
+negative log likelihood (NLL) remains the broad-text primary outcome. Equal-data and training-work comparisons answer different
+questions and are reported separately.
+
+On October27 the owner stopped the recurrence follow-up and adopted a new
+workspace-learning direction: generate temporary intermediate tokens,score
+their predictive value with a frozen lagged reader,and learn content before
+allocation. A provenance-pinned pretrained discovery experiment precedes the
+separate eventual from-scratch claim. Online self-generated workspaces and
+policy gradients are authorized for this new phase. Earlier results retain
+their original criteria;no larger recurrence main or confirmation completed.
+[New charter](docs/WORKSPACE_RESEARCH_CHARTER_20261027.md) · [Status](STATUS.md).
+
+A new probability-embedding reference follows the published PonderLM operation:
+form a soft token proposal,add it to the input embeddings,and rerun the causal
+model with full NTP gradients. Small-array and actual62.8M all16-chip numerical,mature-gradient and exact
+restart qualification pass. The four-arm scientific screen is complete and negative against ordinary
+controls;the results and fixed-budget follow-up are linked above. This is a
+different mechanism from the closed branches below,not a reinterpretation of
+their outcomes. A TRAIN-only audit also finds very little explicit verified
+arithmetic/code supervision among the old screen's selected labels,under narrow
+parsers whose failures are reported rather than treated as negative examples.
+[Reference and qualification](results/probability_workspace_20261028/REPORT.md) ·
+[TRAIN coverage audit](results/workspace_target_coverage_20261028/REPORT.md).
+
+A frozen-base residual screen now isolates a source-diversity effect. At equal
+branch updates,fresh8192-view training gives NLL **2.275685 one step** and
+**2.276055 two steps**,against unchanged C0 **2.282112**. Repeating2048 views
+four times worsens both models. Two steps do not beat one or meet the original
+0.01-nat gate;this is a development transfer result,not an iteration or
+training-efficiency win. All six endpoints pass mature audits.
+[Source-volume comparison](results/residual_data_volume_20261028/REPORT.md).
+A subsequently registered equal-parameter local nonlinear control scores2.277691.
+The one-step attention branch improves on it by0.002005nats,but a second
+step does not help. This motivates studying the additional context read;
+its causal content use,iterative reasoning and compute efficiency remain unproved.
+[Matched local control](results/residual_local_control_20261028/REPORT.md).
+A subsequent frozen memory intervention weakens the rereading interpretation:
+independent same-domain memory retains about89–94% of the gain,and neither
+primary natural-dependency family passes its content-sensitive gate. TRAIN
+attention is sharp,but that alone does not establish useful reasoning.
+[Memory attribution and unscored source reserve](results/residual_memory_attribution_20261028/REPORT.md).
+A freshly trained independent-memory control retains84.8% of that gain.
+Matched-source memory during training contributes only0.000977nats on the
+reused panel;the registered useful-content gate fails. This strengthens the
+predictor-correction interpretation without establishing its exact mechanism.
+[Training association control](results/residual_independent_memory_20261028/REPORT.md).
+A subsequent test trains both one- and two-step exits and lets earlier
+positions write updated states. Two steps gain0.000631 over that checkpoint's
+shallow exit, but do not beat the independently trained one-step model.
+Suppressing the newly written earlier states improves0.000395nats. The
+registered useful-iteration gate fails, closing this frozen-feature two-step
+mechanism without a larger run.
+[Supported exits and internal writes](results/residual_written_memory_20261028/REPORT.md).
+
+A separate causal cache learns which observed past outcomes to retrieve. Its
+learned-addressing gain is only0.000272nats; the simpler cosine reader performs
+better. Both natural code-dependency cohorts fail the useful-memory gate, and
+longer memory does not help consistently. Correct associations are less harmful
+than rotated ones, which is insufficient for a useful-computation claim.
+[Associative screen](results/causal_associative_workspace_20261028/REPORT.md) ·
+[Dependency readout](results/associative_dependency_readout_20261028/REPORT.md).
+
+A separate past-prediction-error operation also fails its TRAIN calibration
+gate:0.000245nats gain versus0.000352 for a prediction-only control. It stops
+before another TUNE read or learned fit. This does not close all fast-weight
+methods;it leaves useful intermediate computation unestablished here.
+[Error-correction diagnostic](results/prefix_error_headroom_20261028/recovery-v2/REPORT.md).
+
+The uniform-NTP correction is complete. All new models now improve over C0,
+but the workspace still harms its own selected predictions. On448 reused TUNE
+views, full32 NLL is **2.262856 ordinary**, **2.267065 latent workspace**,
+**2.272189 constant-input workspace**, versus **2.282111 C0**. Latent loses
+0.004209nats to the nominal-work-matched ordinary control. Its own selected
+workspace utility is−0.015708nats, conditional95% interval[−0.029963,−0.002042].
+All three independent179-gradient mature audits pass. This is one development
+seed, not confirmation, useful reasoning, allocation or from-scratch learning.
+[Full uniform-NTP result](results/spliced_workspace_discovery_20261028/REPORT.md).
+A subsequent global readout fitted on unused,source-separated TRAIN groups
+selects zero contribution from the latent state. It does not rescue the recipe.
+The earlier in-sample calibration over-sharpened all trained models;that
+negative is preserved. No larger fit is admitted.
+[Source-separated readout](results/spliced_workspace_readout_20261028/source-reserve-v2/REPORT.md).
+
+The first differentiable sparse-workspace discovery is complete and negative.
+On448 fixed TUNE views,the full32-token deployed-policy NLL is2.297200 for
+same-emphasis ordinary continuation,2.305394 for generated latent states,and
+2.321481 for the trained constant-query workspace. All three mature179-gradient
+audits pass;there is no fallback. The latent workspace reduces its initial
+harm but still worsens its own selected predictions by0.009046nats. Nominal
+matrix work is matched;latent whole Native time is about23.2% higher.
+All new arms also worsen fromC0,while the earlier plain-NTP control performs
+better on their shared original panel. The next question concerns the
+reweighted objective,not a larger run of this recipe.
+[Complete result](results/sparse_workspace_discovery_20261028/REPORT.md) ·
+[Design](docs/SPARSE_WORKSPACE_DISCOVERY_20261028.md) ·
+[Full qualification](results/sparse_workspace_warm_20261028/report.json).
+
+The earlier qualified discrete snapshot passed491 CPU tests,two skipped. The framing-free
+reader has exact empty-workspace identity. Its initial ten-TRAIN-anchor
+privileged-copy diagnostic improves NLL by0.972423nats,while sampled workspaces
+still hurt by0.038068nats. This qualifies an interface,not useful writing.
+[Reader interface](results/workspace_identity_reader_20261027/recovery-v2/report.json).
+
+The full1.485B model now runs with all179 parameters sharded over64 Native
+ranks/all16chips. A fresh qualification completes101 online generate/score/
+reader+policy/AdamW/EMA updates on6,464 source views across3,690 TRAIN groups.
+The100warm updates average12.4619seconds with no CPU fallback. Its independent
+mature HF-body/FP64-loss audit passes every named gradient:largest error0.000668%.
+The earlier saturated qualification remains failed;an equivalent stable target
+loss repairs FP32 cancellation without changing the numerical thresholds.
+These are qualification updates,not a held-out learning result.
+[Fresh online qualification](results/workspace_online_throughput_20261027/recovery-v2/report.json) ·
+[Mature audit](results/workspace_online_mature_audit_20261027/recovery-v2/report.json) ·
+[Fixed-weight loss diagnosis](results/workspace_loss_stability_20261027/report.json).
+
+The first bounded four-condition learning diagnostic is complete and negative.
+All four full-model mature gradient audits pass. On320 fixed TUNE anchors:
+
+| Predictor | Next-four NLL ↓ |
+| --- | ---: |
+| Ordinary continuation | **2.387626** |
+| Learned workspace,one own sample | 2.422095 |
+| Trained fixed pauses | 2.548699 |
+| Own-sampled supervised draft | 2.429410 |
+
+Workspace loses to ordinary by0.034469nats.Its own sample also worsens its
+no-workspace prediction by0.008941nats;the same-domain donor contrast is
+inconclusive.A privileged actual-future copy still helps the reader by0.744383.
+That diagnostic uses the answer deliberately and is not a deployed thought.
+
+This is one short constant-rate continuation from common C0,not converged
+independent tuning,confirmation,transfer,learned allocation or random-init
+pretraining.Nominal matrix work is matched;whole measured time is separate.
+All failed/recovery and checkpoint costs remain.The uncached workspace step
+costs about19.38ordinary steps in nominal matrix work.Do not scale this recipe.
+[Complete comparison](results/workspace_discovery_20261027/evaluation-recovery-v1/REPORT.md) ·
+[Protocol](docs/WORKSPACE_DISCOVERY_PILOT_20261027.md).
+
+The earlier replicated-body estimate was wrong:the existing loader already
+shards all179 parameters. Full-state recovery and exact archival preservation
+remain mandatory;the35GiB filesystem and512GiB host reserves are unchanged.
+[Sharding correction](results/workspace_sharding_correction_20261027/report.json) ·
+[Actual-size update/recovery](results/workspace_native_full_update_20261027/report.json).
+
+The conventional eight-layer challenger now slightly outperforms fixed
+recurrence at matched nominal training work in both development seeds. The
+original same-family gain remains, but a useful advantage over the stronger
+ordinary model has not been demonstrated. These comparisons use two reused
+development seeds and a consumed DEV panel:
+
+| Model | Training targets | Mean DEV NLL ↓ | Fixed-two advantage |
+| --- | ---: | ---: | ---: |
+| Fixed two passes | 2.010B | 2.483862 | — |
+| Original same-family One,matched work | 2.421B | 2.496426 | 0.012563 |
+| Corrected head-free cheap mixing,matched work | 2.446B | 2.494629 | 0.010767 |
+| Conventional ordinary8,matched work | 2.761B | **2.480522** | **-0.003340** |
+| Head-free One,matched work | 2.463B | 2.494244 | 0.010382 |
+
+Ordinary8 beats recurrence by 0.002361 and 0.004319 nats. Both completed
+cooldowns and full512 mature numerical audits pass. The nominal paired-seed
+95% interval for recurrence's advantage is [-0.015782,0.009102]; it spans zero
+and does not establish a useful positive effect. This is descriptive development
+evidence, not fresh confirmation or a universal negative.
+[Conventional comparison](results/lean_baseline_controls_20261026/main/ordinary8/REPORT.md).
+
+The corrected cheap models trained afresh and passed both full512-window
+mature gradient audits. Recurrence wins by0.009852 and0.011682 nats. Their
+nominal paired-seed95% interval is**[-0.000858,0.022392]**;one seed point is
+below0.01 and both conditional source-group intervals overlap it. This does
+not establish a useful gain. The historical failed cheap run remains
+inadmissible;the new runs do not retroactively certify its training history.
+[Corrected cheap comparison](results/lean_baseline_controls_20261026/main/mixing/REPORT.md).
+
+Against the original same-family One comparator,the mean gain remains
+0.012563,with nominal seed interval[0.005601,0.019526],also overlapping0.01.
+At1B,the original matched-work gain was only0.004255. Equal-data gains remain
+larger. All relevant completed endpoint gradient audits pass.
+[Original curve](results/fixed_two_small_core_main_20261025/REPORT.md) ·
+[Completed second pair](results/one_control_recovery_20261026/REPORT.md).
+
+Both fixed-two and same-family controls have141.96M deployed parameters.
+Ordinary8 has141.73M,slightly below that ceiling,and receives its own three-rate
+tuning. It and corrected cheap select0.032 at the upper grid edge;their optima
+remain unbracketed. Ordinary8 changes width, unique depth and value-table
+allocation, so it tests practical prediction quality under a parameter ceiling.
+The paired head-free One control is complete after an explicit recovery from
+an inode admission stop. Its gains are0.009061 and0.011703,with nominal seed
+interval[-0.006402,0.027165]. Both complete cooldowns and full512 mature
+gradient audits pass. All six declared stronger-control fits are now complete;
+the unfavorable conventional result remains decisive for the advancement gate.
+[Head-free One comparison](results/lean_baseline_controls_20261026/main/one/REPORT.md).
+[Qualified tuning](results/lean_baseline_controls_20261026/tune/REPORT.md) ·
+[Conventional challenger](results/lean_baseline_controls_20261026/main/ordinary8/REPORT.md).
+
+Matching uses nominal neural/head/attention/backward and replicated optimizer
+matrix work. The original candidate's unused training head remains charged;
+it is not retrospectively subtracted. Hardware time is reported separately.
+The original fixed training path used about2.6% more assigned chip-time than
+its original One comparator. Measured prefill is16.4–17.6% slower than that
+comparator. Prefill measurements against the new challengers and KV-cached
+decoding remain outstanding. [Prediction cost](results/fixed_two_prefill_20261025/REPORT.md).
+
+The proposed 4B follow-up has not passed its stronger-control gate and is not
+admitted. The declared lean comparisons are closed. Fresh
+source groups, adequately powered five-or-more fresh paired seeds, and terminal alpha
+allocation remain required. Five seeds are a minimum,not a power guarantee.
+No new TEST,reserve or terminal alpha has been used;the overall goal is
+unachieved. [Live status](STATUS.md).
+
+The final-quarter schedule is now closed. Its paired MAIN stops before the
+switch because one seed's replica states disagree. The intact seed completes
+a separately registered recovery with all audits passing:2.481847 NLL versus
+its same-seed ordinary8's2.482287,only0.000440 nats better. The conditional
+source-group95% interval[-0.001536,0.002489]crosses zero and falls far below the
+0.01 useful-effect threshold. One seed cannot resolve training-seed variation;
+the original pair remains numerically incomplete. No scaling or confirmation
+is admitted. [Complete single-seed readout](results/late_two_allocation_20261026/single-recovery/REPORT.md) ·
+[Preserved paired failure](results/late_two_allocation_20261026/main/REPORT.md).
+
+
+The earlier sampled-depth small-core study found useful additional computation
+at equal data,but no training-efficiency win. These are two paired development
+seeds, with independently scored, cooled endpoints:
+
+| Model | Authentic training targets | Mean DEV NLL ↓ |
+| --- | ---: | ---: |
+| One pass, next-token prediction | 1.005B | 2.614841 |
+| Recurrence, next-token prediction, two-pass exit | 1.005B | **2.591095** |
+| One pass, approximately matched training matrix work | 1.238B | **2.581336** |
+
+All have **141.96M deployed parameters**. Recurrence improves equal-data NLL by
+0.023747 nats, but loses to longer one-pass training by 0.009759. The work
+match is within 0.02153%; it includes the common training-only head and
+replicated matrix-optimizer work, and does not imply equal chip-hours.
+[Completed comparison](results/future_span_work_controls_20261025/REPORT.md) ·
+[Original study](results/future_span_main_20261025/primitive-v2/REPORT.md).
+
+The same recurrent checkpoints improve when evaluated with two supported
+passes instead of one. This establishes useful dependence on additional
+computation; it does not establish reasoning, learned stopping or superiority
+over the strongest ordinary architecture. The proposed future-span auxiliary
+objective failed its declared interaction test and is closed.
+[Mechanism readout](results/ntp_secondary_discovery_20261025/report.json).
+
+The measured two-pass path takes about **17% longer** than one pass in a
+synchronized, preloaded 1,024-position prefill benchmark. Cached decoding and
+end-to-end serving were not measured. Even a free, target-informed selector
+among these saved whole-document depth paths fails to beat the work-matched
+one-pass control.
+[Prefill costs](results/future_span_prefill_20261025/REPORT.md) ·
+[Oracle bound](results/future_span_depth_oracle_20261025/REPORT.md).
+
+The token-level hindsight oracle on those old sampled-depth models is now
+complete: mean NLL **2.503303**, versus **2.581336** for their original
+work-matched One controls, a **0.078033** gap. It knows the actual targets and
+has free selection. The newer ordinary8 scores **2.480522** after **1.955×**
+their training work; that higher-budget reference is still better. This bounds
+selection among the recorded outputs, not changed routing trajectories or all
+adaptive computation. No router or confirmation is admitted.
+[Token-output diagnostic](results/future_span_depth_oracle_20261025/token/REPORT.md).
+A fixed equal-probability mixture scores2.590091, worse than supported depth3
+by0.004612. It does not realize the target-informed oracle gain; no mixture
+weights were fitted and no router was trained.
+
+A stronger frozen-prefix diagnostic is also complete. Readouts fit on TRAIN
+traces using current first-pass hidden states and confidence,then evaluate on
+source-separated consumed DEV. The registered nonlinear probe saves0.004565
+and0.004988 nats versus same-fraction random allocation,but loses0.004221
+and0.003480 to the descriptive cost-matched entropy reference. Its screen
+fails in both seeds. The secondary linear readout finds modest predictable
+value;this does not rule out all routing. Recorded-output selection remains
+distinct from actual mixed-depth attention. The first-pass vocabulary head
+alone costs1.37 times another core application in the dense ledger,so the
+confidence signal is not free. No accelerator router is admitted.
+[Completed current-prefix diagnostic](results/first_pass_hidden_value_20261026/REPORT.md).
+
+The completed cheap-mixing control repeats the input adapter while executing
+the core once. At equal data,it scores **2.613655**, versus recurrence's
+**2.591095**, across the same two seeds. It does not recover recurrence's
+useful gain. At matched nominal work,cheap mixing scores **2.581267** and
+also beats recurrence. Extra core execution contributes useful prediction
+work,but still does not earn its training cost under these controls.
+[Completed control](results/small_core_mixing_main_20261025/recovery-v2/REPORT.md) ·
+[Live status](STATUS.md).
+
+The bounded bridge-hiding curriculum is now **closed negative**. With original
+human-written arithmetic steps progressively withheld,R solves4/135 held-out
+answers versus One's2/135,and its second pass adds no solved answers. Both
+curriculum conditions worsen broad-source NLL by about0.011 nats. They solve
+over99% of a separate TRAIN sample,showing a severe generalization gap.
+[Completed controlled pilot](results/natural_chain_continuation_pilot_20261025/recovery-v2/REPORT.md) ·
+[TRAIN diagnosis](results/natural_chain_train_diagnostic_20261025/REPORT.md).
+
+The seven-endpoint follow-up also loses: retaining the already trained
+recurrent foundation gives 3/135 correct, versus 4/135 for the full-history
+work-matched one-pass control. Broad-source loss worsens in every curriculum
+condition. Even with the original human work supplied, these two models solve
+only 11/135 and 9/135. The bridge family is closed at this scale.
+[Completed history comparison](results/natural_chain_foundation_pilot_20261025/REPORT.md) ·
+[Scaffold diagnosis](results/natural_chain_scaffold_readout_20261025/REPORT.md).
+
+The fixed two-pass control is now complete and reported above. Its architecture,
+optimizer and source order were frozen before the curve. The new mixing-only
+control changes no completed result.
+[Fixed-depth protocol](docs/FIXED_TWO_SMALL_CORE_NTP_20261025.md).
+
+The curriculum used source-authored arithmetic rather than generated problems
+or solutions. Its extraction,views and verifier remain reproducible;human
+procedural supervision is explicitly distinguished from raw-text-only training.
+[Original source pool](results/natural_source_chain_pool_20261025/REPORT.md) ·
+[Data views](results/natural_chain_views_20261025/REPORT.md).
+
+Earlier studies remain preserved, including the
+[original shared/untied TEST comparison](results/frozen_test_20261023/REPORT.md),
+[revised fixed/variable-depth TEST comparison](results/variable_depth_20261023/test/REPORT.md),
+[longer-exposure compute control](results/mature_fp32_compute_20261024/REPORT.md),
+[cheap-connection comparison](results/depth_connection_20261024/REPORT.md),
+[small-core pilot](results/parcae_low_depth_pilot_20261024/REPORT.md) and
+[fixed-pause negative](results/learning_curve_20261022/REPORT.md).
+The previous [1.7B repository](https://github.com/dario-fumarola/useful-thoughts-trainium)
+and [archived pause pilot](https://github.com/dario-fumarola/pause-pretraining-trainium)
+remain intact. No completed recipe has independently confirmed a minimum useful
+training-compute advantage against the required strongest eligible controls.
+
+A terminal positive claim requires a frozen candidate, fresh source groups,
+at least five fresh paired training seeds, the declared useful-effect threshold
+and correction for repeated confirmation attempts. No such confirmation has
+been opened for the latest candidate.
+[Ongoing charter](docs/ONGOING_RESEARCH_CHARTER.md) ·
+[Data rules](docs/DATA.md) · [Trainium notes](docs/OSS_NOTES.md).
+
+Install CPU test and analysis dependencies with
+`python -m pip install -e '.[test,analysis]'`, then run
+`python -m pytest -q`. Some reference-parity tests additionally require the
+pinned upstream checkout specified in their preparation documents. Numerical
+software fixtures are not research examples. Source contents, weights, full
+optimizer states and native environments stay outside this public repository;
+CPU tests do not independently reproduce the scientific training runs.
